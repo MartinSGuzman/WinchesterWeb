@@ -8,12 +8,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { RecetaComponent } from './components/receta/receta.component';
 import { RecetaFormComponent } from './components/receta-form/receta-form.component';
+import { PagoComponent } from './components/pago/pago.component';
 @NgModule({
   declarations: [
     AppComponent,
     ProductoComponent,
     RecetaComponent,
-    RecetaFormComponent
+    RecetaFormComponent,
+    PagoComponent
   ],
   imports: [
     BrowserModule,
