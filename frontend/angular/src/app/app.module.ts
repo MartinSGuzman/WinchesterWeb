@@ -6,10 +6,14 @@ import { AppComponent } from './app.component';
 import { ProductoComponent } from './components/producto/producto.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { RecetaComponent } from './components/receta/receta.component';
+import { RecetaFormComponent } from './components/receta-form/receta-form.component';
 @NgModule({
   declarations: [
     AppComponent,
-    ProductoComponent
+    ProductoComponent,
+    RecetaComponent,
+    RecetaFormComponent
   ],
   imports: [
     BrowserModule,
