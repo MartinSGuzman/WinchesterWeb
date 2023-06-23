@@ -22,14 +22,28 @@ export class RecetaService {
   }
 
   createReceta(receta: Receta): Observable<any> {
+    let nombre = receta.nombre;
+    let costoTotal = receta.costoTotal;
+    let precio = receta.precio;
+    let productos = receta.productos;
+    let impuestos = receta.impuestos;
+    let alergenos = receta.alergenos;
+    let descripcion = receta.descripcion;
     let httpOption = {
       headers: new HttpHeaders({
         "Content-type": "application/json"
       }),
       //params: new HttpParams()
     }
-    //inicializamos el body tipo JSON
-    let body = JSON.stringify(receta)
+    const body = {
+      nombre,
+      costoTotal,
+      precio,
+      productos,
+      alergenos,
+      impuestos,
+      descripcion
+    };
     return this._httpCliente.post(this.urlBase + "receta/post", body, httpOption);
   }
 
