@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Receta } from 'src/app/models/receta';
+import { RecetaService } from 'src/app/services/receta.service';
 
 @Component({
   selector: 'app-receta',
@@ -7,9 +10,45 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RecetaComponent implements OnInit {
 
-  constructor() { }
+  recetass!: Array<Receta>;
+  filtrarCategoria!: string;
+
+  constructor(private recetaService: RecetaService,
+    private router: Router) {
+    // this.ticket = new Ticket();
+    this.recetass = new Array<Receta>();
+    this.cargarTickets();
+  }
 
   ngOnInit(): void {
   }
 
+  cargarTickets() {
+    this.recetaService.getRecetas().subscribe(
+      result => {
+        result.forEach((element: any) => {
+          let unReceta: Receta = new Receta();
+          Object.assign(unReceta, element)
+          this.recetass.push(unReceta)
+          unReceta = new Receta();
+        });
+        console.log(result);
+      },
+      error => {
+        console.log(error);
+      }
+    )
+  }
+
+  modificarReceta(receta: Receta) {
+
+  }
+
+  eliminarReceta(receta: Receta) {
+
+  }
+
+  agregarReceta() {
+    this.router.navigate(['receta-form/', 0])
+  }
 }

@@ -8,12 +8,16 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { RecetaComponent } from './components/receta/receta.component';
 import { RecetaFormComponent } from './components/receta-form/receta-form.component';
+import { HeaderComponent } from './components/layout/header/header.component';
+import { FooterComponent } from './components/layout/footer/footer.component';
 @NgModule({
   declarations: [
     AppComponent,
     ProductoComponent,
     RecetaComponent,
-    RecetaFormComponent
+    RecetaFormComponent,
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

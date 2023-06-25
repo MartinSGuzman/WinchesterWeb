@@ -1,4 +1,5 @@
 export class Producto {
+  _id!:string;
   nombre!:string;
   categoria!:string;
   tipo!:string;
