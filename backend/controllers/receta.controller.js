@@ -1,11 +1,11 @@
-const Receta = require('../models/Receta.js');
-const Producto = require ('../models/producto.js')
+const Receta = require('../models/Receta');
+const Producto = require ('../models/producto')
 
 
 const RecetaCtrl = {}
 
 RecetaCtrl.getRecetas = async (req, res) => {
-    var recetas = await Receta.find();
+    var recetas = await Receta.find().populate("productos");
     res.json(recetas);
 }
 
@@ -13,7 +13,7 @@ RecetaCtrl.createReceta = async (req, res) => {
     var receta = new Receta(req.body);
     try {
         await receta.save();
-        res.status(201).json({
+        res.status(200).json({
             'status': '1',
             'msg': 'Receta guardada.'
         });
@@ -25,7 +25,7 @@ RecetaCtrl.createReceta = async (req, res) => {
     }
 };
 RecetaCtrl.getReceta = async (req, res) => {
-    const receta = await Receta.findById(req.params.id);
+    const receta = await Receta.findById(req.params.id).populate("productos");
     res.json(receta);
 }
 RecetaCtrl.editReceta = async (req, res) => {

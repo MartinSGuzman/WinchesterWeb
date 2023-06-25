@@ -9,13 +9,17 @@ import { FormsModule } from '@angular/forms';
 import { RecetaComponent } from './components/receta/receta.component';
 import { RecetaFormComponent } from './components/receta-form/receta-form.component';
 import { PagoComponent } from './components/pago/pago.component';
+import { FooterComponent } from './components/layout/footer/footer.component';
+import { HeaderComponent } from './components/layout/header/header.component';
 @NgModule({
   declarations: [
     AppComponent,
     ProductoComponent,
     RecetaComponent,
     RecetaFormComponent,
-    PagoComponent
+    PagoComponent,
+    FooterComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

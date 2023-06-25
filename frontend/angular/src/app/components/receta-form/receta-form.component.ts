@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Producto } from 'src/app/models/producto';
 import { Receta } from 'src/app/models/receta';
+import { ProductoService } from 'src/app/services/producto.service';
 import { RecetaService } from 'src/app/services/receta.service';
 
 @Component({
@@ -16,6 +17,7 @@ export class RecetaFormComponent implements OnInit {
   productosss!: Array<Producto>;
 
   constructor(private recetaService: RecetaService,
+    private productoService: ProductoService,
     private router: Router,
     private activatedRoute: ActivatedRoute) {
     this.receta = new Receta()
@@ -26,8 +28,10 @@ export class RecetaFormComponent implements OnInit {
     this.activatedRoute.params.subscribe(params => {
       if (params['id'] == "0") {
         this.accion = "new";
+        this.cargarProductoss();
       } else {
         this.accion = "update";
+        this.cargarProductoss();
         this.cargarReceta(params['id']);
       }
     });
@@ -38,7 +42,7 @@ export class RecetaFormComponent implements OnInit {
       result => {
         Object.assign(this.receta, result);
         //añadir los valores en una lista despleglable
-        //this.sector.responsable = this.agentes.find(item => (item._id == this.sector.responsable._id))!;
+        this.receta.productos = this.productosss.find(item => (item._id == this.receta.productos._id))!;
         console.log(result);
       },
       error => {
@@ -47,8 +51,35 @@ export class RecetaFormComponent implements OnInit {
     )
   }
 
-  registrar() {
+  cargarProductoss() {
+    this.productoService.getProductos().subscribe(
+      result => {
+        let unProducto = new Producto();
+        result.forEach((element: any) => {
+          Object.assign(unProducto, element)
+          this.productosss.push(unProducto)
+          unProducto = new Producto();
+        });
+        console.log(result);
+      },
+      error => {
 
+      }
+    )
+  }
+
+  registrar() {
+    this.recetaService.createReceta(this.receta).subscribe(
+      (result: any) => {
+        if (result.status == 1) {
+          console.log(result.msg);
+          this.router.navigate(["receta"]);
+        }
+      },
+      error => {
+        alert(error.msg);
+      }
+    )
   }
 
   actualizarReceta() {
