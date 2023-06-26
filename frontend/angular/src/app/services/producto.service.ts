@@ -11,7 +11,7 @@ export class ProductoService {
   constructor(private http: HttpClient) { }
   private api = 'mongodb://127.0.0.1/proyectodb'
 
-  getProducto(): Observable<any> {
+  getProductos(): Observable<any> {
     let HttpOption = {
       headers: new HttpHeaders({
 
