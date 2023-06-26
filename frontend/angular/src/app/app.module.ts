@@ -9,13 +9,17 @@ import { FormsModule } from '@angular/forms';
 import { RecetaComponent } from './components/receta/receta.component';
 import { RecetaFormComponent } from './components/receta-form/receta-form.component';
 import { PagoComponent } from './components/pago/pago.component';
+import { UsuarioComponent } from './components/usuario/usuario.component';
+import { UsuarioFormComponent } from './components/usuario-form/usuario-form.component';
 @NgModule({
   declarations: [
     AppComponent,
     ProductoComponent,
     RecetaComponent,
     RecetaFormComponent,
-    PagoComponent
+    PagoComponent,
+    UsuarioComponent,
+    UsuarioFormComponent
   ],
   imports: [
     BrowserModule,

@@ -45,7 +45,7 @@ export class ProductoService {
       })
     };
     const url = `mongodb://127.0.0.1/proyectodb`;
-    return this.http.delete<any>(this.urlBase+"id",httpOptions);
+    return this.http.delete<any>(this.urlBase+id,httpOptions);
   }
 
   putProducto(id: number, costo: number, tipo: string, categoria: string, nombre: string, proveedor: string, stock: number): Observable<any> {
