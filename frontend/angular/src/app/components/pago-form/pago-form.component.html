@@ -1,0 +1,63 @@
+<div class="container">
+    <form class="row g-3 needs-validation" novalidate>
+        <div class="bg-primary border-5 text-center">
+          <h2 >Formulario Pago</h2>
+        </div>
+        <div class="col-md-4 position-relative">
+          <label for="validationTooltip01" class="form-label">Articulos</label>
+          <input type="text" class="form-control" id="validationTooltip01" value="" required
+            [(ngModel)]="pago.articulo">
+          <div class="valid-tooltip">
+            Looks good!
+          </div>
+        </div>
+        <div class="col-md-4 position-relative">
+          <label for="validationTooltip02" class="form-label">Monto</label>
+          <input type="number" class="form-control" id="validationTooltip02" value="Otto" required
+            [(ngModel)]="pago.monto">
+          <div class="valid-tooltip">
+            Looks good!
+          </div>
+        </div>
+        <div class="col-md-3 position-relative">
+          <label for="validationTooltip04" class="form-label">Metodo de Pago</label>
+          <select [(ngModel)]="pago.metodo" class="form-select" aria-label="Default select example">
+            <option selected disabled value="">Elegir...</option>
+            <option value="1">Contado</option>
+            <option value="2">Debito</option>
+            <option value="3">Credito</option>
+          </select>
+          <div class="invalid-tooltip">
+            Please select a valid state.
+          </div>
+        </div>
+        <div class="col-md-4 position-relative">
+          <label for="validationTooltip03" class="form-label">Horario de Pago</label>
+          <input type="text" class="form-control" id="validationTooltip03" required
+            [(ngModel)]="pago.hora">
+          <div class="invalid-tooltip">
+            Please provide a valid city.
+          </div>
+        </div>
+        
+        <div class="col-md-4 position-relative">
+          <label for="validationTooltip05" class="form-label">Dia de Pago</label>
+          <input type="text" class="form-control" id="validationTooltip05" required
+            [(ngModel)]="pago.dia">
+          <div class="invalid-tooltip">
+            Please provide a valid zip.
+          </div>
+        </div>
+        <div class="col-md-3 position-relative">
+          <label for="validationTooltip05" class="form-label">Nota</label>
+          <input type="text" class="form-control" id="validationTooltip05" required
+            [(ngModel)]="pago.nota">
+          <div class="invalid-tooltip">
+            Please provide a valid zip.
+          </div>
+        </div>
+        <div class="col-12">
+          <button class="btn btn-primary" type="submit" (click)="guardarPago()">Agregar Pago</button>
+        </div>
+      </form>
+</div>
