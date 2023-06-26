@@ -51,12 +51,13 @@
                     <label for="alergenos" class="form-label" style="font-weight: bold;">Alergenos</label>
                     <input type="text" class="form-control form-control-sm" placeholder="Ingrese alergenos" id="nombre"
                         [(ngModel)]="receta.alergenos" name="alergenos" required #alergenos="ngModel">
-
+                    <!--<label><input type="checkbox" id="cbox1" value="first_checkbox"> Este es mi primer checkbox</label><br>-->
                     <div *ngIf="alergenos.invalid && (alergenos.dirty || alergenos.touched)" class="alert alert-danger">
                         <div *ngIf="alergenos.errors?.['required']">
                             Alergenos es requerido.
                         </div>
                     </div>
+
                 </div>
 
                 <div class="mb-3">
