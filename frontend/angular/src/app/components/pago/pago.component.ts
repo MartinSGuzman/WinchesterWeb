@@ -15,7 +15,7 @@ export class PagoComponent implements OnInit {
   constructor( private pagoService : PagoService,
                private router:Router) { 
     this.cargarPagos()
-    this.pagos = new Array<Pago>;
+    this.pagos = new Array<Pago>();
   }
 
   ngOnInit(): void {
@@ -47,4 +47,7 @@ export class PagoComponent implements OnInit {
     this.router.navigate(["pago-form",pago._id])
   }
 
+  eliminarPago(pago:Pago){
+    
+  }
 }

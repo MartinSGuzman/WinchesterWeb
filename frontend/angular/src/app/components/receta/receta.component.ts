@@ -41,11 +41,27 @@ export class RecetaComponent implements OnInit {
   }
 
   modificarReceta(receta: Receta) {
-
+    this.router.navigate(["receta-form", receta._id]);
   }
 
   eliminarReceta(receta: Receta) {
+    this.recetaService.deleteReceta(receta._id).subscribe(
+      result => {
+        if (result.status == "1") {
+          //pasar a toast
+          console.log(result.msg);
+          this.router.navigate(['receta']);
+          this.cargarRecetas();
+          window.location.reload();
+        }
+      },
+      error => {
+        if (error.status == "0") {
+          alert(error.msg);
+        }
+      }
 
+    )
   }
 
   agregarReceta() {
