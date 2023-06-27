@@ -8,15 +8,13 @@ import { FormsModule } from '@angular/forms';
 import { RecetaComponent } from './components/receta/receta.component';
 import { RecetaFormComponent } from './components/receta-form/receta-form.component';
 import { PagoComponent } from './components/pago/pago.component';
-<<<<<<< HEAD
 import { UsuarioComponent } from './components/usuario/usuario.component';
 import { UsuarioFormComponent } from './components/usuario-form/usuario-form.component';
-=======
 import { PagoFormComponent } from './components/pago-form/pago-form.component';
 import { FooterComponent } from './components/layout/footer/footer.component';
 import { HeaderComponent } from './components/layout/header/header.component';
 
->>>>>>> dc4e9244ce9571fb65d361d49950fe29aa5efd64
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,15 +22,13 @@ import { HeaderComponent } from './components/layout/header/header.component';
     RecetaComponent,
     RecetaFormComponent,
     PagoComponent,
-<<<<<<< HEAD
+
     UsuarioComponent,
-    UsuarioFormComponent
-=======
+    UsuarioFormComponent,
     PagoFormComponent,
     FooterComponent,
     HeaderComponent
 
->>>>>>> dc4e9244ce9571fb65d361d49950fe29aa5efd64
   ],
   imports: [
     BrowserModule,
