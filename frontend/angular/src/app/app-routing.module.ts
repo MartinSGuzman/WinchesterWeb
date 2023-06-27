@@ -5,6 +5,8 @@ import { RecetaFormComponent } from './components/receta-form/receta-form.compon
 import { PagoFormComponent } from './components/pago-form/pago-form.component';
 import { PagoComponent } from './components/pago/pago.component';
 import { ProductoComponent } from './components/producto/producto.component';
+import { UsuarioComponent } from './components/usuario/usuario.component';
+import { UsuarioFormComponent } from './components/usuario-form/usuario-form.component';
 
 
 const routes: Routes = [
@@ -13,7 +15,8 @@ const routes: Routes = [
   { path: 'receta', component: RecetaComponent },
   { path: 'pago-form/:id', component: PagoFormComponent },
   { path: 'pago', component: PagoComponent },
-  { path: 'pago', component: PagoComponent },
+  { path: 'login', component: UsuarioComponent },
+  { path: 'main', component: UsuarioFormComponent },
   { path: '**', pathMatch:'full',redirectTo:'producto' }
 ];
 

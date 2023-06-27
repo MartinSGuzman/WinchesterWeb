@@ -1,1 +1,14 @@
-<p>usuario works!</p>
+<div class="pad">
+<form>
+    <div class="mb-3">
+      <label for="user" class="form-label">Usuario</label>
+      <input type="text" class="form-control" id="user" aria-describedby="Usuario" name="userIn" [(ngModel)]="userIn">
+      <div id="usuario" class="form-text">¿No sos usuario? Registrate.</div>
+    </div>
+    <div class="mb-3">
+      <label for="pass" class="form-label">Password</label>
+      <input type="password" class="form-control" id="pass" name="passIn"[(ngModel)]="passIn">
+    </div>
+    <button type="submit" class="btn btn-success"(click)="login(userIn,passIn)">Login</button>
+  </form>
+</div>

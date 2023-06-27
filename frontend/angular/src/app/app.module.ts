@@ -13,6 +13,9 @@ import { UsuarioFormComponent } from './components/usuario-form/usuario-form.com
 import { PagoFormComponent } from './components/pago-form/pago-form.component';
 import { FooterComponent } from './components/layout/footer/footer.component';
 import { HeaderComponent } from './components/layout/header/header.component';
+import {HTTP_INTERCEPTORS} from '@angular/common/http';
+import { TokenInterceptorService } from './services/token-interceptor.service';
+import { UsuarioService } from './services/usuario.service';
 
 @NgModule({
   declarations: [
@@ -33,7 +36,15 @@ import { HeaderComponent } from './components/layout/header/header.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    UsuarioService,
+    {
+    provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptorService,
+    multi: true
+   }
+   ],
+   
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

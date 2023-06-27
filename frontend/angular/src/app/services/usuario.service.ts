@@ -17,6 +17,18 @@ export class UsuarioService {
     return this.http.get<any>(this.urlBase,HttpOptions);
   }
 
+  public loginUsuario(username:string, password:string):Observable<any>{
+    let HttpOptions ={
+      headers: new HttpHeaders({}),
+      params: new HttpParams()
+    }
+    const body = {
+      username,
+      password
+    };
+    return this.http.post<any>(this.urlBase+'login',body,HttpOptions);
+  }
+
   public postUsuario(username:string, password:string, nombreApellido: string, rol:string, dni:string):Observable<any>{
     let HttpOptions ={
       headers: new HttpHeaders({}),
@@ -29,7 +41,7 @@ export class UsuarioService {
       rol,
       dni
     };
-    return this.http.post<any>(this.urlBase,body,HttpOptions);
+    return this.http.post<any>(this.urlBase+'/post',body,HttpOptions);
   }
 
   public getUsuario(id:string):Observable<any>{
@@ -62,4 +74,12 @@ export class UsuarioService {
     }
     return this.http.delete<any>(this.urlBase+id,HttpOptions);
   }
+
+  public getToken():string{
+    if (sessionStorage.getItem("token")!= null){
+    return sessionStorage.getItem("token")!;
+    }else{
+    return "";
+    }
+    }
 }
