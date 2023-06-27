@@ -83,7 +83,17 @@ export class RecetaFormComponent implements OnInit {
   }
 
   actualizarReceta() {
-
+    this.recetaService.editReceta(this.receta).subscribe(
+      (result: any) => {
+        if (result.status == 1) {
+          console.log(result.msg);
+          this.router.navigate(["receta"]);
+        }
+      },
+      error => {
+        alert(error.msg);
+      }
+    )
   }
 
   volverLista() {
