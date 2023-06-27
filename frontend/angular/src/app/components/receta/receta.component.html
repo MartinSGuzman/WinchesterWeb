@@ -25,13 +25,13 @@
             <tbody>
                 <tr *ngFor="let rece of recetass">
                     <th scope="row">{{ rece._id }}</th>
-                    <td>{{rece.nombre}}</td>
-                    <td>{{rece.precio}}</td>
-                    <td>{{rece.alergenos}}</td>
-                    <td>{{rece.impuestos}}</td>
-                    <td>{{rece.descripcion}}</td>
-                    <td>{{rece.productos.nombre}}</td>
-                    <td>{{rece.costoTotal}}</td>
+                    <td>{{rece.nombre | titlecase}}</td>
+                    <td>{{rece.precio | currency:'ARS':'symbol-narrow'}}</td>
+                    <td>{{rece.alergenos | titlecase}}</td>
+                    <td>{{rece.impuestos | currency:'ARS':'symbol-narrow'}}</td>
+                    <td>{{rece.descripcion | titlecase}}</td>
+                    <td>{{rece.productos.nombre | titlecase}}</td>
+                    <td>{{rece.costoTotal | currency:'ARS':'symbol-narrow'}}</td>
                     <td>
                         <button class="btn btn-warning" (click)="modificarReceta(rece)">Modificar</button>
                         <button class="btn btn-danger" (click)="eliminarReceta(rece)">Eliminar</button>
