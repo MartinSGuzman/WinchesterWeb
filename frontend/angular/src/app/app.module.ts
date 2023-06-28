@@ -16,6 +16,7 @@ import { HeaderComponent } from './components/layout/header/header.component';
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import { TokenInterceptorService } from './services/token-interceptor.service';
 import { UsuarioService } from './services/usuario.service';
+import { AuthService } from 'src/app/auth-service.service';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,7 @@ import { UsuarioService } from './services/usuario.service';
     HttpClientModule
   ],
   providers: [
-    UsuarioService,
+    UsuarioService,AuthService,
     {
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptorService,

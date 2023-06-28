@@ -16,8 +16,8 @@ const routes: Routes = [
   { path: 'pago-form/:id', component: PagoFormComponent },
   { path: 'pago', component: PagoComponent },
   { path: 'login', component: UsuarioComponent },
-  { path: 'main', component: UsuarioFormComponent },
-  { path: '**', pathMatch:'full',redirectTo:'producto' }
+  { path: 'user-form', component: UsuarioFormComponent },
+  { path: '**', pathMatch:'full',redirectTo:'login' }
 ];
 
 @NgModule({

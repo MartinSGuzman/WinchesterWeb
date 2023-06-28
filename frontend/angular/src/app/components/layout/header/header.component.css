@@ -48,3 +48,17 @@ nav{
     font-size: 140%;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
+
+.nav-link.disabled {
+    cursor: not-allowed;
+    color: gray;
+    pointer-events: none;
+    opacity: 0.5;
+  }
+  
+  .nav-link.disabled:hover,
+  .nav-link.disabled:focus,
+  .nav-link.disabled:active {
+    color: gray;
+    text-decoration: none;
+  }

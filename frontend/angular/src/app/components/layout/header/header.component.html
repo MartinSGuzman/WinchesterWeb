@@ -1,45 +1,40 @@
 <div class="container">
     <header>
-        <div class="imangen" style="background-image: url(); background-size: 10%">
-            <div class="contenido">
-                <div class="letra">
-                    <h3 class="display-4 text-white">Practica Web Service</h3>
-                </div>
-            </div>
-            <nav class="navbar navbar-expand-lg navbar-light">
-                <div class="container-fluid">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link" [routerLink]="['producto']"> Producto </a>
-                        </li>
-                    </ul>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarNav">
-                        <ul class="navbar-nav">
-
-                            <li class="nav-item">
-                                <a class="nav-link" [routerLink]="['receta']">Receta</a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link" [routerLink]="['pago']">Pago</a>
-                            </li>
-                            
-                            <li class="nav-item">
-                                <a class="nav-link" [routerLink]="['login']">Login</a>
-                            </li>
-                            <!--
-                            <li class="nav-item">
-                                <a class="nav-link" [routerLink]="['']"></a>
-                            </li>
-                            --->
-                        </ul>
-                    </div>
-                </div>
-            </nav>
+      <div class="imangen" style="background-image: url(); background-size: 10%">
+        <div class="contenido">
+          <div class="letra">
+            <h3 class="display-4 text-white">Practica Web Service</h3>
+          </div>
         </div>
+        <nav class="navbar navbar-expand-lg navbar-light">
+          <div class="container-fluid">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" [routerLink]="['producto']" routerLinkActive="active" [class.disabled]="!isLoggedIN">Producto</a>
+              </li>
+            </ul>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+              aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link" [routerLink]="['receta']" routerLinkActive="active" [class.disabled]="!isLoggedIN">Receta</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" [routerLink]="['pago']" routerLinkActive="active" [class.disabled]="!isLoggedIN">Pago</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" [routerLink]="['login']" routerLinkActive="active" [class.disabled]="!isLoggedIN">Login</a>
+                </li>
+                <li>
+                  <button class="btn btn-dark"(click)="logout()" [routerLink]="['login']">logout</button>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </div>
     </header>
-</div>
+  </div>
