@@ -99,4 +99,8 @@ export class RecetaFormComponent implements OnInit {
   volverLista() {
     this.router.navigate(['receta'])
   }
+
+  calcular() {
+    this.receta.costoTotal = this.receta.impuestos * this.receta.precio
+  }
 }

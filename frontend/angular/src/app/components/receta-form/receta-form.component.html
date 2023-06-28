@@ -3,7 +3,7 @@
         <div class="col-md-8 offset-md-2">
             <br>
             <div class="letra3">
-                <h3>Receta</h3>
+                <h3>Recetas</h3>
                 <br>
             </div>
             <button type="submit" (click)="volverLista()" class="btn btn-success">Volver Lista</button>
@@ -83,7 +83,7 @@
                 <div class="mb-3">
                     <label for="impuestos" class="form-label" style="font-weight: bold;">Impuestos</label>
                     <input type="number" class="form-control form-control-sm" placeholder="Ingrese impuestos" id="email"
-                        [(ngModel)]="receta.impuestos" name="impuestos" required #impuestos="ngModel">
+                        [(ngModel)]="receta.impuestos" name="impuestos" required #impuestos="ngModel" (ngModelChange)="calcular()">
 
                     <div *ngIf="impuestos.invalid && (impuestos.dirty || impuestos.touched)" class="alert alert-danger">
                         <div *ngIf="impuestos.errors?.['required']">
@@ -95,7 +95,7 @@
                 <div class="mb-3">
                     <label for="precio" class="form-label" style="font-weight: bold;">Precio</label>
                     <input type="number" class="form-control form-control-sm" placeholder="Ingrese precio" id="email"
-                        [(ngModel)]="receta.precio" name="precio" required #precio="ngModel">
+                        [(ngModel)]="receta.precio" name="precio" required #precio="ngModel" (ngModelChange)="calcular()">
 
                     <div *ngIf="precio.invalid && (precio.dirty || precio.touched)" class="alert alert-danger">
                         <div *ngIf="precio.errors?.['required']">
@@ -106,18 +106,20 @@
 
                 <div class="mb-3">
                     <label for="costoTotal" class="form-label" style="font-weight: bold;">Costo Total</label>
-                    <input type="number" class="form-control form-control-sm" placeholder="Ingrese Costo Total"
+                    <input type="number" class="form-control form-control-sm" placeholder="Aparece el Costo Total"
                         id="costoTotal" [(ngModel)]="receta.costoTotal" name="costoTotal" required
-                        #costoTotal="ngModel">
+                        #costoTotal="ngModel" disabled>
 
-                    <div *ngIf="costoTotal.invalid && (costoTotal.dirty || costoTotal.touched)"
+                     <!--<div *ngIf="costoTotal.invalid && (costoTotal.dirty || costoTotal.touched)"
                         class="alert alert-danger">
                         <div *ngIf="costoTotal.errors?.['required']">
                             Costo Total es requerido.
                         </div>
-                    </div>
+                    </div>-->
                 </div>
                 
+                <!-- <button *ngIf="accion=='new'" type="submit" (click)="calcular()" class="btn btn-danger text-white"
+                    [disabled]="recetaForm.invalid">Calcular Receta</button>-->
                 <button *ngIf="accion=='new'" type="submit" (click)="registrar()" class="btn btn-info"
                     [disabled]="recetaForm.invalid">Registrar Receta</button>
                 <button *ngIf="accion=='update'" type="submit" (click)="actualizarReceta()"

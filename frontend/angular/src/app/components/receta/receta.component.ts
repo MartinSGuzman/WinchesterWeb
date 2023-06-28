@@ -9,15 +9,18 @@ import { RecetaService } from 'src/app/services/receta.service';
   styleUrls: ['./receta.component.css']
 })
 export class RecetaComponent implements OnInit {
-
   
+  receta!: Receta;
   recetass!: Array<Receta>;
+  total: number = 0;
 
   constructor(private recetaService: RecetaService,
     private router: Router) {
-    // this.ticket = new Ticket();
+
+    this.receta = new Receta();
     this.recetass = new Array<Receta>();
     this.cargarRecetas();
+    this.totall();
   }
 
   ngOnInit(): void {
@@ -38,6 +41,11 @@ export class RecetaComponent implements OnInit {
         console.log(error);
       }
     )
+  }
+
+  totall() {
+    this.total = 0;
+    this.total = this.total + this.receta.costoTotal;
   }
 
   modificarReceta(receta: Receta) {

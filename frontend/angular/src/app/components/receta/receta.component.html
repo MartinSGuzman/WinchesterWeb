@@ -4,7 +4,7 @@
         <h3 class="col-12 text-center text-decoration-underline" style="font-weight: bold;">Listado De Recetas</h3>
     </div>
     <br><br>
-    
+
     <button type="button" (click)="agregarReceta()" class="btn btn-info">Agregar Receta</button>
     <br><br>
     <div class="table-responsive">
@@ -13,28 +13,46 @@
                 <tr class="text-center">
                     <th scope="col">ID</th>
                     <th scope="col">Nombre</th>
-                    <th scope="col">Precio</th>
                     <th scope="col">Alergenos</th>
-                    <th scope="col">Impuestos</th>
                     <th scope="col">Descripcion</th>
                     <th scope="col">Productos</th>
-                    <th scope="col">PrecioTotal</th>
+                    <th scope="col">Precio</th>
+                    <th scope="col">Impuestos</th>
+                    <th scope="col">Precio Total</th>
                     <th scope="col">Opciones</th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let rece of recetass">
                     <th scope="row">{{ rece._id }}</th>
-                    <td>{{rece.nombre}}</td>
-                    <td>{{rece.precio}}</td>
-                    <td>{{rece.alergenos}}</td>
-                    <td>{{rece.impuestos}}</td>
-                    <td>{{rece.descripcion}}</td>
-                    <td>{{rece.productos.nombre}}</td>
-                    <td>{{rece.costoTotal}}</td>
+                    <td>{{rece.nombre | titlecase}}</td>
+                    <td>{{rece.alergenos | titlecase}}</td>
+                    <td>{{rece.descripcion | titlecase}}</td>
+                    <td>{{rece.productos.nombre | titlecase}}</td>
+                    <td>{{rece.precio | currency:'ARS':'symbol-narrow'}}</td>
+                    <td>{{rece.impuestos | currency:'ARS':'symbol-narrow'}}</td>
+                    <td>Precio: {{rece.precio | currency:'ARS':'symbol-narrow'}} * Impuesto: {{rece.impuestos |
+                        currency:'ARS':'symbol-narrow'}} = {{rece.costoTotal | currency:'ARS':'symbol-narrow'}}</td>
                     <td>
                         <button class="btn btn-warning" (click)="modificarReceta(rece)">Modificar</button>
                         <button class="btn btn-danger" (click)="eliminarReceta(rece)">Eliminar</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <h3>Costo Total de la Receta:</h3>
+                    </td>
+                    <td>
+                        <h3>{{total | currency }}</h3>
+                    </td>
+                    <td>
+                        <button class="btn btn-info" (click)="totall()">Total</button>
                     </td>
                 </tr>
             </tbody>
