@@ -1,0 +1,22 @@
+<div>
+<table class="table table-stripped table-hover">
+    <thead>
+      <tr>
+        <th scope="col">N° Pedido</th>
+        <th scope="col">Plato</th>
+        <th scope="col">Nota</th>
+        <th scope="col">Estado</th>
+        <th scope="col">Secundarios</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let pedido of arrayPedidos; let i = index">
+        <th scope="row">{{i+1}}</th>
+        <td>{{pedido.obReceta}}</td>
+        <td>{{pedido.nota}}</td>
+        <td>{{pedido.estado}}</td>
+        <td>{{pedido.obItemsExtra}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

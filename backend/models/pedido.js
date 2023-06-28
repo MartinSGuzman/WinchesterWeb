@@ -10,7 +10,7 @@ const PedidoSchema = new Schema({
     nota: { type: String, required: true },
     estado: { type: String, required: true },
     horario: { type: String, required: true},
-    fecha: { type: Date, required: true }
+    fecha: { type: String, required: true }
 });
 
 module.exports = mongoose.models.Pedido || mongoose.model('Pedido', PedidoSchema);

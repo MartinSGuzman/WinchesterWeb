@@ -17,6 +17,8 @@ import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import { TokenInterceptorService } from './services/token-interceptor.service';
 import { UsuarioService } from './services/usuario.service';
 import { AuthService } from 'src/app/auth-service.service';
+import { PedidoComponent } from './components/pedido/pedido.component';
+import { PedidoFormComponent } from './components/pedido-form/pedido-form.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { AuthService } from 'src/app/auth-service.service';
     UsuarioFormComponent,
     PagoFormComponent,
     FooterComponent,
-    HeaderComponent
+    HeaderComponent,
+    PedidoComponent,
+    PedidoFormComponent
   ],
   imports: [
     BrowserModule,

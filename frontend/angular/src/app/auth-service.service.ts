@@ -24,6 +24,5 @@ export class AuthService {
     sessionStorage.removeItem('rol');
     // Reinicia el estado de isLoggedIn
     this.isLoggedIn = false;
-    // Realiza cualquier otra acción necesaria al hacer logout
   }
 }

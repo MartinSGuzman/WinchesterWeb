@@ -20,6 +20,15 @@ export class ProductoService {
     }
     return this.http.get<any>(this.urlBase, HttpOption);
   }
+  getProducto(id:string): Observable<any> {
+    let HttpOption = {
+      headers: new HttpHeaders({
+
+      }),
+      params: new HttpParams()
+    }
+    return this.http.get<any>(this.urlBase+id, HttpOption);
+  }
 
   postProducto(costo: number, tipo: string, categoria: string, nombre: string, proveedor: string, stock: number): Observable<any> {
     const httpOptions = {
@@ -63,7 +72,7 @@ export class ProductoService {
       proveedor,
       stock
     };
-    return this.http.put<any>(this.urlBase+"id",body,httpOptions);
+    return this.http.put<any>(this.urlBase+id,body,httpOptions);
   }
 
 
