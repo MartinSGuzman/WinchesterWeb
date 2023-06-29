@@ -26,38 +26,44 @@ UsuarioCtrl.createUsuario = async (req, res) => {
 }
 
 UsuarioCtrl.loginUsuario = async (req, res) => {
-    //en req.body se espera que vengan las credenciales de login
-    //defino los criterios de busqueda en base al username y password recibidos
+    // En req.body se esperan las credenciales de inicio de sesión
+    // Defino los criterios de búsqueda en base al nombre de usuario y la contraseña recibidos
     const criteria = {
-        username: req.body.username,
-        password: req.body.password
-    }
-    try {
-        //el método findOne retorna un objeto que cumpla con los criterios de busqueda
+      username: req.body.username,
+      password: req.body.password
+    };
+  
+    // El método findOne retorna un objeto que cumple con los criterios de búsqueda
+    UsuarioCtrl.loginUsuario = async (req, res) => {
+      try {
+        const criteria = {
+          username: req.body.username,
+          password: req.body.password
+        };
+    
         const user = await Usuario.findOne(criteria);
+    
         if (!user) {
-            res.json({
-                status: 0,
-                msg: "not found"
-            })
-        } else {
-
-            const unToken = jwt.sign({ id: user._id }, "secretkey");
-            res.json({
-                status: 1,
-                msg: "success",
-                username: user.username, //retorno información útil para el frontend
-                rol: user.rol, //retorno información útil para el frontend
-                userid: user._id, //retorno información útil para el frontend
-                token: unToken
-            })
-        }
-    } catch (error) {
-        res.json({
+          res.json({
             status: 0,
-            msg: 'error'
-        })
-    }
+            msg: 'not found'
+          });
+        } else {
+          res.json({
+            status: 1,
+            msg: 'success',
+            username: user.username,
+            rol: user.rol,
+            userid: user._id
+          });
+        }
+      } catch (err) {
+        res.json({
+          status: 0,
+          msg: 'error'
+        });
+      }
+    };
 }
 
 

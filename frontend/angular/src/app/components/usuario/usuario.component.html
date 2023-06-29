@@ -1,14 +1,18 @@
-<div class="pad">
-<form>
-    <div class="mb-3">
-      <label for="user" class="form-label">Usuario</label>
-      <input type="text" class="form-control" id="user" aria-describedby="Usuario" name="userIn" [(ngModel)]="userIn">
-      <div id="usuario" class="form-text">¿No sos usuario? Registrate.</div>
-    </div>
-    <div class="mb-3">
-      <label for="pass" class="form-label">Password</label>
-      <input type="password" class="form-control" id="pass" name="passIn"[(ngModel)]="passIn">
-    </div>
-    <button type="submit" class="btn btn-success"(click)="login(userIn,passIn)">Login</button>
+<div class="col-md-6 col-md-offset-3">
+  <h2>Login</h2>
+  <form name="form">
+  <div class="form-group">
+  <label for="username">Username</label>
+  <input type="text" class="formcontrol" name="username" [(ngModel)]="userform.username" />
+  </div>
+  <div class="form-group">
+  <label for="password">Password</label>
+  <input type="password" class="formcontrol" name="password" [(ngModel)]="userform.password" />
+  </div>
+  <div class="form-group">
+  <button class="btn btn-primary" (click)="login()">Login</button>
+  </div>
+  <div class="alert-danger">{{msglogin}}</div>
   </form>
-</div>
+ </div>
+ 

@@ -1,16 +1,18 @@
 <div class="container">
-    <header>
-      <div class="imangen" style="background-image: url(); background-size: 10%">
-        <div class="contenido">
-          <div class="letra">
-            <h3 class="display-4 text-white">Practica Web Service</h3>
-          </div>
+  <header>
+    <div class="imangen" style="background-image: url(); background-size: 10%">
+      <div class="contenido">
+        <div class="letra">
+          <h3 class="display-4 text-white">Practica Web Service</h3>
         </div>
+      </div>
+      
+
         <nav class="navbar navbar-expand-lg navbar-light">
           <div class="container-fluid">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link" [routerLink]="['producto']" routerLinkActive="active" [class.disabled]="!isLoggedIN">Producto</a>
+                <a class="nav-link" [routerLink]="['producto']">Producto</a>
               </li>
             </ul>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -19,25 +21,30 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
               <ul class="navbar-nav">
-                <li class="nav-item">
-                  <a class="nav-link" [routerLink]="['receta']" routerLinkActive="active" [class.disabled]="!isLoggedIN">Receta</a>
+                <li class="nav-item" >
+                  <a class="nav-link" [routerLink]="['receta']">Receta</a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" [routerLink]="['pago']" routerLinkActive="active" [class.disabled]="!isLoggedIN">Pago</a>
+                <li class="nav-item" >
+                  <a class="nav-link" [routerLink]="['pago']">Pago</a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" [routerLink]="['login']" routerLinkActive="active" [class.disabled]="!isLoggedIN">Login</a>
+                <li class="nav-item" >
+                  <a class="nav-link" [routerLink]="['login']">Login</a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" [routerLink]="['pedidos']" routerLinkActive="active" [class.disabled]="!isLoggedIN">Pedidos</a>
+                <li class="nav-item" >
+                  <a class="nav-link" [routerLink]="['pedidos']">Pedidos</a>
                 </li>
-                <li>
-                  <button class="btn btn-dark"(click)="logout()" [routerLink]="['login']">logout</button>
-                </li>
+                <div >
+                  <a [routerLink]="['login']">(Login)</a>
+                  <a [routerLink]="['login']" (click)="logout()">
+                    {{loginService.userLogged()}} (logout)
+                  </a>
+                </div>
+
               </ul>
             </div>
           </div>
         </nav>
-      </div>
-    </header>
-  </div>
+      
+    </div>
+  </header>
+</div>
