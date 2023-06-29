@@ -9,7 +9,8 @@ import { UsuarioComponent } from './components/usuario/usuario.component';
 import { UsuarioFormComponent } from './components/usuario-form/usuario-form.component';
 import { PedidoComponent } from './components/pedido/pedido.component';
 import { PedidoFormComponent } from './components/pedido-form/pedido-form.component';
-
+import { ItemsComponent } from './components/items/items.component';
+import { ItemsFormComponent } from './components/items-form/items-form.component';
 
 const routes: Routes = [
   { path: 'producto', component: ProductoComponent },
@@ -21,7 +22,9 @@ const routes: Routes = [
   { path: 'user-form', component: UsuarioFormComponent },
   { path: 'pedidos', component: PedidoComponent },
   { path: 'pedidos-form', component: PedidoFormComponent },
-  { path: '**', pathMatch:'full',redirectTo:'login' }
+  { path: 'items', component: ItemsComponent },
+  { path: 'items-form/:id', component: ItemsFormComponent },
+  { path: '**', pathMatch: 'full', redirectTo: 'login' }
 ];
 
 @NgModule({

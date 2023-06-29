@@ -1,0 +1,46 @@
+<div class="container" style="background-color: #f6d1de">
+    <br>
+    <div class="row">
+        <h3 class="col-12 text-center text-decoration-underline" style="font-weight: bold;">Listado De Items Extras</h3>
+    </div>
+    <br><br>
+
+    <button type="button" (click)="agregarItems()" class="btn btn-info">Agregar Items</button>
+    <br><br>
+    <div class="table-responsive">
+        <table class="table table table-bordered table-light table-striped">
+            <thead>
+                <tr class="text-center">
+                    <th scope="col">ID</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Categoria</th>
+                    <th scope="col">Descripcion</th>
+                    <th scope="col">Proveedor</th>
+                    <th scope="col">Precio</th>
+                    <th scope="col">Stock</th>
+                    <th scope="col">Costo</th>
+                    <th scope="col">Opciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of itemsss">
+                    <th scope="row">{{ item._id }}</th>
+                    <td>{{item.nombre | titlecase}}</td>
+                    <td>{{item.categoria | titlecase}}</td>
+                    <td>{{item.descripcion | titlecase}}</td>
+                    <td>{{item.proveedor | titlecase}}</td>
+                    <td>{{item.precio | currency:'ARS':'symbol-narrow'}}</td>
+                    <td>{{item.stock | currency:'ARS':'symbol-narrow'}}</td>
+                    <td>{{item.costo | currency:'ARS':'symbol-narrow'}}</td>
+                    <td>
+                        <button class="btn btn-warning" (click)="modificarReceta(item)">Modificar</button>
+                        <button class="btn btn-danger" (click)="eliminarReceta(item)">Eliminar</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="button" (click)="agregarItems()" class="btn btn-info">Agregar Items</button>
+    <br><br>
+</div>
