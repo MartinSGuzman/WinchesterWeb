@@ -19,6 +19,8 @@ import { UsuarioService } from './services/usuario.service';
 import { AuthService } from 'src/app/auth-service.service';
 import { PedidoComponent } from './components/pedido/pedido.component';
 import { PedidoFormComponent } from './components/pedido-form/pedido-form.component';
+import { ItemsComponent } from './components/items/items.component';
+import { ItemsFormComponent } from './components/items-form/items-form.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import { PedidoFormComponent } from './components/pedido-form/pedido-form.compon
     FooterComponent,
     HeaderComponent,
     PedidoComponent,
-    PedidoFormComponent
+    PedidoFormComponent,
+    ItemsComponent,
+    ItemsFormComponent
   ],
   imports: [
     BrowserModule,

@@ -20,7 +20,7 @@ export class RecetaComponent implements OnInit {
     this.receta = new Receta();
     this.recetass = new Array<Receta>();
     this.cargarRecetas();
-    this.totall();
+    this.totalCostoReceta();
   }
 
   ngOnInit(): void {
@@ -43,7 +43,7 @@ export class RecetaComponent implements OnInit {
     )
   }
 
-  totall() {
+  totalCostoReceta() {
     this.total = 0;
     this.total = this.total + this.receta.costoTotal;
   }
