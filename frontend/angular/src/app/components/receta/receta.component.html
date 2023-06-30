@@ -18,7 +18,7 @@
                     <th scope="col">Productos</th>
                     <th scope="col">Precio</th>
                     <th scope="col">Impuestos</th>
-                    <th scope="col">Precio Total</th>
+                    <th scope="col">Costo Total</th>
                     <th scope="col">Opciones</th>
                 </tr>
             </thead>
@@ -39,20 +39,16 @@
                     </td>
                 </tr>
                 <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <th scope="row"></th>
+                    <td colspan="5"></td>
                     <td>
                         <h3>Costo Total de la Receta:</h3>
                     </td>
                     <td>
-                        <h3>{{total | currency }}</h3>
+                        <h3>{{totalCostoReceta() | currency }}</h3>
                     </td>
                     <td>
-                        <button class="btn btn-info" (click)="totalCostoReceta()">Total</button>
+
                     </td>
                 </tr>
             </tbody>

@@ -7,9 +7,10 @@
         <div class="card-body" *ngFor="let pag of pagos">
           <h5 class="card-title">Monto:{{pag.monto}}</h5>
           <p class="card-text">Metodo de Pago:{{pag.metodo}}</p>
-          <p class="card-text">Hora:{{pag.hora}}</p>
-          <p class="card-text">Dia:{{pag.dia}}</p>
-          <p class="card-text">Articulos:{{pag.articulo}}</p>
+          <p class="card-text">Hora:{{pag.horario}}</p>
+          <p class="card-text">Fecha:{{pag.fecha}}</p>
+          <p class="card-text">Receta:{{pag.receta}}</p>
+          <p class="card-text">Items:{{pag.items}}</p>
           <p class="card-text">Nota:{{pag.nota}}</p>
           <button type="button" class="btn btn-primary" (click)="modificarPago(pag)">Modificar</button>
           <button type="button" class="btn btn-primary" (click)="eliminarPago(pag)">Eliminar</button>

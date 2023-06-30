@@ -22,6 +22,7 @@ export class RecetaFormComponent implements OnInit {
     private activatedRoute: ActivatedRoute) {
     this.receta = new Receta()
     this.productosss = new Array<Producto>();
+    this.calcular();
   }
 
   ngOnInit(): void {
@@ -73,7 +74,7 @@ export class RecetaFormComponent implements OnInit {
       (result: any) => {
         if (result.status == 1) {
           console.log(result.msg);
-          this.router.navigate(["receta"]);
+          this.router.navigate(['receta']);
         }
       },
       error => {
@@ -87,7 +88,7 @@ export class RecetaFormComponent implements OnInit {
       (result: any) => {
         if (result.status == 1) {
           console.log(result.msg);
-          this.router.navigate(["receta"]);
+          this.router.navigate(['receta']);
         }
       },
       error => {
