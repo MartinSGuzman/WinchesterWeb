@@ -6,7 +6,7 @@ export class Usuario {
     rol!: string;
     dni!: string;
 
-    Usuario(id:string="", username:string="", password:string="", nombreApellido:string="",
+    constructor(id:string="", username:string="", password:string="", nombreApellido:string="",
 rol:string="", dni:string=""){
 this._id = id;
 this.username = username;

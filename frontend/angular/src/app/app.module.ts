@@ -46,7 +46,8 @@ import { ItemsFormComponent } from './components/items-form/items-form.component
     HttpClientModule
   ],
   providers: [
-    UsuarioService,AuthService,
+    UsuarioService,
+    AuthService,
     {
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptorService,

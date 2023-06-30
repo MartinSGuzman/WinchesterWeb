@@ -10,15 +10,17 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private authService: AuthService,public loginService: UsuarioService) { }
+  constructor(private authService: AuthService, public loginService: UsuarioService) { }
 
   ngOnInit() {
   }
-  logout(){
-  this.loginService.logout();
+  logout() {
+    this.loginService.logout();
   }
- }
- 
+
   
+}
+
+
 
 

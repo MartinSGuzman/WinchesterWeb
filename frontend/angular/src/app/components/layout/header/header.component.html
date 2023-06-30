@@ -1,12 +1,13 @@
-<div class="container">
-  <header>
-    <div class="imangen" style="background-image: url(); background-size: 10%">
-      <div class="contenido">
-        <div class="letra">
-          <h3 class="display-4 text-white">TP Final - Backend-Frontend</h3>
+<div  *ngIf="loginService.userLoggedIn()">
+  <div class="container">
+    <header>
+      <div class="imangen" style="background-image: url(); background-size: 10%">
+        <div class="contenido">
+          <div class="letra">
+            <h3 class="display-4 text-white">TP Final - Backend-Frontend</h3>
+          </div>
         </div>
-      </div>
-      
+
 
         <nav class="navbar navbar-expand-lg navbar-light">
           <div class="container-fluid">
@@ -21,24 +22,24 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
               <ul class="navbar-nav">
-                <li class="nav-item" >
+                <li class="nav-item">
                   <a class="nav-link" [routerLink]="['receta']">Receta</a>
                 </li>
-                <li class="nav-item" >
+                <li class="nav-item">
                   <a class="nav-link" [routerLink]="['pago']">Pago</a>
                 </li>
-                <li class="nav-item" >
+                <li class="nav-item">
                   <a class="nav-link" [routerLink]="['login']">Login</a>
                 </li>
-                <li class="nav-item" >
+                <li class="nav-item">
                   <a class="nav-link" [routerLink]="['pedidos']">Pedidos</a>
                 </li>
-                <li class="nav-item" >
+                <li class="nav-item">
                   <a class="nav-link" [routerLink]="['items']">Items Extras</a>
                 </li>
-                <div >
-                  <a [routerLink]="['login']">(Login)</a>
-                  <a [routerLink]="['login']" (click)="logout()">
+                <div>
+                  <a *ngIf="!loginService.userLoggedIn()" [routerLink]="['login']">(Login)</a>
+                  <a *ngIf="loginService.userLoggedIn()" [routerLink]="['login']" (click)="logout()">
                     {{loginService.userLogged()}} (logout)
                   </a>
                 </div>
@@ -47,7 +48,8 @@
             </div>
           </div>
         </nav>
-      
-    </div>
-  </header>
+
+      </div>
+    </header>
+  </div>
 </div>

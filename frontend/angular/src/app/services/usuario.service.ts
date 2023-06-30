@@ -29,7 +29,7 @@ export class UsuarioService {
       rol,
       dni
     };
-    return this.http.post<any>(this.urlBase + '/post', body, HttpOptions);
+    return this.http.post<any>(this.urlBase + 'post', body, HttpOptions);
   }
 
   public getUsuario(id: string): Observable<any> {
@@ -74,12 +74,15 @@ export class UsuarioService {
   public login(username: string, password: string): Observable<any> {
     const httpOption = {
       headers: new HttpHeaders({
-        'Content-Type': 'application/json'
       })
     }
-    let body = JSON.stringify({ username: username, password: password });
-    console.log(body);
+    const body = {
+      username,
+      password,
+    };
+    
     return this.http.post(this.urlBase + 'login', body, httpOption);
+    console.log(body);
   }
   public logout() {
     //borro el vble almacenado mediante el storage
