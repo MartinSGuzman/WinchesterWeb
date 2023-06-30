@@ -11,9 +11,11 @@ import { PedidoComponent } from './components/pedido/pedido.component';
 import { PedidoFormComponent } from './components/pedido-form/pedido-form.component';
 import { ItemsComponent } from './components/items/items.component';
 import { ItemsFormComponent } from './components/items-form/items-form.component';
+import { ProductoFormComponent } from './components/producto-form/producto-form.component';
 
 const routes: Routes = [
   { path: 'producto', component: ProductoComponent },
+  { path: 'producto-form/:id', component: ProductoFormComponent },
   { path: 'receta-form/:id', component: RecetaFormComponent },
   { path: 'receta', component: RecetaComponent },
   { path: 'pago-form/:id', component: PagoFormComponent },

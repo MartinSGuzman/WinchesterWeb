@@ -21,6 +21,7 @@ import { PedidoComponent } from './components/pedido/pedido.component';
 import { PedidoFormComponent } from './components/pedido-form/pedido-form.component';
 import { ItemsComponent } from './components/items/items.component';
 import { ItemsFormComponent } from './components/items-form/items-form.component';
+import { ProductoFormComponent } from './components/producto-form/producto-form.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { ItemsFormComponent } from './components/items-form/items-form.component
     PedidoComponent,
     PedidoFormComponent,
     ItemsComponent,
-    ItemsFormComponent
+    ItemsFormComponent,
+    ProductoFormComponent
   ],
   imports: [
     BrowserModule,
