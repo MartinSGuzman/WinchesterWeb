@@ -9,18 +9,17 @@ import { ProductoService } from 'src/app/services/producto.service';
   styleUrls: ['./producto.component.css']
 })
 export class ProductoComponent implements OnInit {
+
   producto!: Producto;
-  productos!: Array<Producto>;
-  total: number = 0;
+  Productos!: Array<Producto>;
 
   constructor(private productoService: ProductoService,
     private router: Router) {
-
     this.producto = new Producto();
-    this.productos = new Array<Producto>();
-    //this.cargarRecetas();
-    //this.totalCostoReceta();
-  }
+    this.Productos = new Array<Producto>();
+    this.cargarProductos();
+
+  } 
 
   ngOnInit(): void {
   }
@@ -29,10 +28,10 @@ export class ProductoComponent implements OnInit {
     this.productoService.getProductos().subscribe(
       result => {
         result.forEach((element: any) => {
-          let unReceta: Producto = new Producto();
-          Object.assign(unReceta, element)
-          this.productos.push(unReceta)
-          unReceta = new Producto();
+          let unProducto: Producto = new Producto();
+          Object.assign(unProducto, element)
+          this.Productos.push(unProducto)
+          unProducto = new Producto();
         });
         console.log(result);
       },
@@ -42,20 +41,14 @@ export class ProductoComponent implements OnInit {
     )
   }
 
-  totalCostoProducto() {
-    this.total = 0;
-    this.total = this.total + this.producto.costoTotal;
+  modificarProducto(producto: Producto) {
+    this.router.navigate(['producto-form/', producto._id]);
   }
 
-  modificarProducto(receta: Producto) {
-    this.router.navigate(["producto-form", this.producto._id]);
-  }
-
-  eliminarProducto(receta: Producto) {
-    this.productoService.deleteProducto(this.producto._id).subscribe(
+  eliminarProducto(producto: Producto) {
+    this.productoService.deleteProducto(producto._id).subscribe(
       result => {
         if (result.status == "1") {
-          //pasar a toast
           console.log(result.msg);
           this.router.navigate(['producto']);
           this.cargarProductos();
@@ -71,9 +64,9 @@ export class ProductoComponent implements OnInit {
     )
   }
 
-  agregarProducto() {
-    this.router.navigate(['producto-form/', 0])
-  }
+    agregarProducto() {
+      this.router.navigate(['producto-form/', 0])
+    }
+
+  
 }
-
-

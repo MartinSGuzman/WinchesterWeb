@@ -1,61 +1,52 @@
 <div class="container bg-primary-subtle" >
-  <br>
-  <div class="row">
-      <h3 class="col-12 text-center text-decoration-underline" style="font-weight: bold;">Listado De Productos</h3>
-  </div>
-  <br><br>
+    <br>
+    <div class="row">
+        <h3 class="col-12 text-center text-decoration-underline" style="font-weight: bold;">Listado De Productos</h3>
+    </div>
+    <br><br>
 
-  <button type="button" (click)="agregarProducto()" class="btn btn-info">Agregar Producto</button>
-  <br><br>
-  <div class="table-responsive">
-      <table class="table table table-bordered table-light table-striped">
-          <thead>
-              <tr class="text-center">
-                  <th scope="col">ID</th>
-                  <th scope="col">Nombre</th>
-                  <th scope="col">Alergenos</th>
-                  <th scope="col">Descripcion</th>
-                  <th scope="col">Productos</th>
-                  <th scope="col">Precio</th>
-                  <th scope="col">Impuestos</th>
-                  <th scope="col">Precio Total</th>
-                  <th scope="col">Opciones</th>
-              </tr>
-          </thead>
-          <tbody>
-              <tr *ngFor="let pro of productos">
-                  <th scope="row">{{ pro._id }}</th>
-                  <td>{{pro.nombre | titlecase}}</td>
-                  <td>{{pro.proveedor | titlecase}}</td>
-                  <td>{{pro.tipo | titlecase}}</td>
-                  <td>{{pro.costo | currency:'ARS':'symbol-narrow'}}</td>
-                  <td>{{pro.costoTotal | currency:'ARS':'symbol-narrow'}}</td>
+    <button type="button" (click)="agregarProducto()" class="btn btn-info">Agregar Producto</button>
+    <br><br>
+    <div class="table-responsive">
+        <table class="table table table-bordered table-light table-striped">
+            <thead>
+                <tr class="text-center">
+                    <th scope="col">ID</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Categoria</th>
+                    <th scope="col">Tipo</th>
+                    <th scope="col">Costo</th>
+                    <th scope="col">Proveedor</th>
+                    <th scope="col">Stock</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let pro of Productos">
+                    <th scope="row">{{ pro._id }}</th>
+                    <td>{{pro.nombre | titlecase}}</td>
+                    <td>{{pro.categoria | titlecase}}</td>
+                    <td>{{pro.tipo | titlecase}}</td>
+                    <td>{{pro.costo| currency:'ARS':'symbol-narrow'}}</td>
+                    <td>{{pro.proveedor| titlecase}}</td>
+                    <td>{{pro.stock}}</td>
+                    
+                    
                     <td>
-                      <button class="btn btn-warning" (click)="modificarProducto(pro)">Modificar</button>
-                      <button class="btn btn-danger" (click)="eliminarProducto(pro)">Eliminar</button>
-                  </td>
-              </tr>
-              <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td>
-                      <h3>Costo Total del Producto:</h3>
-                  </td>
-                  <td>
-                      <h3>{{total | currency }}</h3>
-                  </td>
-                  <td>
-                      <button class="btn btn-info" (click)="totalCostoProducto()">Total</button>
-                  </td>
-              </tr>
-          </tbody>
-      </table>
-  </div>
-
-
-  <br><br>
+                        <button class="btn btn-warning" (click)="modificarProducto(pro)">Modificar</button>
+                        <button class="btn btn-danger" (click)="eliminarProducto(pro)">Eliminar</button>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row"></th>
+                    <td colspan="5"></td>
+                    <td>
+                        
+                    </td>
+                   
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
 </div>

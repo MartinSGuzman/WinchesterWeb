@@ -20,7 +20,7 @@ export class RecetaComponent implements OnInit {
     this.cargarRecetas();
 
     this.totalCostoReceta();
-  }
+  } 
 
   ngOnInit(): void {
   }

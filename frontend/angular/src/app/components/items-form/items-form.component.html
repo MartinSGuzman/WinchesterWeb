@@ -3,7 +3,7 @@
         <div class="col-md-8 offset-md-2">
             <br>
             <div class="letra3">
-                <h3>Recetas</h3>
+                <h3>Items Extra</h3>
                 <br>
             </div>
             <button type="submit" (click)="volverLista()" class="btn btn-success">Volver Lista</button>
@@ -37,7 +37,7 @@
                 <div class="mb-3">
                     <label for="categoria" class="form-label" style="font-weight: bold;">Tipo de
                         Categoria</label>
-                    <select v-model="selected" class="form-select" aria-label="Default select example" id="alergenos"
+                    <select v-model="selected" class="form-select" aria-label="Default select example" id="categoria"
                         [(ngModel)]="items.categoria" name="categoria" required #categoria="ngModel">
 
                         <option value="1" disabled selected>Seleccione que categoria requiere</option>
@@ -53,7 +53,7 @@
 
                 <div class="mb-3">
                     <label for="proveedor" class="form-label" style="font-weight: bold;">Proveedor</label>
-                    <input type="text" class="form-control form-control-sm" placeholder="Ingrese proveedor" id="email"
+                    <input type="text" class="form-control form-control-sm" placeholder="Ingrese proveedor" id="proveedor"
                         [(ngModel)]="items.proveedor" name="proveedor" required #proveedor="ngModel">
 
                     <div *ngIf="proveedor.invalid && (proveedor.dirty || proveedor.touched)" class="alert alert-danger">
@@ -65,8 +65,8 @@
 
                 <div class="mb-3">
                     <label for="stock" class="form-label" style="font-weight: bold;">Stock</label>
-                    <input type="number" class="form-control form-control-sm" placeholder="Ingrese stock" id="email"
-                        [(ngModel)]="items.stock" name="stock" required #stock="ngModel">
+                    <input type="number" class="form-control form-control-sm" placeholder="Ingrese stock" id="stock"
+                        [(ngModel)]="items.stock" name="stock" required #stock="ngModel" (ngModelChange)="calcular()">
 
                     <div *ngIf="stock.invalid && (stock.dirty || stock.touched)" class="alert alert-danger">
                         <div *ngIf="stock.errors?.['required']">
@@ -77,8 +77,9 @@
 
                 <div class="mb-3">
                     <label for="precio" class="form-label" style="font-weight: bold;">Precio</label>
-                    <input type="number" class="form-control form-control-sm" placeholder="Ingrese precio" id="email"
-                        [(ngModel)]="items.precio" name="precio" required #precio="ngModel">
+                    <input type="number" class="form-control form-control-sm" placeholder="Ingrese precio" id="precio"
+                        [(ngModel)]="items.precio" name="precio" required #precio="ngModel"
+                        (ngModelChange)="calcular()">
 
                     <div *ngIf="precio.invalid && (precio.dirty || precio.touched)" class="alert alert-danger">
                         <div *ngIf="precio.errors?.['required']">
@@ -89,14 +90,14 @@
 
                 <div class="mb-3">
                     <label for="costo" class="form-label" style="font-weight: bold;">Costo</label>
-                    <input type="number" class="form-control form-control-sm" placeholder="Ingrese costo" id="email"
-                        [(ngModel)]="items.costo" name="costo" required #costo="ngModel">
+                    <input type="number" class="form-control form-control-sm" placeholder="Aparece el Costo" id="costo"
+                        [(ngModel)]="items.costo" name="costo" required #costo="ngModel" disabled>
 
-                    <div *ngIf="costo.invalid && (costo.dirty || costo.touched)" class="alert alert-danger">
-                        <div *ngIf="costo.errors?.['required']">
-                            Costo es requerido.
-                        </div>
-                    </div>
+                        <!--<div *ngIf="costo.invalid && (costo.dirty || costo.touched)" class="alert alert-danger">
+                            <div *ngIf="costo.errors?.['required']">
+                                Costo es requerido.
+                            </div>
+                        </div>-->
                 </div>
 
                 <button *ngIf="accion=='new'" type="submit" (click)="registrar()" class="btn btn-info"

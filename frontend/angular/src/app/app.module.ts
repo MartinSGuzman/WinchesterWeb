@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ProductoComponent } from './components/producto/producto.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { RecetaComponent } from './components/receta/receta.component';
@@ -22,11 +21,11 @@ import { PedidoFormComponent } from './components/pedido-form/pedido-form.compon
 import { ItemsComponent } from './components/items/items.component';
 import { ItemsFormComponent } from './components/items-form/items-form.component';
 import { ProductoFormComponent } from './components/producto-form/producto-form.component';
+import { ProductoComponent } from './components/producto/producto.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ProductoComponent,
     RecetaComponent,
     RecetaFormComponent,
     PagoComponent,
@@ -39,7 +38,8 @@ import { ProductoFormComponent } from './components/producto-form/producto-form.
     PedidoFormComponent,
     ItemsComponent,
     ItemsFormComponent,
-    ProductoFormComponent
+    ProductoFormComponent,
+    ProductoComponent
   ],
   imports: [
     BrowserModule,
