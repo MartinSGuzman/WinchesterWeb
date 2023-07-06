@@ -18,21 +18,37 @@ export class PagoComponent implements OnInit {
     this.pagos = new Array<Pago>();
   }
 
-  ngOnInit(): void {
-    
-  }
+  
 
-  cargarPagos(){
+  ngOnInit(): void {
     this.pagoService.getPagos().subscribe(
       result=>{
         this.pagos = Object.values(result);
-
+    
       },
       error=>{
 
       }
     )
   }
+
+   cargarPagos(){
+     this.pagoService.getPagos().subscribe(
+      result => {
+        console.log("estoy en cargarPagos",result);
+        result.forEach((element: any) => {
+          let unPago: Pago = new Pago();
+          Object.assign(unPago, element)
+          this.pagos.push(unPago)
+          unPago = new Pago();
+        });
+        console.log(result);
+      },
+      error => {
+        console.log(error);
+      }
+     )
+   }
 
   agregarPago(){
     this.router.navigate(["pago-form",0])
@@ -43,6 +59,24 @@ export class PagoComponent implements OnInit {
   }
 
   eliminarPago(pago:Pago){
+    if(confirm("SEGURO QUE DESEA ELIMINAR?")){
+      this.pagoService.deletePago(pago._id).subscribe(
+        result => {
+          if (result.status == "1") {
+            alert("ticket eliminado");
+            this.cargarPagos();
+          }
+        },
+        error => {
+          if (error.status == "0") {
+            alert(error.msg);
+          }
+        }
+  
+      )
+    }
     
   }
+
+
 }

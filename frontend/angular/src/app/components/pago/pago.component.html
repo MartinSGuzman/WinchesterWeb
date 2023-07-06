@@ -1,19 +1,22 @@
-<div class="container">
-  <button type="button" class="btn btn-primary" (click)="agregarPago()">AGREGAR NUEVO PAGO</button>
-    <div class="card text-center">
-        <div class="card-header">
-          Pago
-        </div>
-        <div class="card-body" *ngFor="let pag of pagos">
-          <h5 class="card-title">Monto:{{pag.monto}}</h5>
-          <p class="card-text">Metodo de Pago:{{pag.metodo}}</p>
-          <p class="card-text">Hora:{{pag.horario}}</p>
-          <p class="card-text">Fecha:{{pag.fecha}}</p>
-          <p class="card-text">Receta:{{pag.receta}}</p>
-          <p class="card-text">Items:{{pag.items}}</p>
-          <p class="card-text">Nota:{{pag.nota}}</p>
-          <button type="button" class="btn btn-primary" (click)="modificarPago(pag)">Modificar</button>
-          <button type="button" class="btn btn-primary" (click)="eliminarPago(pag)">Eliminar</button>
+<div class="container" style="padding: 3%;">
+  <button type="button" class="btn btn-primary mb-4" (click)="agregarPago()">AGREGAR NUEVO PAGO</button>
+    
+      <div class="row row-cols-1 row-cols-md-3 g-4 text-center">
+        <div class="col"  *ngFor="let pag of pagos">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Monto: {{pag.monto}}</h5>
+              <p class="card-text">Metodo de Pago: {{pag.metodo}}</p>
+              <p class="card-text">Hora: {{pag.horario}}</p>
+              <p class="card-text">Fecha: {{pag.fecha}}</p>
+              <p class="card-text">Receta: {{pag.receta.nombre}}</p>
+              <p class="card-text">Items: {{pag.items}}</p>
+              <p class="card-text">Nota: {{pag.nota}}</p>
+              <button type="button" class="btn btn-primary " (click)="modificarPago(pag)">Modificar</button>
+              <button type="button" class="btn btn-primary offset-1" (click)="eliminarPago(pag)">Eliminar</button>
+            </div>
+          </div>
         </div>
       </div>
+
 </div>

@@ -8,7 +8,7 @@ import { Pago } from '../models/pago';
 })
 export class PagoService {
 
-  urlBase: string = "http://localhost:3000/api/pago";
+  urlBase: string = "http://localhost:3000/api/pago/";
 
   constructor( private http: HttpClient) { }
 
@@ -34,7 +34,7 @@ export class PagoService {
       ),
       params: new HttpParams()
     }
-    return this.http.get(this.urlBase+id, httpOption);
+    return this.http.get(this.urlBase +id, httpOption);
   }
 
   crearPago(pago:Pago):Observable<any>{
@@ -47,7 +47,38 @@ export class PagoService {
       params: new HttpParams()
     }
     let body = JSON.stringify(pago);
-    return this.http.post(this.urlBase,body, httpOption);
+    return this.http.post(this.urlBase +"/post" ,body, httpOption);
+  }
+
+  editPago(pago:Pago):Observable<any>{
+    const httpOptions = {
+
+      headers: new HttpHeaders({
+
+      }),
+      params: new HttpParams(),
+    };
+    const body = {
+      _id: pago._id,
+      monto: pago.monto,
+      receta: pago.receta,
+      items: pago.items,
+      metodo: pago.metodo,
+      nota: pago.nota,
+      horario:pago.horario,
+      fecha:pago.fecha,
+    };
+    return this.http.put(this.urlBase+ ""+ pago._id, body, httpOptions);
+  }
+
+  deletePago(id: string): Observable<any> {
+    let httpOption = {
+      headers: new HttpHeaders({
+
+      }),
+      params: new HttpParams()
+    }
+    return this.http.delete(this.urlBase + "" + id, httpOption);
   }
 
   // eliminarPago(id:string):Observable<any>{

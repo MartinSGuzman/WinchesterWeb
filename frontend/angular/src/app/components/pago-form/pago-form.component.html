@@ -5,11 +5,9 @@
         </div>
         <div class="col-md-4 position-relative">
           <label for="validationTooltip01" class="form-label">Receta</label>
-          <input type="text" class="form-control" id="validationTooltip01" value="" required
-            [(ngModel)]="pago.receta" name="receta">
-          <div class="valid-tooltip">
-            Looks good!
-          </div>
+          <select name="receta" id="" class="col-6 offset-1" [(ngModel)]="pago.receta">
+            <option *ngFor="let rec of recetas" [ngValue]="rec" class="">{{rec.nombre}}</option>
+        </select>
         </div>
         <div class="col-md-4 position-relative">
           <label for="validationTooltip01" class="form-label">Items</label>
@@ -31,17 +29,14 @@
           <label for="validationTooltip04" class="form-label">Metodo de Pago</label>
           <select [(ngModel)]="pago.metodo" name="motodo" class="form-select" aria-label="Default select example">
             <option selected disabled value="">Elegir...</option>
-            <option value="1">Contado</option>
-            <option value="2">Debito</option>
-            <option value="3">Credito</option>
+            <option >Contado</option>
+            <option >Debito</option>
+            <option >Credito</option>
           </select>
-          <div class="invalid-tooltip">
-            Please select a valid state.
-          </div>
         </div>
         <div class="col-md-4 position-relative">
           <label for="validationTooltip03" class="form-label">Horario de Pago</label>
-          <input type="text" class="form-control" id="validationTooltip03" required
+          <input type="time" class="form-control" id="validationTooltip03" required
             [(ngModel)]="pago.horario" name="horario">
           <div class="invalid-tooltip">
             Please provide a valid city.
@@ -50,7 +45,7 @@
         
         <div class="col-md-4 position-relative">
           <label for="validationTooltip05" class="form-label">Dia de Pago</label>
-          <input type="text" class="form-control" id="validationTooltip05" required
+          <input type="date" class="form-control" id="validationTooltip05" required
             [(ngModel)]="pago.fecha" name="fecha">
           <div class="invalid-tooltip">
             Please provide a valid zip.
@@ -66,6 +61,7 @@
         </div>
         <div class="col-12">
           <button class="btn btn-primary" type="submit" (click)="guardarPago()">Agregar Pago</button>
+          <button class="btn btn-primary offset-1" type="submit" (click)="actualizarPago()">Actualizar Pago</button>
         </div>
       </form>
 </div>

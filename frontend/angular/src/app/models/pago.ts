@@ -5,9 +5,9 @@ export class Pago {
     _id!:string;
     monto!: number;
     receta!:Receta;
-    items!:Items;
+    items!:string;
     metodo!:string;
     nota!:string;
     horario!:string;
-    fecha!:Date;
+    fecha!:string;
 }
