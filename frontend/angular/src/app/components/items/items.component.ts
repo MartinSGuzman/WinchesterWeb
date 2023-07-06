@@ -18,6 +18,8 @@ export class ItemsComponent implements OnInit {
     this.items = new Items();
     this.itemsss = new Array<Items>();
     this.cargarItems();
+
+    this.totalCosto();
   }
 
   ngOnInit(): void {
@@ -65,5 +67,13 @@ export class ItemsComponent implements OnInit {
 
   agregarItems() {
     this.router.navigate(['items-form/', 0])
+  }
+  
+  totalCosto(): number {
+    let total = 0;
+    for (const costoItems of this.itemsss) {
+      total += costoItems.costo;
+    }
+    return total;
   }
 }

@@ -17,6 +17,7 @@ export class ItemsFormComponent implements OnInit {
     private router: Router,
     private activatedRoute: ActivatedRoute) {
     this.items = new Items();
+    this.calcular();
   }
 
   ngOnInit(): void {
@@ -73,5 +74,9 @@ export class ItemsFormComponent implements OnInit {
 
   volverLista() {
     this.router.navigate(['items'])
+  }
+
+  calcular() {
+    this.items.costo = this.items.precio * this.items.stock
   }
 }
