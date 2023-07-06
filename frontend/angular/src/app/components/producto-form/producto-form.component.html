@@ -5,13 +5,14 @@
         <h3 class="text-center">Ingresar Producto</h3>
 
         <div class="form-group">
-          <label for="nombre">Nombre:</label>
-          <input [(ngModel)]="producto.nombre" name="nombre" type="text" class="form-control" placeholder="Ingrese el nombre">
+          <label >Nombre:</label>
+          <input type="text" class="form-control form-control-sm" name="nombre" placeholder="Ingrese Nombre" id="nombre"
+                        [(ngModel)]="producto.nombre" name="nombre" required #nombre="ngModel">
         </div>
 
         <div class="form-group">
           <label for="categoria">Categoría:</label>
-          <select [(ngModel)]="producto.categoria" class="form-control" id="categoria">
+          <select name="categoria" [(ngModel)]="producto.categoria" class="form-control" id="categoria">
             <option  disabled>elija</option>
             <option value="limpieza">Limpieza</option>
             <option value="verduras">Verduras</option>
@@ -21,22 +22,22 @@
 
         <div class="form-group">
           <label for="tipo">Tipo:</label>
-          <input [(ngModel)]="producto.tipo" type="text" class="form-control" id="tipo" placeholder="Ingrese el tipo">
+          <input name="tipo" [(ngModel)]="producto.tipo" type="text" class="form-control" id="tipo" placeholder="Ingrese el tipo">
         </div>
 
         <div class="form-group">
           <label for="costo">Costo:</label>
-          <input [(ngModel)]="producto.costo" type="number" class="form-control" id="costo" placeholder="Ingrese el costo">
+          <input name="costo" [(ngModel)]="producto.costo" type="number" class="form-control" id="costo" placeholder="Ingrese el costo">
         </div>
 
         <div class="form-group">
           <label for="proveedor">Proveedor:</label>
-          <input [(ngModel)]="producto.proveedor" type="text" class="form-control" id="proveedor" placeholder="Ingrese el proveedor">
+          <input name="proveedor" [(ngModel)]="producto.proveedor" type="text" class="form-control" id="proveedor" placeholder="Ingrese el proveedor">
         </div>
 
         <div class="form-group">
           <label for="stock">Stock:</label>
-          <input  [(ngModel)]="producto.stock" type="number" class="form-control" id="stock" placeholder="Ingrese el stock">
+          <input name="stock" [(ngModel)]="producto.stock" type="number" class="form-control" id="stock" placeholder="Ingrese el stock">
         </div>
 
         <div class="text-center">

@@ -7,7 +7,6 @@ import { Producto } from '../models/producto';
   providedIn: 'root'
 })
 export class ProductoService {
-
   urlBase: string = 'http://localhost:3000/api/';
 
   constructor(private _httpCliente: HttpClient) { }
@@ -17,28 +16,32 @@ export class ProductoService {
       headers: new HttpHeaders({
 
       }),
-      params: new HttpParams()//.append("estado",true)
+      params: new HttpParams()
     }
     return this._httpCliente.get(this.urlBase + "producto", httpOption);
   }
 
-  createProducto(producto: Producto): Observable<any> {
+  createReceta(producto: Producto): Observable<any> {
     let nombre = producto.nombre;
-    let costo = producto.costo;
-    let proveedor = producto.proveedor;
+    let categoria = producto.categoria;
     let tipo = producto.tipo;
+    let costo = producto.costo;
+    let proveedor= producto.proveedor;
     let stock = producto.stock;
+
+    
     let httpOption = {
       headers: new HttpHeaders({
         "Content-type": "application/json"
       }),
-      //params: new HttpParams()
+      
     }
     const body = {
       nombre,
+      categoria,
+      tipo,
       costo,
       proveedor,
-      tipo,
       stock
     };
     return this._httpCliente.post(this.urlBase + "producto/post", body, httpOption);
@@ -54,7 +57,7 @@ export class ProductoService {
     return this._httpCliente.get(this.urlBase + "producto/" + id, httpOption);
   }
 
-  editReceta(producto: Producto): Observable<any> {
+  editProducto(producto: Producto): Observable<any> {
     const httpOptions = {
 
       headers: new HttpHeaders({
@@ -65,11 +68,12 @@ export class ProductoService {
     const body = {
       _id: producto._id,
       nombre: producto.nombre,
-      precio: producto.costo,
-      proveedor:producto.proveedor,
-      tipo:producto.tipo,
-      stock:producto.stock
-
+      categoria: producto.categoria,
+      tipo: producto.tipo,
+      costo: producto.costo,
+      proveedor: producto.proveedor,
+      stock: producto.stock
+      
     };
     return this._httpCliente.put(this.urlBase + "producto/" + producto._id, body, httpOptions);
   }
@@ -79,10 +83,8 @@ export class ProductoService {
       headers: new HttpHeaders({
 
       }),
-      params: new HttpParams()//.append("estado",true)
+      params: new HttpParams()
     }
     return this._httpCliente.delete(this.urlBase + "producto/" + id, httpOption);
   }
-
-
 }
