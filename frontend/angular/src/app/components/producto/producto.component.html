@@ -1,4 +1,4 @@
-<div class="container" style="background-color: #f6d1de">
+<div class="container bg-primary-subtle" >
     <br>
     <div class="row">
         <h3 class="col-12 text-center text-decoration-underline" style="font-weight: bold;">Listado De Productos</h3>
@@ -31,8 +31,7 @@
                     <td>{{pro.proveedor| titlecase}}</td>
                     <td>{{pro.stock}}</td>
                     
-                    <!-- <td>Precio: {{pro.costo | currency:'ARS':'symbol-narrow'}} * Impuesto: {{pro.impuestos |
-                        currency:'ARS':'symbol-narrow'}} = {{rece.costoTotal | currency:'ARS':'symbol-narrow'}}</td> -->
+                    
                     <td>
                         <button class="btn btn-warning" (click)="modificarProducto(pro)">Modificar</button>
                         <button class="btn btn-danger" (click)="eliminarProducto(pro)">Eliminar</button>
@@ -44,10 +43,7 @@
                     <td>
                         
                     </td>
-                    <!-- <td>
-                        <h3>{{totalCostoReceta() | currency }}</h3>
-                    </td> -->
-                    
+                   
                 </tr>
             </tbody>
         </table>

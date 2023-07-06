@@ -11,28 +11,17 @@ import { ProductoService } from 'src/app/services/producto.service';
 export class ProductoFormComponent implements OnInit {
 
   producto!: Producto;
-  accion: string = "new" // accion tendra los valores de new o update
+  accion: string = "new"
   productos!: Array<Producto>;
 
   constructor(private productoService: ProductoService,
-    private router: Router,
-    private activatedRoute: ActivatedRoute) {
+    private router: Router,) {
     this.producto = new Producto()
-    this.productos = new Array<Producto>();
-    //this.calcular();
+   
   }
 
   ngOnInit(): void {
-    // this.activatedRoute.params.subscribe(params => {
-    //   if (params['id'] == "0") {
-    //     this.accion = "new";
-    //     this.cargarProductoss();
-    //   } else {
-    //     this.accion = "update";
-    //     this.cargarProductoss();
-    //     this.cargarReceta(params['id']);
-    //   }
-    // });
+    
   }
 
   cargarProducto(id: string) {
@@ -49,22 +38,7 @@ export class ProductoFormComponent implements OnInit {
     )
   }
 
-  // cargarProductoss() {
-  //   this.productoService.getProductos().subscribe(
-  //     result => {
-  //       let unProducto = new Producto();
-  //       result.forEach((element: any) => {
-  //         Object.assign(unProducto, element)
-  //         this.productosss.push(unProducto)
-  //         unProducto = new Producto();
-  //       });
-  //       console.log(result);
-  //     },
-  //     error => {
-
-  //     }
-  //   )
-  // }
+ 
 
   registrar() {
     this.productoService.createReceta(this.producto).subscribe(
@@ -98,7 +72,4 @@ export class ProductoFormComponent implements OnInit {
     this.router.navigate(['producto'])
   }
 
-  // calcular() {
-  //   this.receta.costoTotal = this.receta.impuestos * this.receta.precio
-  // }
 }

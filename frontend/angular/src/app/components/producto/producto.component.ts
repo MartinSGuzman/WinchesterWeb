@@ -68,11 +68,5 @@ export class ProductoComponent implements OnInit {
       this.router.navigate(['producto-form/', 0])
     }
 
-  //  totalCostoProducto(): number {
-   //   let total = 0;
-   //   for (const costoReceta of this.Productos) {
-   //     total += costoReceta.costoTotal;
-   //   }
-   //   return total;
-   // }
+  
 }
