@@ -14,7 +14,7 @@ export class PagoComponent implements OnInit {
 
   constructor( private pagoService : PagoService,
                private router:Router) { 
-    this.cargarPagos();
+    //this.cargarPagos();
     this.pagos = new Array<Pago>();
   }
 
@@ -34,18 +34,12 @@ export class PagoComponent implements OnInit {
 
    cargarPagos(){
      this.pagoService.getPagos().subscribe(
-      result => {
-        console.log("estoy en cargarPagos",result);
-        result.forEach((element: any) => {
-          let unPago: Pago = new Pago();
-          Object.assign(unPago, element)
-          this.pagos.push(unPago)
-          unPago = new Pago();
-        });
-        console.log(result);
+      result=>{
+        this.pagos = Object.values(result);
+    
       },
-      error => {
-        console.log(error);
+      error=>{
+
       }
      )
    }
