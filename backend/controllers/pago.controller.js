@@ -4,7 +4,7 @@ const Pago = require('../models/pago.js');
 const PagoCtrl = {}
 
 PagoCtrl.getPagos = async (req, res) => {
-    var pago = await Pago.find().populate("receta");
+    var pago = await Pago.find();
     res.json(pago);
 }
 
@@ -24,7 +24,7 @@ PagoCtrl.createPago = async (req, res) => {
     }
 }
 PagoCtrl.getPago = async (req, res) => {
-    const pago = await Pago.findById(req.params.id).populate("receta");
+    const pago = await Pago.findById(req.params.id);
     res.json(pago);
 }
 PagoCtrl.editPago = async (req, res) => {
@@ -32,7 +32,7 @@ PagoCtrl.editPago = async (req, res) => {
         await Pago.updateOne({ _id: req.params.id }, req.body);
         res.json({
             'status': '1',
-            'msg': 'Pago updated'
+            'msg': 'Pago Actualizado'
         })
     } catch (error) {
         res.status(400).json({

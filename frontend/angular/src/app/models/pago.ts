@@ -4,7 +4,7 @@ import { Receta } from "./receta";
 export class Pago {
     _id!:string;
     monto!: number;
-    receta!:Receta;
+    receta!:string;
     items!:string;
     metodo!:string;
     nota!:string;

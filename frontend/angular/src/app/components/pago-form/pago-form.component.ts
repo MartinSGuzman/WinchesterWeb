@@ -15,6 +15,13 @@ export class PagoFormComponent implements OnInit {
   pago!:Pago;
   accion:string="";
   recetas:Array<Receta>;
+  band: boolean = false;
+
+  monto1!:number;
+  monto2!:number;
+  cant1!:number;
+  cant2!:number;
+  montoTotal!:number;
 
   constructor(private activateRouted : ActivatedRoute,
               private pagoServicio: PagoService,
@@ -67,7 +74,7 @@ export class PagoFormComponent implements OnInit {
       result=>{
         console.log(result);
         Object.assign(this.pago,result);
-        this.pago.receta = this.recetas.find(item => (item._id == this.pago.receta._id))!;
+        //this.pago.receta = this.recetas.find(item => (item._id == this.pago.receta._id))!;
       },
       error=>{
 
@@ -85,7 +92,7 @@ export class PagoFormComponent implements OnInit {
           }
         },
         error=>{
-          alert(error.msg)
+          this.band = true;
         }
       )
     }
@@ -101,10 +108,25 @@ export class PagoFormComponent implements OnInit {
           }
         },
         error=>{
-          alert(error.msg)
+          this.band = true;
         }
       )
     }
   }
+
+  listarPagos(){
+    this.router.navigate(["pago"])
+  }
+
+  costoTotal():number{
+    let total = 0;
+        total = ( (this.cant1 * this.monto1)+(this.cant2 * this.monto2));
+    return total;
+  }
+  // monto1!:number;
+  // monto2!:number;
+  // cant1!:number;
+  // cant2!:number;
+  // montoTotal!:number;
 
 }
