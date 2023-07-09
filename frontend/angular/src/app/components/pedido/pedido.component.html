@@ -17,13 +17,13 @@
           <th scope="row">{{ i + 1 }}</th>
           <td>
             <ul>
-              <li *ngFor="let receta of pedido.obReceta">{{ receta.nombre }}</li>
+              <li *ngFor="let receta of pedido.obReceta">{{ receta?.nombre }}</li>
             </ul>
           </td>
           <td>{{ pedido.nota }}</td>
           <td>{{ pedido.estado }}</td>
           <td><ul>
-            <li *ngFor="let item of pedido.obItemsExtra">{{ item.nombre }}</li>
+            <li *ngFor="let item of pedido.obItemsExtra">{{ item?.nombre }}</li>
           </ul></td>
         </tr>
       </tbody>

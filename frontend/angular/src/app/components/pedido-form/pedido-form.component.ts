@@ -60,7 +60,7 @@ export class PedidoFormComponent implements OnInit {
       const recetaConCantidad: Receta = { ...this.recetaSeleccionada };
       recetaConCantidad.cantidad = this.cantidadReceta;
       this.pedidoNuevo.obReceta.push(recetaConCantidad);
-      this.pedidoNuevo.receta.push({ receta: this.recetaSeleccionada._id, cantidad: this.cantidadReceta });
+      this.pedidoNuevo.recetas.push({ receta: this.recetaSeleccionada._id, cantidad: this.cantidadReceta });
       this.pedidoNuevo.nota = this.nota;
       // Restablecer los valores
       this.recetaSeleccionada = null;
@@ -83,7 +83,7 @@ export class PedidoFormComponent implements OnInit {
   public setPedido() {
     const nuevoPedido: Pedido = {
       _id: this.pedidoNuevo._id,
-      receta: this.pedidoNuevo.receta,
+      recetas: this.pedidoNuevo.recetas,
       items: this.pedidoNuevo.items,
       obItemsExtra: this.pedidoNuevo.obItemsExtra,
       obReceta: this.pedidoNuevo.obReceta,

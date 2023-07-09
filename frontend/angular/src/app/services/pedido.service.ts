@@ -25,7 +25,7 @@ export class PedidoService {
     return this.http.get(this.urlBase + "pedido/" ,httpOption);
   }
 
-  getReceta(id: string): Observable<any> {
+  public getReceta(id: string): Observable<any> {
     let httpOption = {
       headers: new HttpHeaders({
 
