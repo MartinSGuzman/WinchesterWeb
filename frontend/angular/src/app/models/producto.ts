@@ -6,5 +6,5 @@ export class Producto {
   costo!:number;
   proveedor!:string;
   stock!:number;
-
+  cantidad!:number;
 }

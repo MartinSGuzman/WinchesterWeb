@@ -17,6 +17,7 @@ PedidoCtrl.createPedido = async (req, res) => {
             'msg': 'Pedido guardado.'
         })
     } catch (error) {
+        console.error(error); 
         res.status(400).json({
             'status': '0',
             'msg': 'Error procesando operacion.'

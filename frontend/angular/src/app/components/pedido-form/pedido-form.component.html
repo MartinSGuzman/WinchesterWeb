@@ -1,16 +1,41 @@
 <div class="row">
     <div class="col-6">
-        <div class="mb-3">
-            <label for="" class="form-label">Email address</label>
-            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-        </div>
-        <div class="mb-3">
-            <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-        </div>
+      <label for="receta">Receta:</label>
+      <select name="receta" [(ngModel)]="recetaSeleccionada">
+        <option *ngFor="let receta of todasRecetas" [ngValue]="receta">{{ receta.nombre }}</option>
+      </select>
+      <label for="cantidadReceta">Cantidad:</label>
+      <input type="number" name="cantidadReceta" [(ngModel)]="cantidadReceta" />
+      <button class="btn btn-dark" (click)="agregarRecetaAlPedido()">Agregar al pedido</button>
     </div>
-    
     <div class="col-6">
-
-    </div>  
-</div>
+      <label for="producto">Producto:</label>
+      <select name="producto" [(ngModel)]="productoSeleccionado">
+        <option *ngFor="let producto of todosProductos" [ngValue]="producto">{{ producto.nombre }}</option>
+      </select>
+      <label for="cantidadProducto">Cantidad:</label>
+      <input type="number" name="cantidadProducto" [(ngModel)]="cantidadProducto" />
+      <button class="btn btn-dark" (click)="agregarProductoAlPedido()">Agregar al pedido</button>
+    </div>
+    <div>
+        <label for="nota">Nota:</label>
+        <input type="text" name="nota" id="nota" [(ngModel)]="nota">
+    </div>
+   
+    <div class="col-6">
+        <h3>Pedido</h3>
+        <ul>
+          <li *ngFor="let receta of pedidoNuevo.obReceta">
+            {{ receta.nombre }} - Cantidad: <input type="number" [(ngModel)]="receta.cantidad" />
+          </li>
+          <li *ngFor="let producto of pedidoNuevo.obItemsExtra">
+            {{ producto.nombre }} - Cantidad: <input type="number" [(ngModel)]="producto.cantidad" />
+          </li>
+        </ul>
+      </div>
+      <div>
+        <button class="btn btn-success"(click)=setPedido()>Confirmar Pedido</button>
+    </div>
+  
+    
+  </div>

@@ -5,12 +5,22 @@ const { Receta } = require('./Receta');
 const { Items } = require('./itemsExtra'); 
 
 const PedidoSchema = new Schema({
-    receta: [{ type: Schema.Types.ObjectId, ref: 'Receta', required: true }],
-    items: [{ type: Schema.Types.ObjectId, ref: 'Items', required: true }],
+    recetas: [
+      {
+        receta: { type: Schema.Types.ObjectId, ref: 'Receta', required: false },
+        cantidad: { type: Number, required: false }
+      }
+    ],
+    items: [
+      {
+        item: { type: Schema.Types.ObjectId, ref: 'Item', required: false },
+        cantidad: { type: Number, required: false }
+      }
+    ],
     nota: { type: String, required: true },
     estado: { type: String, required: true },
-    horario: { type: String, required: true},
-    fecha: { type: String, required: true }
-});
+    horario: { type: String, required: true },
+    fecha: { type: Date, required: true }
+  });
 
 module.exports = mongoose.models.Pedido || mongoose.model('Pedido', PedidoSchema);

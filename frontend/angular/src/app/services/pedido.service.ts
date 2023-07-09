@@ -1,18 +1,19 @@
-import { HttpClient,HttpParams,HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Pedido } from '../models/pedido';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PedidoService {
 
-  urlBase: string = "http://localhost:3000/api/pedido";
+  urlBase: string = "http://localhost:3000/api/";
 
-  constructor( private http: HttpClient) { }
+  constructor(private http: HttpClient) { }
 
 
-  getPedidos():Observable<any>{
+  getPedidos(): Observable<any> {
     let httpOption = {
       headers: new HttpHeaders(
         {
@@ -21,39 +22,74 @@ export class PedidoService {
       ),
       params: new HttpParams()
     }
-    return this.http.get(this.urlBase, httpOption);
+    return this.http.get(this.urlBase + "pedido/" ,httpOption);
   }
 
-  getPedido(id:string):Observable<any>{
+  getReceta(id: string): Observable<any> {
     let httpOption = {
-      headers: new HttpHeaders(
-        {
+      headers: new HttpHeaders({
 
-        }
-      ),
+      }),
       params: new HttpParams()
     }
-    return this.http.get(this.urlBase+id, httpOption);
+    return this.http.get(this.urlBase + "pedido/" + id, httpOption);
   }
 
-  crearPedido(receta:string, items:string, nota:string, estado:string, horario:string, fecha:string):Observable<any>{
-    let httpOption = {
-      headers: new HttpHeaders(
-        {
-          "content-type":"application/json"
-        }
-      ),
-      params: new HttpParams()
+
+  public crearPedido(pedido: Pedido): Observable<any> {
+    let fechaActual = new Date();
+
+    let recetas: { receta: string, cantidad: number }[] = [];
+
+    for (let i = 0; i < pedido.obReceta.length; i++) {
+      let nuevaReceta = {
+        receta: pedido.obReceta[i]._id,
+        cantidad: pedido.obReceta[i].cantidad
+      };
+
+      recetas.push(nuevaReceta);
     }
+
+    let nota: string = pedido.nota;
+
+
+    let items: { item: string, cantidad: number }[] = [];
+    for (let i = 0; i < pedido.obItemsExtra.length; i++) {
+      let nuevoItem = {
+        item: pedido.obItemsExtra[i]._id,
+        cantidad: pedido.obItemsExtra[i].cantidad
+      };
+
+      items.push(nuevoItem);
+    }
+    let estado = "Pendiente";
+    let fecha = fechaActual.toISOString();
+    let horario = fechaActual.toLocaleString('es-ES', { hour: '2-digit', minute: '2-digit' });
+
+    console.log(recetas);
+    console.log(items);
+    console.log(nota);
+    console.log(estado);
+    console.log(horario);
+    console.log(fecha);
+
+    let httpOptions = {
+      headers: new HttpHeaders({
+        "content-type": "application/json"
+      }),
+      params: new HttpParams()
+    };
+
     const body = {
-      receta,
+      recetas,
       items,
       nota,
       estado,
       horario,
       fecha
     };
-    return this.http.post(this.urlBase,body, httpOption);
+
+    return this.http.post(this.urlBase + 'pedido/post', body, httpOptions);
   }
 
   deletePedido(id: string): Observable<any> {
@@ -62,10 +98,10 @@ export class PedidoService {
         'Content-Type': 'application/json'
       })
     };
-    return this.http.delete<any>(this.urlBase+id,httpOptions);
+    return this.http.delete<any>(this.urlBase +"pedido/" +id, httpOptions);
   }
 
-  putPedido(id:string,idReceta:string, idItems:string, nota:string, estado:string, horario:string, fecha:string): Observable<any> {
+  putPedido(id: string, idReceta: string, idItems: string, nota: string, estado: string, horario: string, fecha: string): Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
@@ -79,7 +115,7 @@ export class PedidoService {
       horario,
       fecha
     };
-    return this.http.put<any>(this.urlBase+id,body,httpOptions);
+    return this.http.put<any>(this.urlBase + "pedido/"+id, body, httpOptions);
   }
 
 

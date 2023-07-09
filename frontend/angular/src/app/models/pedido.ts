@@ -2,13 +2,13 @@ import { Receta } from "./receta";
 import { Producto } from "./producto";
 
 export class Pedido {
-    _id!:string;
-    receta!:string[];
-    obReceta!:Receta[];
-    items!:string[];
-    obItemsExtra!:Producto[];
-    estado!:string;
-    fecha!:string;
-    nota!:string;
-    horario!:string;
-  }
+  _id!: string;
+  receta: { receta: string, cantidad: number }[] = [];
+  obReceta: Receta[] = [];
+  items: { item: string, cantidad: number }[] = [];
+  obItemsExtra: Producto[] = [];
+  estado!: string;
+  fecha!: Date;
+  nota!: string;
+  horario!: string;
+}

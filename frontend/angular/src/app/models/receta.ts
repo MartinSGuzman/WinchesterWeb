@@ -9,4 +9,5 @@ export class Receta {
     impuestos!: number;
     descripcion!: string;
     productos!: Producto;
+    cantidad!:number;
 }

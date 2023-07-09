@@ -14,7 +14,9 @@ import { Router } from '@angular/router';
 })
 export class PedidoComponent implements OnInit {
 
-  constructor(public router:Router,public pedidoService: PedidoService, public recetaService: RecetaService, public productoService: ProductoService) { }
+  constructor(public router:Router,public pedidoService: PedidoService, 
+    public recetaService: RecetaService, 
+    public productoService: ProductoService) { }
 
   ngOnInit(): void {
     this.getPedidos();
@@ -39,15 +41,19 @@ export class PedidoComponent implements OnInit {
 
   public agregarRecetasPedido() {
     const observables: Observable<any>[] = [];
-
+  
     this.arrayPedidos.forEach(pedido => {
       pedido.obReceta = []; // Inicializar el arreglo de recetas para cada pedido
-
-      pedido.receta.forEach(id => {
-        const observable: Observable<any> = this.recetaService.getReceta(id);
-        observables.push(observable);
-      });
+  
+      if (pedido.receta && pedido.receta.length > 0) {
+        pedido.receta.forEach(ped => { 
+          const id = ped.receta;
+          const observable: Observable<any> = this.recetaService.getRecetas();
+          observables.push(observable);
+        });
+      }
     });
+  
 
     forkJoin(observables).subscribe(
       respuestas => {
@@ -60,6 +66,7 @@ export class PedidoComponent implements OnInit {
         this.agregarItemsPedido();
       },
       error => {
+        console.log(error);
         console.log('No hay receta para el pedido');
       }
     );
@@ -67,14 +74,17 @@ export class PedidoComponent implements OnInit {
 
   public agregarItemsPedido() {
     const observables: Observable<any>[] = [];
-
+  
     this.arrayPedidos.forEach(pedido => {
       pedido.obItemsExtra = []; // Inicializar el arreglo de items extra para cada pedido
-
-      pedido.items.forEach(id => {
-        const observable: Observable<any> = this.productoService.getProducto(id);
-        observables.push(observable);
-      });
+  
+      if (pedido.items && pedido.items.length > 0) {
+        pedido.items.forEach(item => {
+          const id = item.item; // Obtener el valor del id desde la propiedad item
+          const observable: Observable<any> = this.productoService.getProducto(id);
+          observables.push(observable);
+        });
+      }
     });
 
     forkJoin(observables).subscribe(
