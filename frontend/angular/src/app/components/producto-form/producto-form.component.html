@@ -1,49 +1,55 @@
-<div class="container bg-primary-subtle">
-  <div class="row justify-content-center">
-    <div class="col-lg-6">
-      <form>
-        <h3 class="text-center">Ingresar Producto</h3>
+<div class="container">
+  <section class="bg-primary-subtle">
+    <div class="row justify-content-center">
+      <div class="col-lg-6">
+        <form>
+          <h3 class="text-center">🥘🥣🧼🧽Ingresar Producto 🥘🥣🧼🧽</h3>
 
-        <div class="form-group">
-          <label >Nombre:</label>
-          <input type="text" class="form-control form-control-sm" name="nombre" placeholder="Ingrese Nombre" id="nombre"
-                        [(ngModel)]="producto.nombre" name="nombre" required #nombre="ngModel">
-        </div>
+          <div class="form-group">
+            <label>Nombre</label>
+            <input type="text" class="form-control form-control-sm" name="nombre" placeholder="Ingrese Nombre"
+              id="nombre" [(ngModel)]="producto.nombre" name="nombre" required #nombre="ngModel">
+          </div>
 
-        <div class="form-group">
-          <label for="categoria">Categoría:</label>
-          <select name="categoria" [(ngModel)]="producto.categoria" class="form-control" id="categoria">
-            <option  disabled>elija</option>
-            <option value="limpieza">Limpieza</option>
-            <option value="verduras">Verduras</option>
-            <option value="frutas">Frutas</option>
-          </select>
-        </div>
+          <div class="form-group">
+            <label for="categoria">Categoría</label>
+            <select name="categoria" [(ngModel)]="producto.categoria" class="form-control" id="categoria">
+              <option disabled>elija</option>
+              <option value="limpieza">Limpieza</option>
+              <option value="verduras">Verduras</option>
+              <option value="frutas">Frutas</option>
+            </select>
+          </div>
 
-        <div class="form-group">
-          <label for="tipo">Tipo:</label>
-          <input name="tipo" [(ngModel)]="producto.tipo" type="text" class="form-control" id="tipo" placeholder="Ingrese el tipo">
-        </div>
+          <div class="form-group">
+            <label for="tipo">Tipo</label>
+            <input name="tipo" [(ngModel)]="producto.tipo" type="text" class="form-control" id="tipo"
+              placeholder="Ingrese el tipo">
+          </div>
 
-        <div class="form-group">
-          <label for="costo">Costo:</label>
-          <input name="costo" [(ngModel)]="producto.costo" type="number" class="form-control" id="costo" placeholder="Ingrese el costo">
-        </div>
+          <div class="form-group">
+            <label for="costo">Costo</label>
+            <input name="costo" [(ngModel)]="producto.costo" type="number" class="form-control" id="costo"
+              placeholder="Ingrese el costo">
+          </div>
 
-        <div class="form-group">
-          <label for="proveedor">Proveedor:</label>
-          <input name="proveedor" [(ngModel)]="producto.proveedor" type="text" class="form-control" id="proveedor" placeholder="Ingrese el proveedor">
-        </div>
+          <div class="form-group">
+            <label for="proveedor">Proveedor</label>
+            <input name="proveedor" [(ngModel)]="producto.proveedor" type="text" class="form-control" id="proveedor"
+              placeholder="Ingrese el proveedor">
+          </div>
 
-        <div class="form-group">
-          <label for="stock">Stock:</label>
-          <input name="stock" [(ngModel)]="producto.stock" type="number" class="form-control" id="stock" placeholder="Ingrese el stock">
-        </div>
+          <div class="form-group">
+            <label for="stock">Stock</label>
+            <input name="stock" [(ngModel)]="producto.stock" type="number" class="form-control" id="stock"
+              placeholder="Ingrese el stock">
+          </div>
 
-        <div class="text-center">
-          <button (click)="registrar()" type="submit" class="btn btn-primary">registrar</button>
-        </div>
-      </form>
+          <div class="text-center">
+            <button (click)="registrar()" type="submit" class="btn btn-primary">registrar</button>
+          </div>
+        </form>
+      </div>
     </div>
-  </div>
+  </section>
 </div>

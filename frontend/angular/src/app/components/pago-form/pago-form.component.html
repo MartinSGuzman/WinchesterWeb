@@ -1,68 +1,66 @@
 <div class="container">
-    <form class="row g-3 needs-validation" novalidate>
-        <div class="bg-primary border-5 text-center">
-          <h2 class="text-white">Formulario Pago</h2>
+  <section class="imangen" style="background-color: #77dd77 ">
+    <div class="bg-primary border-5 text-center">
+      <h2 class="text-white"> 💵💰 Formulario Pago 💵💰</h2>
+    </div>
+    <br>
+    <form class="row">
+      <div *ngIf="band" class="alert alert-danger">
+        <div>
+          DEBE INGRESAR TODOS CAMPOS DEL FORMULARIO.
         </div>
-
-        <div *ngIf="band" class="alert alert-danger">
-          <div>
-              DEBE INGRESAR TODOS CAMPOS DEL FORMULARIO.
-          </div>
       </div>
-        
-        <div class="col-md-4 position-relative">
-          <label for="validationTooltip01" class="form-label">Receta</label>
-          <input type="text" class="form-control" id="validationTooltip01" value="" required
-            [(ngModel)]="pago.receta" name="receta">
-        </div>
 
-        
+      <div class="col-md-4 position-relative">
+        <label for="validationTooltip01" class="form-label">Receta</label>
+        <input type="text" class="form-control" id="validationTooltip01" value="" required [(ngModel)]="pago.receta"
+          name="receta">
+      </div>
 
-        
-        
-        <div class="col-md-4 position-relative">
-          <label for="validationTooltip01" class="form-label">Items</label>
-          <input type="text" class="form-control" id="validationTooltip01" value="" required
-            [(ngModel)]="pago.items" name="items">
-        </div>
+      <div class="col-md-4 position-relative">
+        <label for="validationTooltip01" class="form-label">Items</label>
+        <input type="text" class="form-control" id="validationTooltip01" value="" required [(ngModel)]="pago.items"
+          name="items">
+      </div>
 
-        
-        <div class="col-md-3 position-relative">
-          <label for="validationTooltip04" class="form-label">Metodo de Pago</label>
-          <select [(ngModel)]="pago.metodo" name="motodo" class="form-select" aria-label="Default select example">
-            <option selected disabled value="">Elegir...</option>
-            <option >Contado</option>
-            <option >Debito</option>
-            <option >Credito</option>
-          </select>
-        </div>
-        <div class="col-md-4 position-relative">
-          <label for="validationTooltip03" class="form-label">Horario de Pago</label>
-          <input type="time" class="form-control" id="validationTooltip03" required
-            [(ngModel)]="pago.horario" name="horario">
-        </div>
-        <div class="col-md-4 position-relative">
-          <label for="validationTooltip05" class="form-label">Dia de Pago</label>
-          <input type="date" class="form-control" id="validationTooltip05" required
-            [(ngModel)]="pago.fecha" name="fecha">
-        </div>
-        <div class="col-md-3 position-relative">
-          <label for="validationTooltip05" class="form-label">Nota</label>
-          <input type="text" class="form-control" id="validationTooltip05" required
-            [(ngModel)]="pago.nota" name="nota">
-        </div>
-      
 
-        <div class="col-md-4 position-relative">
-          <label for="validationTooltip02" class="form-label">Monto</label>
-          <input type="number" class="form-control" id="validationTooltip02" value="Otto" required
-            [(ngModel)]="pago.monto" name="monto">
-        </div>
+      <div class="col-md-3 position-relative">
+        <label for="validationTooltip04" class="form-label">Metodo de Pago</label>
+        <select [(ngModel)]="pago.metodo" name="motodo" class="form-select" aria-label="Default select example">
+          <option selected disabled value="">Elegir...</option>
+          <option>Contado</option>
+          <option>Debito</option>
+          <option>Credito</option>
+        </select>
+      </div>
+      <div class="col-md-4 position-relative">
+        <label for="validationTooltip03" class="form-label">Horario de Pago</label>
+        <input type="time" class="form-control" id="validationTooltip03" required [(ngModel)]="pago.horario"
+          name="horario">
+      </div>
+      <div class="col-md-4 position-relative">
+        <label for="validationTooltip05" class="form-label">Dia de Pago</label>
+        <input type="date" class="form-control" id="validationTooltip05" required [(ngModel)]="pago.fecha" name="fecha">
+      </div>
+      <div class="col-md-3 position-relative">
+        <label for="validationTooltip05" class="form-label">Nota</label>
+        <input type="text" class="form-control" id="validationTooltip05" required [(ngModel)]="pago.nota" name="nota">
+      </div>
 
-        <div class="col-12">
-          <button class="btn btn-primary" type="submit" (click)="guardarPago()">Agregar Pago</button>
-          <button class="btn btn-primary offset-1" type="submit" (click)="actualizarPago()">Actualizar Pago</button>
-          <button class="btn btn-primary offset-1" type="submit" (click)="listarPagos()">Listar Pagos</button>
-        </div>
-      </form>
+
+      <div class="col-md-4 position-relative">
+        <label for="validationTooltip02" class="form-label">Monto</label>
+        <input type="number" class="form-control" id="validationTooltip02" value="Otto" required
+          [(ngModel)]="pago.monto" name="monto">
+      </div>
+
+      <div class="col-12">
+        <br>
+        <button class="btn btn-primary" type="submit" (click)="guardarPago()">Agregar Pago</button>
+        <button class="btn btn-primary offset-1" type="submit" (click)="actualizarPago()">Actualizar Pago</button>
+        <button class="btn btn-primary offset-1" type="submit" (click)="listarPagos()">Listar Pagos</button>
+        <br><br>
+      </div>
+    </form>
+  </section>
 </div>

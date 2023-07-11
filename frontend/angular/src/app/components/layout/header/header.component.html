@@ -1,13 +1,12 @@
 <div  *ngIf="loginService.userLoggedIn()">
   <div class="container">
     <header>
-      <div class="imangen" style="background-image: url(); background-size: 10%">
+      <div class="imangen" style="background-image: url(../../../../assets/restaurante.avif); background-size: 10%">
         <div class="contenido">
           <div class="letra">
-            <h3 class="display-4 text-white">TP Final - Backend-Frontend</h3>
+            <h3 class="display-4 text-white">Restaurant Winchester</h3>
           </div>
         </div>
-
 
         <nav class="navbar navbar-expand-lg navbar-light">
           <div class="container-fluid">
@@ -28,9 +27,9 @@
                 <li class="nav-item">
                   <a class="nav-link" [routerLink]="['pago']">Pago</a>
                 </li>
-                <li class="nav-item">
+                <!--<li class="nav-item">
                   <a class="nav-link" [routerLink]="['login']">Login</a>
-                </li>
+                </li>-->
                 <li class="nav-item">
                   <a class="nav-link" [routerLink]="['pedidos']">Pedidos</a>
                 </li>

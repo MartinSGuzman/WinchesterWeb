@@ -1,0 +1,17 @@
+label {
+    background-color: rgba(0, 255, 255, 0.856);
+    font-style: italic;
+    font-size: large;
+    font-weight: bold;
+}
+
+h3{
+    position: relative;
+    top: 5px;
+    font-size: 40px;
+    font-weight: bold;
+    background-color: rgba(2, 255, 255, 0.856);
+    width:50%;  
+    font-style: italic;
+    text-align: center;	
+}

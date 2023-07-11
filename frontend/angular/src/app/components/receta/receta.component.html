@@ -1,60 +1,62 @@
-<div class="container" style="background-color: #f6d1de">
-    <br>
-    <div class="row">
-        <h3 class="col-12 text-center text-decoration-underline" style="font-weight: bold;">Listado De Recetas</h3>
-    </div>
-    <br><br>
+<div class="container">
+    <section class="imangen" style="background-image: url(../../../assets/receta.jpg); background-size: 15%">
+        <br>
 
-    <button type="button" (click)="agregarReceta()" class="btn btn-info">Agregar Receta</button>
-    <br><br>
-    <div class="table-responsive">
-        <table class="table table table-bordered table-light table-striped">
-            <thead>
-                <tr class="text-center">
-                    <th scope="col">ID</th>
-                    <th scope="col">Nombre</th>
-                    <th scope="col">Alergenos</th>
-                    <th scope="col">Descripcion</th>
-                    <th scope="col">Productos</th>
-                    <th scope="col">Precio</th>
-                    <th scope="col">Impuestos</th>
-                    <th scope="col">Costo Total</th>
-                    <th scope="col">Opciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let rece of recetass">
-                    <th scope="row">{{ rece._id }}</th>
-                    <td>{{rece.nombre | titlecase}}</td>
-                    <td>{{rece.alergenos | titlecase}}</td>
-                    <td>{{rece.descripcion | titlecase}}</td>
-                    <td>{{rece.productos.nombre | titlecase}}</td>
-                    <td>{{rece.precio | currency:'ARS':'symbol-narrow'}}</td>
-                    <td>{{rece.impuestos | currency:'ARS':'symbol-narrow'}}</td>
-                    <td>Precio: {{rece.precio | currency:'ARS':'symbol-narrow'}} * Impuesto: {{rece.impuestos |
-                        currency:'ARS':'symbol-narrow'}} = {{rece.costoTotal | currency:'ARS':'symbol-narrow'}}</td>
-                    <td>
-                        <button class="btn btn-warning" (click)="modificarReceta(rece)">Modificar</button>
-                        <button class="btn btn-danger" (click)="eliminarReceta(rece)">Eliminar</button>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row"></th>
-                    <td colspan="5"></td>
-                    <td>
-                        <h3>Costo Total de la Receta:</h3>
-                    </td>
-                    <td>
-                        <h3>{{totalCostoReceta() | currency }}</h3>
-                    </td>
-                    <td>
+        <div class="row">
+            <h3 class="col-12 text-center text-decoration-underline" style="font-weight: bold;">Listado De Receta</h3>
+        </div>
+        <br><br>
+        <button type="button" (click)="agregarReceta()" class="btn btn-info">Agregar Receta</button>
+        <br><br>
+        <div class="table-responsive">
+            <table class="table table table-bordered table-light table-striped">
+                <thead>
+                    <tr class="text-center">
+                        <th scope="col">ID</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Alergenos</th>
+                        <th scope="col">Descripcion</th>
+                        <th scope="col">Productos</th>
+                        <th scope="col">Precio</th>
+                        <th scope="col">Impuestos</th>
+                        <th scope="col">Costo Total</th>
+                        <th scope="col">Opciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let rece of recetass">
+                        <th scope="row">{{ rece._id }}</th>
+                        <td>{{rece.nombre | titlecase}}</td>
+                        <td>{{rece.alergenos | titlecase}}</td>
+                        <td>{{rece.descripcion | titlecase}}</td>
+                        <td>{{rece.productos.nombre | titlecase}}</td>
+                        <td>{{rece.precio | currency:'ARS':'symbol-narrow'}}</td>
+                        <td>{{rece.impuestos | currency:'ARS':'symbol-narrow'}}</td>
+                        <td>Precio: {{rece.precio | currency:'ARS':'symbol-narrow'}} * Impuesto: {{rece.impuestos |
+                            currency:'ARS':'symbol-narrow'}} = {{rece.costoTotal | currency:'ARS':'symbol-narrow'}}</td>
+                        <td>
+                            <button class="btn btn-warning" (click)="modificarReceta(rece)">Modificar</button>
+                            <button class="btn btn-danger" (click)="eliminarReceta(rece)">Eliminar</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row"></th>
+                        <td colspan="5"></td>
+                        <td>
+                            <h3>Costo Total de la Receta:</h3>
+                        </td>
+                        <td>
+                            <h3>{{totalCostoReceta() | currency }}</h3>
+                        </td>
+                        <td>
 
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
-    <button type="button" (click)="agregarReceta()" class="btn btn-info">Agregar Receta</button>
-    <br><br>
+        <button type="button" (click)="agregarReceta()" class="btn btn-info">Agregar Receta</button>
+        <br><br>
+    </section>
 </div>
