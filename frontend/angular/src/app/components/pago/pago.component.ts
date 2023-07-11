@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable, forkJoin } from 'rxjs';
 import { Pago } from 'src/app/models/pago';
 import { PagoService } from 'src/app/services/pago.service';
+import { RecetaService } from 'src/app/services/receta.service';
 
 @Component({
   selector: 'app-pago',
@@ -17,7 +19,8 @@ export class PagoComponent implements OnInit {
   filtrarPago!: string;
 
   constructor( private pagoService : PagoService,
-               private router:Router) { 
+               private router:Router,
+               private recetaService:RecetaService) { 
     //this.cargarPagos();
     this.pagos = new Array<Pago>();
   }
@@ -57,17 +60,19 @@ export class PagoComponent implements OnInit {
     )
   }
 
+  
    cargarPagos(){
      this.pagoService.getPagos().subscribe(
       result=>{
         this.pagos = Object.values(result);
-    
+        
       },
       error=>{
 
       }
      )
    }
+
 
   agregarPago(){
     this.router.navigate(["pago-form",0])

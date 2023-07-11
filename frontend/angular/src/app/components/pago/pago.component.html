@@ -8,20 +8,20 @@
     <div class="d-flex mb-3 justify-content-between-fill">
       <form class="d-flex col-6">
         <select class="form-select me-2" [(ngModel)]="filtrarPago" name="metodo" id="metodo"
-          placeholder="Ingrese un Metodo">
+          placeholder="Ingrese un Metodo" style="margin-left: 50px;">
           <option>Contado</option>
           <option>Debito</option>
           <option>Credito</option>
         </select>
-        <button type="button" class="btn btn-info ms-auto col-2" [disabled]="!filtrarPago"
-          (click)="filtrarPorMetodo()">Filtrar</button>
+        <button type="button" class="btn btn-primary  " [disabled]="!filtrarPago"
+          (click)="filtrarPorMetodo()" >Filtrar</button>
       </form>
-      <button type="button" class="btn btn-info ms-auto" [hidden]="filtrarPago==''" (click)="limpiar()">Limpiar</button>
+      <button type="button" class="btn btn-primary ms-auto" style="margin-right: 40px;" [hidden]="filtrarPago==''" (click)="limpiar()">Limpiar</button>
     </div>
     <br><br>
-    <button type="button" class="btn btn-primary mb-4" (click)="agregarPago()">AGREGAR NUEVO PAGO</button>
+    <button type="button" class="btn btn-primary mb-4" (click)="agregarPago()" style="margin-left: 50px;">AGREGAR NUEVO PAGO</button>
 
-    <div class="row row-cols-1 row-cols-md-3 g-4 text-center mb-3">
+    <div class="row row-cols-1 row-cols-md-3 g-4 text-center mb-3" style="padding: 3%;">
       <div class="col col-md-6 col-xl-4" *ngFor="let pag of pagos">
         <div class="card">
           <div class="card-body">
@@ -39,7 +39,7 @@
       </div>
 
     </div>
-    <img src="https://chart.googleapis.com/chart?cht=bhg&chs=400x180&chd=t:{{cont}},{{cred}},{{deb}}&chxl=1:|Debito|Credito|Contado&chxt=x,y&chco=0072c6|ef3886|ff9900&chtt=Pagos:+Credito,+Contado+y+Debito
+    <img style="padding: 3%;" src="https://chart.googleapis.com/chart?cht=bhg&chs=400x180&chd=t:{{cont}},{{cred}},{{deb}}&chxl=1:|Debito|Credito|Contado&chxt=x,y&chco=0072c6|ef3886|ff9900&chtt=Pagos:+Credito,+Contado+y+Debito
       " alt="">
 
     <br><br>
