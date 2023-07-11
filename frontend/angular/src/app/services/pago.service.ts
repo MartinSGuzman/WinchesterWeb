@@ -8,7 +8,7 @@ import { Pago } from '../models/pago';
 })
 export class PagoService {
 
-  urlBase: string = "http://localhost:3000/api/pago/";
+  urlBase: string = "http://18.205.57.146:3000/api/pago/";
 
   constructor( private http: HttpClient) { }
 

@@ -8,7 +8,7 @@ import { Pedido } from '../models/pedido';
 })
 export class PedidoService {
 
-  urlBase: string = "http://localhost:3000/api/";
+  urlBase: string = "http://18.205.57.146:3000/api/";
 
   constructor(private http: HttpClient) { }
 
