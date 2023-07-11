@@ -9,6 +9,6 @@ router.post('/post', PagoCtrl.createPago);
 router.get('/:id', PagoCtrl.getPago);
 router.put('/:id', PagoCtrl.editPago);
 router.delete('/:id', PagoCtrl.deletePago);
-router.get('/filtro/:metodo', PagoCtrl.getPagoXcategoria);
+router.get('/filtro/:metodo', PagoCtrl.getPagoXmetodo);
 //exportamos el modulo de rutas
 module.exports = router;

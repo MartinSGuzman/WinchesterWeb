@@ -1,5 +1,5 @@
 <div class="container">
-  <section class="imangen" style="background-image: url(../../../assets/pago.jpg); background-size: 15%">
+  <section class="imangen" style="background-color: #77dd77 ">
     <br>
     <div class="row">
       <h3 class="col-12 text-center text-decoration-underline" style="font-weight: bold;">Listado De Pagos</h3>
@@ -14,7 +14,7 @@
           <option>Credito</option>
         </select>
         <button type="button" class="btn btn-info ms-auto col-2" [disabled]="!filtrarPago"
-          (click)="filtrarPorCategoria()">Filtrar</button>
+          (click)="filtrarPorMetodo()">Filtrar</button>
       </form>
       <button type="button" class="btn btn-info ms-auto" [hidden]="filtrarPago==''" (click)="limpiar()">Limpiar</button>
     </div>

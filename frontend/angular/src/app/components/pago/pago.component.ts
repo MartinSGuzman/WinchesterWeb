@@ -97,9 +97,9 @@ export class PagoComponent implements OnInit {
     
   }
 
-//el filtro por categoria funciona perfecto 
-filtrarPorCategoria() {
-  this.pagoService.getPagoXcategoria(this.filtrarPago).subscribe(
+//el filtro por metodo funciona perfecto 
+filtrarPorMetodo() {
+  this.pagoService.getPagoXmetodo(this.filtrarPago).subscribe(
     result => {
       this.pagos = [];
       Object.assign(this.pagos, result);
@@ -114,7 +114,7 @@ filtrarPorCategoria() {
 limpiar() {
   this.filtrarPago = '';
   //recarga la pagina asi se actualiza el table
-  this.router.navigate(['ticket']);
+  this.router.navigate(['pago']);
   //this.cargarTickets();
 
   //recarga la pagina

@@ -56,11 +56,11 @@ PagoCtrl.deletePago = async (req, res) => {
     }
 }
 
-PagoCtrl.getPagoXcategoria = async (req, res) => {
+PagoCtrl.getPagoXmetodo = async (req, res) => {
     try {
         const metodo = req.params.metodo;
         if (metodo != 'Contado' && metodo != 'Debito' && metodo != 'Credito' && metodo != 'contado' && metodo != 'debito' && metodo != 'credito')
-            throw new Error('Categoria de Espectador invalida')
+            throw new Error('Metodo de Pago invalida')
         metodo
         const pago = await Pago.find({ metodo: metodo });
         res.json(pago);
@@ -69,7 +69,7 @@ PagoCtrl.getPagoXcategoria = async (req, res) => {
         console.log(error)
         res.status(400).json({
             status: '0',
-            msg: 'Error al filtrar Espectador'
+            msg: 'Error al filtrar los Metodo de Pago'
         })
     }
 }

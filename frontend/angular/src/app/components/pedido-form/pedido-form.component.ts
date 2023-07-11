@@ -99,11 +99,13 @@ export class PedidoFormComponent implements OnInit {
     this.pedidoService.crearPedido(nuevoPedido).subscribe(
       respuesta => {
         console.log('pedido paso al backend');
+        this.router.navigate(['pedidos']);
       },
       error => {
         console.log('No se pudo crear el pedido');
       }
     );
+    this.router.navigate(['pedidos']);
   }
 
   listar(){
