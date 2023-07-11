@@ -94,4 +94,13 @@ export class PagoService {
   //   return this.http.delete(this.urlBase+id);
   // }
 
+  getPagoXcategoria(metodo: string): Observable<any> {
+    let httpOption = {
+      headers: new HttpHeaders({
+
+      }),
+      params: new HttpParams()//.append("estado",true)
+    }
+    return this.http.get(this.urlBase + "filtro/" + metodo, httpOption);
+  }
 }

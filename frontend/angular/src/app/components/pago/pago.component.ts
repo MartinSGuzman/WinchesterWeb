@@ -14,6 +14,7 @@ export class PagoComponent implements OnInit {
   deb:number = 0;
   cont:number = 0;
   cred:number = 0;
+  filtrarPago!: string;
 
   constructor( private pagoService : PagoService,
                private router:Router) { 
@@ -96,5 +97,27 @@ export class PagoComponent implements OnInit {
     
   }
 
+//el filtro por categoria funciona perfecto 
+filtrarPorCategoria() {
+  this.pagoService.getPagoXcategoria(this.filtrarPago).subscribe(
+    result => {
+      this.pagos = [];
+      Object.assign(this.pagos, result);
+      console.log(result);
+    },
+    error => {
+      console.log(error);
+    }
+  )
+}
 
+limpiar() {
+  this.filtrarPago = '';
+  //recarga la pagina asi se actualiza el table
+  this.router.navigate(['ticket']);
+  //this.cargarTickets();
+
+  //recarga la pagina
+  window.location.reload();
+}
 }

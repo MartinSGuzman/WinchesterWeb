@@ -4,6 +4,21 @@
     <div class="row">
       <h3 class="col-12 text-center text-decoration-underline" style="font-weight: bold;">Listado De Pagos</h3>
     </div>
+    <br><br>
+    <div class="d-flex mb-3 justify-content-between-fill">
+      <form class="d-flex col-6">
+        <select class="form-select me-2" [(ngModel)]="filtrarPago" name="metodo" id="metodo"
+          placeholder="Ingrese un Metodo">
+          <option>Contado</option>
+          <option>Debito</option>
+          <option>Credito</option>
+        </select>
+        <button type="button" class="btn btn-info ms-auto col-2" [disabled]="!filtrarPago"
+          (click)="filtrarPorCategoria()">Filtrar</button>
+      </form>
+      <button type="button" class="btn btn-info ms-auto" [hidden]="filtrarPago==''" (click)="limpiar()">Limpiar</button>
+    </div>
+    <br><br>
     <button type="button" class="btn btn-primary mb-4" (click)="agregarPago()">AGREGAR NUEVO PAGO</button>
 
     <div class="row row-cols-1 row-cols-md-3 g-4 text-center mb-3">
@@ -26,7 +41,7 @@
     </div>
     <img src="https://chart.googleapis.com/chart?cht=bhg&chs=400x180&chd=t:{{cont}},{{cred}},{{deb}}&chxl=1:|Debito|Credito|Contado&chxt=x,y&chco=0072c6|ef3886|ff9900&chtt=Pagos:+Credito,+Contado+y+Debito
       " alt="">
-  
-  <br><br>
+
+    <br><br>
   </section>
 </div>
