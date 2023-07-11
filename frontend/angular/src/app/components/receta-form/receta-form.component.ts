@@ -102,6 +102,6 @@ export class RecetaFormComponent implements OnInit {
   }
 
   calcular() {
-    this.receta.costoTotal = this.receta.impuestos * this.receta.precio
+    this.receta.costoTotal = this.receta.precio
   }
 }

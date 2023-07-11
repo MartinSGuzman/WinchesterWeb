@@ -53,7 +53,7 @@ export class RecetaComponent implements OnInit {
           console.log(result.msg);
           this.router.navigate(['receta']);
           this.cargarRecetas();
-          window.location.reload();
+          //window.location.reload();
         }
       },
       error => {
@@ -72,7 +72,7 @@ export class RecetaComponent implements OnInit {
   totalCostoReceta(): number {
     let total = 0;
     for (const costoReceta of this.recetass) {
-      total += costoReceta.costoTotal;
+      total += costoReceta.precio;
     }
     return total;
   }

@@ -52,7 +52,7 @@ export class ProductoComponent implements OnInit {
           console.log(result.msg);
           this.router.navigate(['producto']);
           this.cargarProductos();
-          window.location.reload();
+          //window.location.reload();
         }
       },
       error => {

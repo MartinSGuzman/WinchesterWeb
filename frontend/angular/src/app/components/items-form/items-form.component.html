@@ -43,7 +43,11 @@
                             id="categoria" [(ngModel)]="items.categoria" name="categoria" required #categoria="ngModel">
 
                             <option value="1" disabled selected>Seleccione que categoria requiere</option>
-                            <option value="aun no se que colocar">aun no se que colocar</option>
+                            <option value="Entrada">Entrada</option>
+                            <option value="Plato Principal">Plato Principal</option>
+                            <option value="Postre">Postre</option>
+                            <option value="Cubierto">Cubierto</option>
+                            <option value="Pan">Pan</option>
                         </select>
 
                         <div *ngIf="categoria.invalid && (categoria.dirty || categoria.touched)"

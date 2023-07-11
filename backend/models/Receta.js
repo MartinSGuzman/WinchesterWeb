@@ -6,7 +6,7 @@ const RecetaSchema = new Schema({
     costoTotal: { type: Number, required: true },
     precio: { type: Number, required: true },
     alergenos: { type: String, required: true },
-    impuestos: { type: Number, required: true },
+    //impuestos: { type: Number, required: true },
     descripcion: { type: String, required: true },
     productos: { type: Schema.Types.ObjectId, ref: Producto, required: true },
 });
