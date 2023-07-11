@@ -1,0 +1,14 @@
+h3{
+    font-style: italic;
+    -webkit-text-stroke: 2px rgb(0, 195, 255);
+    color: rgb(0, 0, 0);
+}
+
+.imangen {
+	width: 100%;
+}
+
+.card,img {
+    /* articulos */
+    margin-left: 1rem;
+}

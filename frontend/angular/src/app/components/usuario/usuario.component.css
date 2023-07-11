@@ -2,3 +2,23 @@
     padding: 20px;
     margin: 20px;
 }
+
+h2{
+    position: relative;
+    top: 5px;
+    font-size: 40px;
+    width:20%;
+    margin-left: 1rem;
+    background-color: rgba(0, 255, 255, 0.856);
+    font-style: italic;
+    font-size: large;
+    font-weight: bold;
+}
+
+label{
+    background-color: rgba(0, 255, 255, 0.856);
+    font-style: italic;
+    margin-left: 1rem;;
+    font-size: large;
+    font-weight: bold;
+}

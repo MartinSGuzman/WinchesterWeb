@@ -1,6 +1,12 @@
-<div>
+<div class="container">
+  <section class="imangen" style="background-image: url(../../../assets/pedido.jpeg); background-size: 15%">
+    <br>
+    <div class="row">
+      <h3 class="col-12 text-center text-decoration-underline" style="font-weight: bold;">Listado De Pedidos</h3>
+    </div>
+    <br><br>
     <div>
-        <a class="btn btn-dark" [routerLink]="['/pedidos-form']">Hacer Pedido</a>
+      <a class="btn btn-dark" [routerLink]="['/pedidos-form']">Hacer Pedido</a>
     </div>
     <table class="table table-striped table-hover">
       <thead>
@@ -22,10 +28,14 @@
           </td>
           <td>{{ pedido.nota }}</td>
           <td>{{ pedido.estado }}</td>
-          <td><ul>
-            <li *ngFor="let item of pedido.obItemsExtra">{{ item?.nombre }}</li>
-          </ul></td>
+          <td>
+            <ul>
+              <li *ngFor="let item of pedido.obItemsExtra">{{ item?.nombre }}</li>
+            </ul>
+          </td>
         </tr>
       </tbody>
     </table>
-  </div>
+    <br><br>
+  </section>
+</div>

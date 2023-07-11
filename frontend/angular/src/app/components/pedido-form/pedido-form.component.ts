@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Pedido } from 'src/app/models/pedido';
 import { Producto } from 'src/app/models/producto';
 import { Receta } from 'src/app/models/receta';
@@ -16,7 +17,8 @@ export class PedidoFormComponent implements OnInit {
   constructor(
     public recetasService: RecetaService,
     public productoService: ProductoService,
-    public pedidoService: PedidoService
+    public pedidoService: PedidoService,
+    private router: Router,
   ) { }
 
   ngOnInit(): void {
@@ -102,6 +104,10 @@ export class PedidoFormComponent implements OnInit {
         console.log('No se pudo crear el pedido');
       }
     );
+  }
+
+  listar(){
+    this.router.navigate(['pedidos']);
   }
 }
 
