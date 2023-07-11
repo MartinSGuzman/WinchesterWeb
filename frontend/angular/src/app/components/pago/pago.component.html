@@ -1,8 +1,8 @@
 <div class="container" style="padding: 3%;">
   <button type="button" class="btn btn-primary mb-4" (click)="agregarPago()">AGREGAR NUEVO PAGO</button>
     
-      <div class="row row-cols-1 row-cols-md-3 g-4 text-center" >
-        <div class="col"  *ngFor="let pag of pagos" >
+      <div class="row row-cols-1 row-cols-md-3 g-4 text-center mb-3" >
+        <div class="col col-md-6 col-xl-4"  *ngFor="let pag of pagos" >
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">Monto: {{pag.monto}}</h5>
@@ -17,6 +17,9 @@
             </div>
           </div>
         </div>
+        
       </div>
+      <img  src="https://chart.googleapis.com/chart?cht=bhg&chs=400x180&chd=t:{{cont}},{{cred}},{{deb}}&chxl=1:|Debito|Credito|Contado&chxt=x,y&chco=0072c6|ef3886|ff9900&chtt=Pagos:+Credito,+Contado+y+Debito
+      " alt="">
 
 </div>

@@ -16,21 +16,9 @@
             [(ngModel)]="pago.receta" name="receta">
         </div>
 
-        <div class="col-md-3 position-relative">
-          <label for="validationTooltip04" class="form-label">Cantidad</label>
-          <select [(ngModel)]="cant1" name="cant1" class="form-select" aria-label="Default select example">
-            <option selected disabled value="">Elegir...</option>
-            <option >1</option>
-            <option >2</option>
-            <option >3</option>
-          </select>
-        </div>
+        
 
-        <div class="col-md-4 position-relative">
-          <label for="validationTooltip02" class="form-label">Monto</label>
-          <input type="number" class="form-control" id="validationTooltip02" value="Otto" required
-            [(ngModel)]="monto1" name="monto1">
-        </div>
+        
         
         <div class="col-md-4 position-relative">
           <label for="validationTooltip01" class="form-label">Items</label>
@@ -38,21 +26,6 @@
             [(ngModel)]="pago.items" name="items">
         </div>
 
-        <div class="col-md-3 position-relative">
-          <label for="validationTooltip04" class="form-label">Cantidad</label>
-          <select [(ngModel)]="cant2" name="cant2" class="form-select" aria-label="Default select example">
-            <option selected disabled value="">Elegir...</option>
-            <option >1</option>
-            <option >2</option>
-            <option >3</option>
-          </select>
-        </div>
-
-        <div class="col-md-4 position-relative">
-          <label for="validationTooltip02" class="form-label">Monto</label>
-          <input type="number" class="form-control" id="validationTooltip02" value="Otto" required
-            [(ngModel)]="monto2" name="monto2">
-        </div>
         
         <div class="col-md-3 position-relative">
           <label for="validationTooltip04" class="form-label">Metodo de Pago</label>
@@ -78,13 +51,10 @@
           <input type="text" class="form-control" id="validationTooltip05" required
             [(ngModel)]="pago.nota" name="nota">
         </div>
-        <div class="form-group">
-          <label for="resultado">Monto Total</label>
-          <textarea  name="cantidadDestino" disabled class="form-control" id="resultado" rows="1">{{costoTotal() | currency}}</textarea>
-        </div>
+      
 
         <div class="col-md-4 position-relative">
-          <label for="validationTooltip02" class="form-label">INGRESE EL MONTO CALCULADO</label>
+          <label for="validationTooltip02" class="form-label">Monto</label>
           <input type="number" class="form-control" id="validationTooltip02" value="Otto" required
             [(ngModel)]="pago.monto" name="monto">
         </div>

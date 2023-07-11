@@ -11,6 +11,9 @@ import { PagoService } from 'src/app/services/pago.service';
 export class PagoComponent implements OnInit {
 
   pagos!:Array<Pago>;
+  deb:number = 0;
+  cont:number = 0;
+  cred:number = 0;
 
   constructor( private pagoService : PagoService,
                private router:Router) { 
@@ -24,7 +27,28 @@ export class PagoComponent implements OnInit {
     this.pagoService.getPagos().subscribe(
       result=>{
         this.pagos = Object.values(result);
-    
+         this.pagos.forEach(pagos => {
+           if (pagos.metodo == 'Contado'){
+             this.cont = this.cont + 1;
+             console.log(this.cont);
+           }
+           if (pagos.metodo == 'Credito'){
+            this.cred = this.cred + 1;
+            console.log(this.cred);
+          }
+          if (pagos.metodo == 'Debito'){
+            this.deb = this.deb + 1;
+            console.log(this.deb);
+          }
+         })
+        // let i;
+        // for(i = 0; i <= this.pagos.length; i++){
+        //   if( this.pagos[i].metodo == 'contado'){
+        //     this.cont = this.cont + 1;
+        //     console.log(this.pagos.length)
+        //   }
+        // }
+        
       },
       error=>{
 

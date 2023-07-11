@@ -118,15 +118,6 @@ export class PagoFormComponent implements OnInit {
     this.router.navigate(["pago"])
   }
 
-  costoTotal():number{
-    let total = 0;
-        total = ( (this.cant1 * this.monto1)+(this.cant2 * this.monto2));
-    return total;
-  }
-  // monto1!:number;
-  // monto2!:number;
-  // cant1!:number;
-  // cant2!:number;
-  // montoTotal!:number;
+  
 
 }
