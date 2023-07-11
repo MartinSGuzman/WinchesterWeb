@@ -6,7 +6,7 @@ export class Receta {
     costoTotal!: number;
     precio!: number;
     alergenos!: string;
-    impuestos!: number;
+    //impuestos!: number;
     descripcion!: string;
     productos!: Producto;
     cantidad!:number;

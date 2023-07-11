@@ -26,7 +26,7 @@ export class RecetaService {
     let costoTotal = receta.costoTotal;
     let precio = receta.precio;
     let productos = receta.productos;
-    let impuestos = receta.impuestos;
+    //let impuestos = receta.impuestos;
     let alergenos = receta.alergenos;
     let descripcion = receta.descripcion;
     let httpOption = {
@@ -41,7 +41,7 @@ export class RecetaService {
       precio,
       productos,
       alergenos,
-      impuestos,
+     // impuestos,
       descripcion
     };
     return this._httpCliente.post(this.urlBase + "receta/post", body, httpOption);
@@ -71,7 +71,7 @@ export class RecetaService {
       costoTotal: receta.costoTotal,
       precio: receta.precio,
       alergenos: receta.alergenos,
-      impuestos: receta.impuestos,
+      //impuestos: receta.impuestos,
       descripcion: receta.descripcion,
       productos:receta.productos,
     };
