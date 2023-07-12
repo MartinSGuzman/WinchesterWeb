@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class UsuarioService {
-  urlBase: string = "http://18.205.57.146:3000/api/usuario/";
+  urlBase: string = "http://localhost:3000/api/usuario/";
   constructor(private http: HttpClient) { }
 
   public getUsuarios(): Observable<any> {

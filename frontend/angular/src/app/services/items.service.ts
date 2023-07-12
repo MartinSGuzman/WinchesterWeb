@@ -7,7 +7,7 @@ import { Items } from '../models/items';
   providedIn: 'root'
 })
 export class ItemsService {
-  urlBase: string = 'http://18.205.57.146:3000/api/';
+  urlBase: string = 'http://localhost:3000/api/';
 
   constructor(private _httpCliente: HttpClient) { }
 
