@@ -51,9 +51,9 @@ export class ItemsComponent implements OnInit {
       result => {
         if (result.status == "1") {
           console.log(result.msg);
-          this.router.navigate(['items']);
+          
           this.cargarItems();
-          window.location.reload();
+          
         }
       },
       error => {

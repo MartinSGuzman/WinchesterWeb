@@ -50,9 +50,9 @@ export class ProductoComponent implements OnInit {
       result => {
         if (result.status == "1") {
           console.log(result.msg);
-          this.router.navigate(['producto']);
+          
           this.cargarProductos();
-          //window.location.reload();
+          
         }
       },
       error => {

@@ -51,9 +51,9 @@ export class RecetaComponent implements OnInit {
       result => {
         if (result.status == "1") {
           console.log(result.msg);
-          this.router.navigate(['receta']);
+          
           this.cargarRecetas();
-          //window.location.reload();
+          
         }
       },
       error => {

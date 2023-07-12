@@ -119,10 +119,9 @@ filtrarPorMetodo() {
 limpiar() {
   this.filtrarPago = '';
   //recarga la pagina asi se actualiza el table
-  this.router.navigate(['pago']);
-  //this.cargarTickets();
+  this.cargarPagos();
 
   //recarga la pagina
-  window.location.reload();
+  
 }
 }
