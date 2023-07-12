@@ -1,13 +1,13 @@
-<div class="container">
-    <section class="imangen" style="background-color: rgba(255, 102, 0, 0.664)">
+
+    <section class="imangen" style="background-image: url('https://png.pngtree.com/thumb_back/fh260/background/20230617/pngtree-rectangular-shelf-in-light-brown-tones-a-3d-rendered-background-perfect-image_3639918.png');">
         <div class="row">
-            <div class="col-md-8 offset-md-2">
+            <div class="col-md-8 offset-md-2" >
                 <br>
-                <div class="letra3">
-                    <h3> 📝📝 Items Extra 📝📝</h3>
+                <div class="letra3" >
+                    <h3 style="background-color: #161515 "> 📝📝 Items Extra 📝📝</h3>
                     <br>
                 </div>
-                <button type="submit" (click)="volverLista()" class="btn btn-success">Volver Lista</button>
+                <button type="submit" (click)="volverLista()" class="btn btn-dark">Volver Lista</button>
 
                 <form class="p-3" #itemsForm="ngForm">
                     <div class="mb-3">
@@ -109,14 +109,13 @@
                         </div>-->
                     </div>
 
-                    <button *ngIf="accion=='new'" type="submit" (click)="registrar()" class="btn btn-info"
+                    <button *ngIf="accion=='new'" type="submit" (click)="registrar()" class="btn btn-dark"
                         [disabled]="itemsForm.invalid">Registrar Items</button>
                     <button *ngIf="accion=='update'" type="submit" (click)="actualizarItems()"
-                        class="btn btn-warning">Actualizar</button>
-                    <button type="submit" (click)="volverLista()" class="btn btn-success">Volver Lista</button>
+                        class="btn btn-dark">Actualizar</button>
+                    <button type="submit" (click)="volverLista()" class="btn btn-dark">Volver Lista</button>
                     <br><br>
                 </form>
             </div>
         </div>
     </section>
-</div>

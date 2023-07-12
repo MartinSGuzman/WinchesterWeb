@@ -1,64 +1,58 @@
-.imangen{
-    padding: 70px;
-    width: 100%;
-}
 
-.contenido{
-    display: inline;
-    height: auto;
-    font-style: italic;	
-	font-family: Arial, Helvetica, sans-serif;
-}
-
-.letra{
-    position: relative;
-    top: 10px;
-    color: #fff;
-    background-color: #276e11c2;
-    width:65%;  
-    font-style: italic;
-    text-align: center;	 
-}
-
-.nav-link:hover{
-    background:rgb(146, 214, 236);
-    color:white;
-    font-weight: 100;
-    font-size: 100%;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-}
-
-.nav-item a{
-    font-weight: 500;
-    color: #ffffff;
-    font-size: 150%;   
-    border-right: 1px solid silver;
-}
-
-nav{
-    top: 70px;
-    color: #ffffff;
-    background-color: rgb(33, 139, 33);
-}
-
-#Posicionado a {
-    font-weight: 1000;
-    background-color: #232f72;
-    color: #ffffff;
-    font-size: 140%;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-}
-
-.nav-link.disabled {
-    cursor: not-allowed;
-    color: gray;
-    pointer-events: none;
-    opacity: 0.5;
-  }
+    /* Estilos personalizados */
+    body {
+        background-image: url('https://png.pngtree.com/thumb_back/fh260/background/20230617/pngtree-rectangular-shelf-in-light-brown-tones-a-3d-rendered-background-perfect-image_3639918.png');
+        background-size: cover;
+        background-position: center;
+      }
   
-  .nav-link.disabled:hover,
-  .nav-link.disabled:focus,
-  .nav-link.disabled:active {
-    color: gray;
-    text-decoration: none;
-  }
+      header {
+        background-color: #333;
+        padding: 10px 0;
+      }
+  
+      .navbar {
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+  
+      .navbar-brand {
+        font-size: 18px;
+        color: #fff !important;
+      }
+  
+      .navbar-nav .nav-link {
+        color: #fff !important;
+        font-size: 16px;
+        margin-right: 10px;
+        transition: transform 0.3s, color 0.3s;
+      }
+  
+      .navbar-nav .nav-link:hover {
+        color: #f8f9fa !important;
+        transform: scale(1.1);
+      }
+  
+      .navbar-nav .nav-link.active {
+        color: #f8f9fa !important;
+        transform: scale(1.1);
+        font-weight: bold;
+        background-color: #f8f9fa;
+        border-radius: 5px;
+        padding: 5px 10px;
+      }
+  
+      .navbar-nav .nav-link.logout {
+        margin-right: 0 !important;
+      }
+  
+      .navbar-collapse {
+        transition: height 0.3s;
+      }
+  
+      .navbar-toggler:focus,
+      .navbar-toggler:active {
+        outline: none;
+        box-shadow: none;
+      }
+  

@@ -5,10 +5,10 @@ const authCtrl = require('./../controllers/auth.controller.js');
 const express = require('express');
 const router = express.Router();
 //definimos las rutas para la gestion
-router.get('/',authCtrl.verifyToken, itemCtrl.getItems);
-router.post('/post',authCtrl.verifyToken, itemCtrl.createItem);
-router.get('/:id',authCtrl.verifyToken, itemCtrl.getItem);
-router.put('/:id',authCtrl.verifyToken, itemCtrl.editItem);
-router.delete('/:id',authCtrl.verifyToken, itemCtrl.deleteItem);
+router.get('/', itemCtrl.getItems);
+router.post('/post', itemCtrl.createItem);
+router.get('/:id', itemCtrl.getItem);
+router.put('/:id', itemCtrl.editItem);
+router.delete('/:id', itemCtrl.deleteItem);
 //exportamos el modulo de rutas
 module.exports = router;

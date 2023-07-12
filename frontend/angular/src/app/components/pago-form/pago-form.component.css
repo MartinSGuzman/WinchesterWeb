@@ -1,0 +1,9 @@
+.letra3 h3 {
+	background-color: rgb(12, 12, 12);
+	font-family: Arial Rounded MT Bold, serif, sans-serif;
+	padding: 1rem;
+	text-align: center;
+	font-weight: bold;
+	/*display: 6;*/
+	color: white;
+}
