@@ -1,47 +1,43 @@
 
 <body>
   <header>
-    <div *ngIf="loginService.userLoggedIn()">
-    <div class="container">
-      <h6 class="text-center text-white">Winchester</h6>
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container">
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav mr-auto">
+    <div *ngIf="userLoggedIn()">
+      <div class="container">
+        <h6 class="text-center text-white">Winchester</h6>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+          <div class="container">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+              aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item" *ngIf="esCocinero || esAdmin">
+                  <a class="nav-link" [routerLink]="['producto']">Producto</a>
+                </li>
+                <li class="nav-item" *ngIf="esCocinero || esAdmin">
+                  <a class="nav-link" [routerLink]="['receta']">Receta</a>
+                </li>
+                <li class="nav-item" *ngIf="esAdmin">
+                  <a class="nav-link" [routerLink]="['pago']">Pago</a>
+                </li>
+                <li class="nav-item" *ngIf="esMozo || esAdmin">
+                  <a class="nav-link" [routerLink]="['pedidos']">Pedidos</a>
+                </li>
+                <li class="nav-item" *ngIf="esCocinero || esAdmin">
+                  <a class="nav-link" [routerLink]="['items']">Items extras</a>
+                </li>
+              </ul>
               <li class="nav-item">
-                <a class="nav-link" [routerLink]="['producto']">Producto</a>
+                <a class="nav-link" *ngIf="!userLoggedIn()" [routerLink]="['login']">(Login)</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" [routerLink]="['receta']">Receta</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" [routerLink]="['pago']">Pago</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" [routerLink]="['pedidos']">Pedidos</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" [routerLink]="['items']">Items extras</a>
-              </li>
-            </ul>
-            <li class="nav-item">
-              <a class="nav-link" *ngIf="!loginService.userLoggedIn()" [routerLink]="['login']">(Login)</a>
-              
-            </li>
-            
+            </div>
+            <a class="nav-link text-white fa-align-right" *ngIf="userLoggedIn()" [routerLink]="['login']" (click)="logout()">
+              {{ loginService.userLogged() }} (salir)
+            </a>
           </div>
-          <a class="nav-link text-white fa-align-right" *ngIf="loginService.userLoggedIn()" [routerLink]="['login']" (click)="logout()">
-            {{loginService.userLogged()}} (salir)
-          </a>
-        </div>
-      </nav>
+        </nav>
+      </div>
     </div>
-  </div>
   </header>
-
-  
 </body>

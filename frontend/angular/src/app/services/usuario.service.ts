@@ -1,12 +1,16 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
+import { map, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsuarioService {
   urlBase: string = "http://localhost:3000/api/usuario/";
+  private userLoggedInSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  public userLoggedIn$: Observable<boolean> = this.userLoggedInSubject.asObservable();
+  
   constructor(private http: HttpClient) { }
 
   public getUsuarios(): Observable<any> {
@@ -73,30 +77,36 @@ export class UsuarioService {
 
   public login(username: string, password: string): Observable<any> {
     const httpOption = {
-      headers: new HttpHeaders({
-      })
-    }
+      headers: new HttpHeaders({})
+    };
+
     const body = {
       username,
-      password,
+      password
     };
-    
-    return this.http.post(this.urlBase + 'login', body, httpOption);
-    console.log(body);
+
+    return this.http.post(this.urlBase + 'login', body, httpOption)
+      .pipe(
+        tap((response: any) => {
+          console.log("Inicio de sesión exitoso:", response);
+          sessionStorage.setItem('user', response.username);
+          sessionStorage.setItem('perfil', response.rol);
+          sessionStorage.setItem('userid', response.id);
+          this.userLoggedInSubject.next(true);
+        })
+      );
   }
+
   public logout() {
-    //borro el vble almacenado mediante el storage
-    sessionStorage.removeItem("user");
-    sessionStorage.removeItem("perfil");
-    sessionStorage.removeItem("userid");
+    sessionStorage.removeItem('user');
+    sessionStorage.removeItem('perfil');
+    sessionStorage.removeItem('userid');
+    this.userLoggedInSubject.next(false);
   }
-  public userLoggedIn() {
-    var resultado = false;
-    var usuario = sessionStorage.getItem("user");
-    if (usuario != null) {
-      resultado = true;
-    }
-    return resultado;
+
+  public userLoggedIn(): boolean {
+    const usuario = sessionStorage.getItem('user');
+    return usuario !== null && usuario !== '';
   }
   public userLogged() {
     var usuario = sessionStorage.getItem("user");
@@ -107,6 +117,17 @@ export class UsuarioService {
     return id;
   }
 
+  public isCocinero(): boolean {
+    return sessionStorage.getItem('user') === 'cocinero';
+  }
+
+  public isMozo(): boolean {
+    return sessionStorage.getItem('user') === 'mozo';
+  }
+
+  public isAdmin(): boolean {
+    return sessionStorage.getItem('user') === 'admin';
+  }
 
 
 }

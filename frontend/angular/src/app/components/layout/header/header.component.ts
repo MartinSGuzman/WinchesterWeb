@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth-service.service';
+import { Usuario } from 'src/app/models/usuario';
 import { UsuarioService } from 'src/app/services/usuario.service';
 
 
@@ -10,15 +12,37 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private authService: AuthService, public loginService: UsuarioService) { }
+  usuarioLoggeado!: any;
+  esAdmin: boolean = false;
+  esMozo: boolean = false;
+  esCocinero: boolean = false;
+
+  constructor(public loginService: UsuarioService) { }
 
   ngOnInit() {
+    this.loginService.userLoggedIn$.subscribe((loggedIn) => {
+      if (loggedIn) {
+        this.usuarioLoggeado = this.loginService.userLogged();
+        console.log("Usuario conectado:", this.usuarioLoggeado);
+        this.esCocinero = this.loginService.isCocinero();
+        this.esMozo = this.loginService.isMozo();
+        this.esAdmin = this.loginService.isAdmin();
+      } else {
+        this.usuarioLoggeado = '';
+        this.esCocinero = false;
+        this.esMozo = false;
+        this.esAdmin = false;
+      }
+    });
   }
+
   logout() {
     this.loginService.logout();
   }
 
-  
+  userLoggedIn() {
+    return this.loginService.userLoggedIn();
+  }
 }
 
 
