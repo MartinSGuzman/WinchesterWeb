@@ -7,42 +7,43 @@
     <br>
     <br>
 
-    <button type="button" (click)="agregarProducto()" class="btn btn-info">Agregar Producto</button>
+    <div class="text-center">
+        <button type="button" (click)="agregarProducto()" class="btn btn-dark">Agregar Producto</button>
+      </div>
+      
     <br>
     <br>
-    <div class="table-responsive">
-        <table class="table table-bordered table-light table-striped table-transparent">
-            <thead>
-                <tr class="text-center">
-                    <th scope="col">ID</th>
-                    <th scope="col">Nombre</th>
-                    <th scope="col">Categoria</th>
-                    <th scope="col">Tipo</th>
-                    <th scope="col">Costo</th>
-                    <th scope="col">Proveedor</th>
-                    <th scope="col">Stock</th>
-                </tr>
+    <div class=" container">
+        <table class="table table-sm table-bordered table-striped">
+            <thead class="table-dark">
+              <tr class="text-center">
+                <th scope="col">Nombre</th>
+                <th scope="col">Categoría</th>
+                <th scope="col">Tipo</th>
+                <th scope="col">Costo</th>
+                <th scope="col">Proveedor</th>
+                <th scope="col">Stock</th>
+                <th scope="col"></th>
+              </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let pro of Productos">
-                    <th scope="row">{{ pro._id }}</th>
-                    <td>{{pro.nombre | titlecase}}</td>
-                    <td>{{pro.categoria | titlecase}}</td>
-                    <td>{{pro.tipo | titlecase}}</td>
-                    <td>{{pro.costo| currency:'ARS':'symbol-narrow'}}</td>
-                    <td>{{pro.proveedor| titlecase}}</td>
-                    <td>{{pro.stock}}</td>
-                    <td>
-                        <button class="btn btn-warning" (click)="modificarProducto(pro)">Modificar</button>
-                        <button class="btn btn-danger" (click)="eliminarProducto(pro)">Eliminar</button>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row"></th>
-                    <td colspan="5"></td>
-                    <td></td>
-                </tr>
+              <tr *ngFor="let pro of Productos">
+                <td>{{pro.nombre | titlecase}}</td>
+                <td>{{pro.categoria | titlecase}}</td>
+                <td>{{pro.tipo | titlecase}}</td>
+                <td>{{pro.costo | currency:'ARS':'symbol-narrow'}}</td>
+                <td>{{pro.proveedor | titlecase}}</td>
+                <td>{{pro.stock}}</td>
+                <td>
+                  <button class="btn btn-sm btn-warning" (click)="modificarProducto(pro)">Modificar</button>
+                  <button class="btn btn-sm btn-danger" (click)="eliminarProducto(pro)">Eliminar</button>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="7"></td>
+              </tr>
             </tbody>
-        </table>
+          </table>
+          
     </div>
 </section>
