@@ -9,11 +9,10 @@
     <br><br>
     <button type="button" (click)="agregarReceta()" class="btn btn-info">Agregar Receta</button>
     <br><br>
-    <div class="table-responsive">
+    <div class="table-responsive" style="text-align:center;">
         <table class="table table table-bordered table-light table-striped">
             <thead>
                 <tr class="text-center">
-                    <th scope="col">ID</th>
                     <th scope="col">Nombre</th>
                     <th scope="col">Alergenos</th>
                     <th scope="col">Descripcion</th>
@@ -22,21 +21,20 @@
                     <th scope="col">Opciones</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr *ngFor="let rece of recetass">
-                    <th scope="row">{{ rece._id }}</th>
+            <tbody class="text-center">
+                <tr *ngFor="let rece of arrayRecetas">
+                    <!--<th scope="row">{{ rece._id }}</th>-->
                     <td>{{rece.nombre | titlecase}}</td>
                     <td>{{rece.alergenos | titlecase}}</td>
                     <td>{{rece.descripcion | titlecase}}</td>
-                    <!--<td>{{rece.productos.nombre | titlecase}}</td>-->
                     <td>
                         <ul>
-                          <li *ngFor="let producto of receta.obProducto">{{ producto?.nombre }}</li>
+                            <li *ngFor="let producto of rece.obProducto">{{ producto?.nombre }}</li>
                         </ul>
-                      </td>
+                    </td>
                     <td>{{rece.precio | currency:'ARS':'symbol-narrow'}}</td>
                     <td>
-                        <button class="btn btn-warning" (click)="modificarReceta(rece)">Modificar</button>
+                        <!--<button class="btn btn-warning" (click)="modificarReceta(rece)">Modificar</button>-->
                         <button class="btn btn-danger" (click)="eliminarReceta(rece)">Eliminar</button>
                     </td>
                 </tr>

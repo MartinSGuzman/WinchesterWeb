@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, forkJoin } from 'rxjs';
 import { Receta } from 'src/app/models/receta';
+import { ProductoService } from 'src/app/services/producto.service';
 import { RecetaService } from 'src/app/services/receta.service';
 
 @Component({
@@ -15,6 +16,7 @@ export class RecetaComponent implements OnInit {
   recetass!: Array<Receta>;
 
   constructor(private recetaService: RecetaService,
+    private productoService: ProductoService,
     private router: Router) {
     this.receta = new Receta();
     this.recetass = new Array<Receta>();
@@ -28,20 +30,16 @@ export class RecetaComponent implements OnInit {
 
   cargarRecetas() {
     this.recetaService.getRecetas().subscribe(
-      result => {
-        result.forEach((element: any) => {
-          let unReceta: Receta = new Receta();
-          Object.assign(unReceta, element)
-          this.recetass.push(unReceta)
-          unReceta = new Receta();
-          this.agregarProductoReceta();
-        });
-        console.log(result);
+      (result: Receta[]) => {
+        this.arrayRecetas = result;
+        console.log(this.arrayRecetas);
+        this.agregarProductoReceta();
       },
       error => {
         console.log(error);
+        console.log('No hay pedidos');
       }
-    )
+    );
   }
 
   modificarReceta(receta: Receta) {
@@ -70,30 +68,42 @@ export class RecetaComponent implements OnInit {
   public agregarProductoReceta() {
     const observables: Observable<any>[] = [];
 
-    this.arrayRecetas.forEach(receta => {
-      receta.obProducto = []; // Inicializar el arreglo de items extra para cada pedido
-
-      if (receta.producs && receta.producs.length > 0) {
-        receta.producs.forEach(pro => {
-          const id = pro.produ; // Obtener el valor del id desde la propiedad item
-          const observable: Observable<any> = this.recetaService.getReceta(id);
-          observables.push(observable);
+    this.arrayRecetas.forEach(rece => {
+      console.log('Receta:', rece);
+    
+      rece.obProducto = []; // Inicializar el arreglo de recetas para cada pedido
+    
+      if (rece.producs && rece.producs.length > 0) {
+        rece.producs.forEach(re => {
+          console.log('Rec:', re);
+    
+          if (re && re.produ) { // Verificar si el objeto y la propiedad existen
+            const id = re.produ;
+            console.log('ID:', id);
+    
+            const observable: Observable<any> = this.productoService.getProducto(id);
+            observables.push(observable);
+          } else {
+            console.log('Propiedad "receta" faltante o incorrecta en el objeto pedido');
+          }
         });
+      } else {
+        console.log('Arreglo "receta" faltante o vacío en el objeto pedido');
       }
     });
 
     forkJoin(observables).subscribe(
       respuestas => {
         let index = 0;
-        this.arrayRecetas.forEach(receta => {
-          receta.obProducto = respuestas.slice(index, index + receta.producs.length);
-          index += receta.producs.length;
+        this.arrayRecetas.forEach(recetaaa => {
+          recetaaa.obProducto = respuestas.slice(index, index + recetaaa.producs.length);
+          index += recetaaa.producs.length;
         });
         console.log(respuestas);
       },
       error => {
         console.log(error);
-        console.log('No hay items de pedido');
+        console.log('No hay receta para el pedido');
       }
     );
   }

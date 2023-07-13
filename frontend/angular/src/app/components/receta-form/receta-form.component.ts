@@ -8,7 +8,7 @@ import { RecetaService } from 'src/app/services/receta.service';
 @Component({
   selector: 'app-receta-form',
   templateUrl: './receta-form.component.html',
-  styleUrls: ['./receta-form.component.css'] 
+  styleUrls: ['./receta-form.component.css']
 })
 export class RecetaFormComponent implements OnInit {
 
@@ -25,7 +25,7 @@ export class RecetaFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.activatedRoute.params.subscribe(params => {
+    /*this.activatedRoute.params.subscribe(params => {
       if (params['id'] == "0") {
         this.accion = "new";
         this.cargarProductoss();
@@ -34,15 +34,22 @@ export class RecetaFormComponent implements OnInit {
         this.cargarProductoss();
         this.cargarReceta(params['id']);
       }
-    });
+    });*/
+    this.cargarProductoss();
   }
+
+  todosProductos: Producto[] = [];
+  todasRecetas: Receta[] = [];
 
   productoSeleccionado: Producto | null = null;
   recetaNuevo: Receta = new Receta();
   cantidadProducto: number | null = null;
+  nombre!: string;
+  precio!: number;
+  alergenos!: string;
+  descripcion!: string;
 
-
-  cargarReceta(id: string) {
+  /*cargarReceta(id: string) {
     this.recetaService.getReceta(id).subscribe(
       result => {
         Object.assign(this.receta, result);
@@ -54,17 +61,12 @@ export class RecetaFormComponent implements OnInit {
         console.log(error);
       }
     )
-  }
+  }*/
 
   cargarProductoss() {
     this.productoService.getProductos().subscribe(
       result => {
-        let unProducto = new Producto();
-        result.forEach((element: any) => {
-          Object.assign(unProducto, element)
-          this.productosss.push(unProducto)
-          unProducto = new Producto();
-        });
+        this.todosProductos = result;
         console.log(result);
       },
       error => {
@@ -79,13 +81,17 @@ export class RecetaFormComponent implements OnInit {
       productoConCantidad.cantidad = this.cantidadProducto;
       this.recetaNuevo.obProducto.push(productoConCantidad);
       this.recetaNuevo.producs.push({ produ: this.productoSeleccionado._id, cantidad: this.cantidadProducto });
+      this.recetaNuevo.nombre = this.nombre;
+      this.recetaNuevo.alergenos = this.alergenos;
+      this.recetaNuevo.descripcion = this.descripcion;
+      this.recetaNuevo.precio = this.precio;
       // Restablecer los valores
       this.productoSeleccionado = null;
       this.cantidadProducto = null;
     }
   }
 
-  registrar() {
+  public registrar() {
     const nuevaReceta: Receta = {
       _id: this.recetaNuevo._id,
       nombre: this.recetaNuevo.nombre,
@@ -94,7 +100,7 @@ export class RecetaFormComponent implements OnInit {
       obProducto: this.recetaNuevo.obProducto,
       precio: this.recetaNuevo.precio,
       producs: this.recetaNuevo.producs,
-      productos: this.recetaNuevo.productos,
+      //productos: this.recetaNuevo.productos,
       cantidad: this.recetaNuevo.cantidad,
     };
 

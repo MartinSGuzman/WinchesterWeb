@@ -8,19 +8,13 @@
                 <br>
             </div>
             <button type="submit" (click)="volverLista()" class="btn btn-success">Volver Lista</button>
-           
+
             <form class="p-3 container alert alert-danger" #recetaForm="ngForm">
                 <div class="row">
                     <div class="col">
                         <label for="nombre" class="form-label" style="font-weight: bold;">Nombre</label>
                         <input type="text" class="form-control form-control-sm" placeholder="Ingrese Nombre" id="nombre"
-                            [(ngModel)]="receta.nombre" name="nombre" required #nombre="ngModel">
-
-                        <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)" class="alert alert-danger">
-                            <div *ngIf="nombre.errors?.['required']">
-                                Nombre es requerido.
-                            </div>
-                        </div>
+                            [(ngModel)]="nombre" name="nombre">
                     </div>
 
                     <div class="col">
@@ -28,8 +22,7 @@
                         <label for="alergenos" class="form-label" style="font-weight: bold;">Tipo de
                             Alergenos</label>
                         <select v-model="selected" class="form-select" aria-label="Default select example"
-                            id="alergenos" [(ngModel)]="receta.alergenos" name="alergenos" required
-                            #alergenos="ngModel">
+                            id="alergenos" [(ngModel)]="alergenos" name="alergenos">
 
                             <option value="1" disabled selected>Seleccione que alergenos requiere</option>
                             <option value="Gluten">Gluten</option>
@@ -47,27 +40,21 @@
                             <option value="Frutos Secos">Frutos Secos</option>
                             <option value="Altramuz">Altramuz</option>
                         </select>
-
-                        <div *ngIf="alergenos.invalid && (alergenos.dirty || alergenos.touched)"
-                            class="alert alert-danger">
-                            <div *ngIf="alergenos.errors?.['required']">
-                                Seleccione un alergenos es requerido.
-                            </div>
-                        </div>
                     </div>
                 </div>
+
                 <div class="form-group">
                     <label for="descripcion" class="form-label" style="font-weight: bold;">Descripcion:</label>
                     <textarea id="descripcion" type="text" class="form-control" placeholder="Ingrese Descripcion"
-                        [(ngModel)]="receta.descripcion" name="descripcion" required #descripcion="ngModel"></textarea>
-
-                    <div *ngIf="descripcion.invalid && (descripcion.dirty || descripcion.touched)"
-                        class="alert alert-danger">
-                        <div *ngIf="descripcion.errors?.['required']">
-                            Descripcion es requerido.
-                        </div>
-                    </div>
+                        [(ngModel)]="descripcion" name="descripcion"></textarea>
                 </div>
+
+                <div class="col">
+                    <label for="precio" class="form-label" style="font-weight: bold;">Precio</label>
+                    <input type="number" class="form-control form-control-sm" placeholder="Ingrese precio" id="precio"
+                        [(ngModel)]="precio" name="precio">
+                </div>
+
                 <br>
                 <div class="row">
                     <div class="col">
@@ -75,7 +62,7 @@
                         <select class="form-select" aria-label="Default select example"
                             placeholder="Ingrese un Espectador" [(ngModel)]="productoSeleccionado" name="productos">
 
-                            <option *ngFor="let productos of productosss" [ngValue]="productos">{{productos.nombre}}
+                            <option *ngFor="let productos of todosProductos" [ngValue]="productos">{{productos.nombre}}
                             </option>
                         </select>
                     </div>
@@ -86,19 +73,6 @@
                     </div>
                     <br><br>
                     <button class="btn btn-dark  w-50" (click)="agregarProductoAlPedido()">Agregar al pedido</button>
-                </div>
-
-
-                <div class="col">
-                    <label for="precio" class="form-label" style="font-weight: bold;">Precio</label>
-                    <input type="number" class="form-control form-control-sm" placeholder="Ingrese precio" id="email"
-                        [(ngModel)]="receta.precio" name="precio" required #precio="ngModel">
-
-                    <div *ngIf="precio.invalid && (precio.dirty || precio.touched)" class="alert alert-danger">
-                        <div *ngIf="precio.errors?.['required']">
-                            Precio es requerido.
-                        </div>
-                    </div>
                 </div>
             </form>
             <div class="row">
@@ -113,10 +87,9 @@
                     </ul>
                 </div>
             </div>
-            <button *ngIf="accion=='new'" type="submit" (click)="registrar()" class="btn btn-info"
-                [disabled]="recetaForm.invalid">Registrar Receta</button>
-            <button *ngIf="accion=='update'" type="submit" (click)="actualizarReceta()"
-                class="btn btn-warning">Actualizar</button>
+            <button type="submit" (click)="registrar()" class="btn btn-info">Registrar Receta</button>
+            <!--<button  type="submit" (click)="actualizarReceta()"
+                class="btn btn-warning">Actualizar</button>-->
             <button type="submit" (click)="volverLista()" class="btn btn-success">Volver Lista</button>
             <br><br>
         </div>

@@ -18,7 +18,7 @@ export class RecetaService {
       }),
       params: new HttpParams()//.append("estado",true)
     }
-    return this._httpCliente.get(this.urlBase + "receta", httpOption);
+    return this._httpCliente.get(this.urlBase + "receta/", httpOption);
   }
 
   createReceta(receta: Receta): Observable<any> {
@@ -32,10 +32,11 @@ export class RecetaService {
 
       producs.push(nuevoProducto);
     }
-    let nombre = receta.nombre;
-    let precio = receta.precio;
-    let alergenos = receta.alergenos;
-    let descripcion = receta.descripcion;
+
+    let nombre: string = receta.nombre;
+    let precio: number = receta.precio;
+    let alergenos: string = receta.alergenos;
+    let descripcion: string = receta.descripcion;
 
     console.log(producs);
     console.log(nombre);
@@ -55,7 +56,7 @@ export class RecetaService {
       precio,
       //productos,
       alergenos,
-     // impuestos,
+      // impuestos,
       descripcion
     };
     return this._httpCliente.post(this.urlBase + "receta/post", body, httpOption);
@@ -86,7 +87,7 @@ export class RecetaService {
       alergenos: receta.alergenos,
       //impuestos: receta.impuestos,
       descripcion: receta.descripcion,
-      productos:receta.productos,
+      //productos: receta.productos,
     };
     return this._httpCliente.put(this.urlBase + "receta/" + receta._id, body, httpOptions);
   }

@@ -9,6 +9,6 @@ export class Receta {
     obProducto: Producto[] = [];
     //impuestos!: number;
     descripcion!: string;
-    productos!: Producto;
+    //productos!: Producto;
     cantidad!: number;
 }
