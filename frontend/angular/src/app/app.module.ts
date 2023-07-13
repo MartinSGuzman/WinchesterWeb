@@ -23,6 +23,7 @@ import { ItemsFormComponent } from './components/items-form/items-form.component
 import { ProductoFormComponent } from './components/producto-form/producto-form.component';
 import { ProductoComponent } from './components/producto/producto.component';
 import { DataTablesModule } from 'angular-datatables';
+import { DataTableComponent } from './components/data-table/data-table.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { DataTablesModule } from 'angular-datatables';
     ItemsComponent,
     ItemsFormComponent,
     ProductoFormComponent,
-    ProductoComponent
+    ProductoComponent,
+    DataTableComponent
   ],
   imports: [
     BrowserModule,
