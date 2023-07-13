@@ -31,6 +31,7 @@
 
                             <option value="1" disabled selected>Seleccione que categoria requiere</option>
                             <option value="Entrada">Entrada</option>
+                            <option value="Entrada">Bebida</option>
                             <option value="Plato Principal">Plato Principal</option>
                             <option value="Postre">Postre</option>
                             <option value="Cubierto">Cubierto</option>
@@ -80,6 +81,17 @@
                         <div *ngIf="stock.invalid && (stock.dirty || stock.touched)" class="alert alert-danger">
                             <div *ngIf="stock.errors?.['required']">
                                 Stock es requerido.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <label for="precio" class="form-label" style="font-weight: bold;">precio</label>
+                        <input type="number" class="form-control form-control-sm" placeholder="Ingrese precio" id="stock"
+                            [(ngModel)]="items.precio" name="precio" required #precio="ngModel">
+
+                        <div *ngIf="precio.invalid && (precio.dirty || precio.touched)" class="alert alert-danger">
+                            <div *ngIf="precio.errors?.['required']">
+                                precio es requerido.
                             </div>
                         </div>
                     </div>

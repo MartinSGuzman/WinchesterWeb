@@ -23,7 +23,6 @@ export class ItemsService {
 
   createItem(items: Items): Observable<any> {
     let nombre = items.nombre;
-    let costo = items.costo;
     let precio = items.precio;
     let categoria = items.categoria;
     let descripcion = items.descripcion;
@@ -38,7 +37,6 @@ export class ItemsService {
     }
     const body = {
       nombre,
-      costo,
       precio,
       categoria,
       descripcion,
@@ -69,7 +67,6 @@ export class ItemsService {
     const body = {
       _id: items._id,
       nombre: items.nombre,
-      costo: items.costo,
       precio: items.precio,
       categoria: items.categoria,
       descripcion: items.descripcion,
