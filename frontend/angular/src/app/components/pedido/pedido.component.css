@@ -7,3 +7,11 @@ h3{
 .imangen {
 	width: 100%;
 }
+
+.row-terminado {
+    background-color: #28a745; /* Color verde para el estado "Terminado" */
+  }
+  
+  .row-en-progreso {
+    background-color: #007bff; /* Color azul para el estado "En Progreso" */
+  }

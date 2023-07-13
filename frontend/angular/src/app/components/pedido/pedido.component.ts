@@ -114,4 +114,32 @@ export class PedidoComponent implements OnInit {
       }
     );
   }
+
+  eliminarPedido(id:string){
+    this.pedidoService.deletePedido(id).subscribe
+    (
+      resp=>{
+        console.log(resp);
+      },error=>{
+        console.log(error);
+      }
+    )
+    this.getPedidos();
+  }
+
+  public cambiarEstado(pedido: any, estado: string) {
+    pedido.estado = estado;
+  }
+
+  getEstadoColor(estado: string): string {
+    if (estado === 'Terminado') {
+      return 'green'; // Color verde para el estado "Terminado"
+    } else if (estado === 'En Progreso') {
+      return 'blue'; // Color azul para el estado "En Progreso"
+    } else if (estado === 'Eliminar') {
+      return 'red'; // Color rojo para el estado "Eliminar"
+    } else {
+      return ''; // Color transparente si el estado no coincide con ninguno de los anteriores
+    }
+  }
 }

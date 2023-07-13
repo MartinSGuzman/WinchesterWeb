@@ -1,49 +1,63 @@
 
   <section class="imangen" style="background-image: url('https://png.pngtree.com/thumb_back/fh260/background/20230617/pngtree-rectangular-shelf-in-light-brown-tones-a-3d-rendered-background-perfect-image_3639918.png');">
     <br>
-    <div class="row">
-      <div class="col-6">
-        <label for="receta">Receta</label>
-        <select name="receta" [(ngModel)]="recetaSeleccionada">
-          <option *ngFor="let receta of todasRecetas" [ngValue]="receta">{{ receta.nombre }}</option>
-        </select>
-        <br><br>
-        <label for="cantidadReceta">Cantidad</label>
-        <input type="number" name="cantidadReceta" [(ngModel)]="cantidadReceta" />
-        <button class="btn btn-dark" (click)="agregarRecetaAlPedido()">Agregar al pedido</button>
-      </div>
-      <div class="col-6">
-        <label for="producto">Producto</label>
-        <select name="producto" [(ngModel)]="productoSeleccionado">
-          <option *ngFor="let producto of todosProductos" [ngValue]="producto">{{ producto.nombre }}</option>
-        </select>
-        <br><br>
-        <label for="cantidadProducto">Cantidad</label>
-        <input type="number" name="cantidadProducto" [(ngModel)]="cantidadProducto" />
-        <button class="btn btn-dark" (click)="agregarProductoAlPedido()">Agregar al pedido</button>
-      </div>
-      <div class="text-center">
-        <label for="nota">Nota</label>
-        <input type="text" name="nota" id="nota" [(ngModel)]="nota">
-      </div>
-
-      <div class="col-6">
-        <div class="letra">
-          <h3 class="display-4">Pedido 📝🥗🔪</h3>
+    <div class="container alert alert-secondary">
+      <div class="row">
+        <div class="col-6">
+          <h4 class="mb-3">Receta</h4>
+          <div class="form-group">
+            <label for="receta">Receta</label>
+            <select class="form-control" name="receta" [(ngModel)]="recetaSeleccionada">
+              <option *ngFor="let receta of todasRecetas" [ngValue]="receta">{{ receta.nombre }}</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="cantidadReceta">Cantidad</label>
+            <input class="form-control" type="number" name="cantidadReceta" [(ngModel)]="cantidadReceta" />
+          </div>
+          <button class="btn btn-dark" (click)="agregarRecetaAlPedido()">Agregar al pedido</button>
         </div>
-        <ul>
-          <li *ngFor="let receta of pedidoNuevo.obReceta">
-            {{ receta.nombre }} - Cantidad: <input type="number" [(ngModel)]="receta.cantidad" />
-          </li>
-          <li *ngFor="let producto of pedidoNuevo.obItemsExtra">
-            {{ producto.nombre }} - Cantidad: <input type="number" [(ngModel)]="producto.cantidad" />
-          </li>
-        </ul>
+        <div class="col-6 alert alert-succes">
+          <h4 class="mb-3">Extras</h4>
+          <div class="form-group">
+            <label for="producto">Producto</label>
+            <select class="form-control" name="producto" [(ngModel)]="productoSeleccionado">
+              <option *ngFor="let producto of todosProductos" [ngValue]="producto">{{ producto.nombre }}</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="cantidadProducto">Cantidad</label>
+            <input class="form-control" type="number" name="cantidadProducto" [(ngModel)]="cantidadProducto" />
+          </div>
+          <button class="btn btn-dark" (click)="agregarProductoAlPedido()">Agregar al pedido</button>
+        </div>
+        <div class="col-12 mt-4">
+          <h4 class="mb-3">Nota</h4>
+          <div class="form-group">
+            <label for="nota">Nota</label>
+            <input class="form-control" type="text" name="nota" id="nota" [(ngModel)]="nota">
+          </div>
+        </div>
       </div>
-      <div>
-        <button class="btn btn-success" (click)=setPedido()>Confirmar Pedido</button>
-        <button class="btn btn-success offset-1" (click)=listar()>Lista Pedido</button>
-        <br><br>
+      <div class="row">
+        <h3 class="text-center">Pedido</h3>
+        <div class="col-12">
+           
+          <ul class="list-group">
+            <li class="list-group-item" *ngFor="let receta of pedidoNuevo.obReceta">
+              {{ receta.nombre }} - Cantidad: <input class="form-control" type="number" [(ngModel)]="receta.cantidad" />
+            </li>
+            <li class="list-group-item" *ngFor="let producto of pedidoNuevo.obItemsExtra">
+              {{ producto.nombre }} - Cantidad: <input class="form-control" type="number" [(ngModel)]="producto.cantidad" />
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="row mt-4">
+        <div class="col-12">
+          <button class="btn btn-dark" (click)="setPedido()">Confirmar Pedido</button>
+          <button class="btn btn-dark offset-1" (click)="listar()">Lista Pedido</button>
+        </div>
       </div>
     </div>
   </section>

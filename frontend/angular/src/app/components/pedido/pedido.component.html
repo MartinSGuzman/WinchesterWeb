@@ -15,11 +15,12 @@
           <th scope="col">Platos</th>
           <th scope="col">Nota</th>
           <th scope="col">Estado</th>
-          <th scope="col">Secundarios</th>
+          <th scope="col">Extras</th>
+          <th scope="col">Opciones</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let pedido of arrayPedidos; let i = index">
+        <tr *ngFor="let pedido of arrayPedidos; let i = index" [class.row-en-progreso]="pedido.estado === 'En Progreso'" [class.row-eliminar]="pedido.estado === 'Eliminar'">
           <th scope="row">{{ i + 1 }}</th>
           <td>
             <ul>
@@ -27,11 +28,24 @@
             </ul>
           </td>
           <td>{{ pedido.nota }}</td>
-          <td>{{ pedido.estado }}</td>
+          <td [style.background-color]="getEstadoColor(pedido.estado)"><strong>{{ pedido.estado }}</strong></td>
           <td>
             <ul>
               <li *ngFor="let item of pedido.obItemsExtra">{{ item?.nombre }}</li>
             </ul>
+          </td>
+          <td>
+            <div class="btn-group" role="group">
+              <button type="button" class="btn btn-success" (click)="cambiarEstado(pedido, 'Terminado')">
+                <i class="bi bi-check"></i> Terminado
+              </button>
+              <button type="button" class="btn btn-primary ms-2" (click)="cambiarEstado(pedido, 'En Progreso')">
+                <i class="bi bi-pencil"></i> En Progreso
+              </button>
+              <button type="button" class="btn btn-danger ms-2" (click)="eliminarPedido(pedido._id)">
+                <i class="bi bi-trash"></i> Eliminar
+              </button>
+            </div>
           </td>
         </tr>
       </tbody>

@@ -10,8 +10,13 @@ h3{
     top: 5px;
     font-size: 40px;
     font-weight: bold;
-    background-color: rgba(2, 255, 255, 0.856);
+    background-color:salmon;
     width:50%;  
     font-style: italic;
     text-align: center;	
+    border-radius: 5px;
+}
+
+.cont{
+    background-color: salmon;
 }
