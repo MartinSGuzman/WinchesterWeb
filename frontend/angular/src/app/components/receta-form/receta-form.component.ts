@@ -86,7 +86,19 @@ export class RecetaFormComponent implements OnInit {
   }
 
   registrar() {
-    this.recetaService.createReceta(this.receta).subscribe(
+    const nuevaReceta: Receta = {
+      _id: this.recetaNuevo._id,
+      nombre: this.recetaNuevo.nombre,
+      alergenos: this.recetaNuevo.alergenos,
+      descripcion: this.recetaNuevo.descripcion,
+      obProducto: this.recetaNuevo.obProducto,
+      precio: this.recetaNuevo.precio,
+      producs: this.recetaNuevo.producs,
+      productos: this.recetaNuevo.productos,
+      cantidad: this.recetaNuevo.cantidad,
+    };
+
+    this.recetaService.createReceta(nuevaReceta).subscribe(
       (result: any) => {
         if (result.status == 1) {
           console.log(result.msg);

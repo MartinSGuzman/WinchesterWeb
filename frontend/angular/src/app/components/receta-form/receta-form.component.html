@@ -8,51 +8,54 @@
                 <br>
             </div>
             <button type="submit" (click)="volverLista()" class="btn btn-success">Volver Lista</button>
+           
+            <form class="p-3 container alert alert-danger" #recetaForm="ngForm">
+                <div class="row">
+                    <div class="col">
+                        <label for="nombre" class="form-label" style="font-weight: bold;">Nombre</label>
+                        <input type="text" class="form-control form-control-sm" placeholder="Ingrese Nombre" id="nombre"
+                            [(ngModel)]="receta.nombre" name="nombre" required #nombre="ngModel">
 
-            <form class="p-3" #recetaForm="ngForm">
-                <div class="mb-3">
-                    <label for="nombre" class="form-label" style="font-weight: bold;">Nombre</label>
-                    <input type="text" class="form-control form-control-sm" placeholder="Ingrese Nombre" id="nombre"
-                        [(ngModel)]="receta.nombre" name="nombre" required #nombre="ngModel">
+                        <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)" class="alert alert-danger">
+                            <div *ngIf="nombre.errors?.['required']">
+                                Nombre es requerido.
+                            </div>
+                        </div>
+                    </div>
 
-                    <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)" class="alert alert-danger">
-                        <div *ngIf="nombre.errors?.['required']">
-                            Nombre es requerido.
+                    <div class="col">
+                        <!--<label><input type="checkbox" id="cbox1" value="first_checkbox"> Este es mi primer checkbox</label><br>-->
+                        <label for="alergenos" class="form-label" style="font-weight: bold;">Tipo de
+                            Alergenos</label>
+                        <select v-model="selected" class="form-select" aria-label="Default select example"
+                            id="alergenos" [(ngModel)]="receta.alergenos" name="alergenos" required
+                            #alergenos="ngModel">
+
+                            <option value="1" disabled selected>Seleccione que alergenos requiere</option>
+                            <option value="Gluten">Gluten</option>
+                            <option value="Crustáceos">Crustáceos</option>
+                            <option value="Huevo">Huevo</option>
+                            <option value="Pescado">Pescado</option>
+                            <option value="Cacahuates">Cacahuates</option>
+                            <option value="Lacteos">Lacteos</option>
+                            <option value="Apio">Apio</option>
+                            <option value="Mostaza">Mostaza</option>
+                            <option value="Sulfitos">Sulfitos</option>
+                            <option value="Sésamo">Sésamo</option>
+                            <option value="Moluscos">Moluscos</option>
+                            <option value="Soja">Soja</option>
+                            <option value="Frutos Secos">Frutos Secos</option>
+                            <option value="Altramuz">Altramuz</option>
+                        </select>
+
+                        <div *ngIf="alergenos.invalid && (alergenos.dirty || alergenos.touched)"
+                            class="alert alert-danger">
+                            <div *ngIf="alergenos.errors?.['required']">
+                                Seleccione un alergenos es requerido.
+                            </div>
                         </div>
                     </div>
                 </div>
-
-                <div class="mb-3">
-                    <!--<label><input type="checkbox" id="cbox1" value="first_checkbox"> Este es mi primer checkbox</label><br>-->
-                    <label for="alergenos" class="form-label" style="font-weight: bold;">Tipo de
-                        Alergenos</label>
-                    <select v-model="selected" class="form-select" aria-label="Default select example" id="alergenos"
-                        [(ngModel)]="receta.alergenos" name="alergenos" required #alergenos="ngModel">
-
-                        <option value="1" disabled selected>Seleccione que alergenos requiere</option>
-                        <option value="Gluten">Gluten</option>
-                        <option value="Crustáceos">Crustáceos</option>
-                        <option value="Huevo">Huevo</option>
-                        <option value="Pescado">Pescado</option>
-                        <option value="Cacahuates">Cacahuates</option>
-                        <option value="Lacteos">Lacteos</option>
-                        <option value="Apio">Apio</option>
-                        <option value="Mostaza">Mostaza</option>
-                        <option value="Sulfitos">Sulfitos</option>
-                        <option value="Sésamo">Sésamo</option>
-                        <option value="Moluscos">Moluscos</option>
-                        <option value="Soja">Soja</option>
-                        <option value="Frutos Secos">Frutos Secos</option>
-                        <option value="Altramuz">Altramuz</option>
-                    </select>
-
-                    <div *ngIf="alergenos.invalid && (alergenos.dirty || alergenos.touched)" class="alert alert-danger">
-                        <div *ngIf="alergenos.errors?.['required']">
-                            Seleccione un alergenos es requerido.
-                        </div>
-                    </div>
-                </div>
-
                 <div class="form-group">
                     <label for="descripcion" class="form-label" style="font-weight: bold;">Descripcion:</label>
                     <textarea id="descripcion" type="text" class="form-control" placeholder="Ingrese Descripcion"
@@ -65,24 +68,28 @@
                         </div>
                     </div>
                 </div>
+                <br>
+                <div class="row">
+                    <div class="col">
+                        <label for="productos" class="form-label" style="font-weight: bold;">Producto</label>
+                        <select class="form-select" aria-label="Default select example"
+                            placeholder="Ingrese un Espectador" [(ngModel)]="productoSeleccionado" name="productos">
 
-                <div class="mb-3">
-                    <label for="productos" class="form-label" style="font-weight: bold;">Producto</label>
-                    <select class="form-select" aria-label="Default select example" placeholder="Ingrese un Espectador"
-                        [(ngModel)]="productoSeleccionado" name="productos" required #productos="ngModel">
-
-                        <option *ngFor="let productos of productosss" [ngValue]="productos">{{productos.nombre}}
-                        </option>
-                    </select>
-
-                    <div class="form-group">
+                            <option *ngFor="let productos of productosss" [ngValue]="productos">{{productos.nombre}}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="col">
                         <label for="cantidadProducto">Cantidad</label>
                         <input class="form-control" type="number" name="cantidadProducto"
                             [(ngModel)]="cantidadProducto" />
                     </div>
+                    <br><br>
+                    <button class="btn btn-dark  w-50" (click)="agregarProductoAlPedido()">Agregar al pedido</button>
                 </div>
 
-                <div class="mb-3">
+
+                <div class="col">
                     <label for="precio" class="form-label" style="font-weight: bold;">Precio</label>
                     <input type="number" class="form-control form-control-sm" placeholder="Ingrese precio" id="email"
                         [(ngModel)]="receta.precio" name="precio" required #precio="ngModel">
@@ -93,13 +100,6 @@
                         </div>
                     </div>
                 </div>
-
-                <button *ngIf="accion=='new'" type="submit" (click)="registrar()" class="btn btn-info"
-                    [disabled]="recetaForm.invalid">Registrar Receta</button>
-                <button *ngIf="accion=='update'" type="submit" (click)="actualizarReceta()"
-                    class="btn btn-warning">Actualizar</button>
-                <button type="submit" (click)="volverLista()" class="btn btn-success">Volver Lista</button>
-                <br><br>
             </form>
             <div class="row">
                 <h3 class="text-center">Guardar producto/s a Recetas 🥂🥗</h3>
@@ -113,6 +113,12 @@
                     </ul>
                 </div>
             </div>
+            <button *ngIf="accion=='new'" type="submit" (click)="registrar()" class="btn btn-info"
+                [disabled]="recetaForm.invalid">Registrar Receta</button>
+            <button *ngIf="accion=='update'" type="submit" (click)="actualizarReceta()"
+                class="btn btn-warning">Actualizar</button>
+            <button type="submit" (click)="volverLista()" class="btn btn-success">Volver Lista</button>
+            <br><br>
         </div>
     </div>
 </section>

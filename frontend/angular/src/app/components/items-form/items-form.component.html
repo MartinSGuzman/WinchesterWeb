@@ -9,19 +9,42 @@
             </div>
             <button type="submit" (click)="volverLista()" class="btn btn-dark">Volver Lista</button>
 
-            <form class="p-3" #itemsForm="ngForm">
-                <div class="mb-3">
-                    <label for="nombre" class="form-label" style="font-weight: bold;">Nombre</label>
-                    <input type="text" class="form-control form-control-sm" placeholder="Ingrese Nombre" id="nombre"
-                        [(ngModel)]="items.nombre" name="nombre" required #nombre="ngModel">
+            <form class="p-3 container alert alert-secondary" #itemsForm="ngForm">
+                <div class="row">
+                    <div class="col">
+                        <label for="nombre" class="form-label" style="font-weight: bold;">Nombre</label>
+                        <input type="text" class="form-control form-control-sm" placeholder="Ingrese Nombre" id="nombre"
+                            [(ngModel)]="items.nombre" name="nombre" required #nombre="ngModel">
 
-                    <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)" class="alert alert-danger">
-                        <div *ngIf="nombre.errors?.['required']">
-                            Nombre es requerido.
+                        <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)" class="alert alert-danger">
+                            <div *ngIf="nombre.errors?.['required']">
+                                Nombre es requerido.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <label for="categoria" class="form-label" style="font-weight: bold;">Tipo de
+                            Categoria</label>
+                        <select v-model="selected" class="form-select" aria-label="Default select example"
+                            id="categoria" [(ngModel)]="items.categoria" name="categoria" required #categoria="ngModel">
+
+                            <option value="1" disabled selected>Seleccione que categoria requiere</option>
+                            <option value="Entrada">Entrada</option>
+                            <option value="Plato Principal">Plato Principal</option>
+                            <option value="Postre">Postre</option>
+                            <option value="Cubierto">Cubierto</option>
+                            <option value="Pan">Pan</option>
+                        </select>
+
+                        <div *ngIf="categoria.invalid && (categoria.dirty || categoria.touched)"
+                            class="alert alert-danger">
+                            <div *ngIf="categoria.errors?.['required']">
+                                Seleccione un categoria es requerido.
+                            </div>
                         </div>
                     </div>
                 </div>
-
                 <div class="form-group">
                     <label for="descripcion" class="form-label" style="font-weight: bold;">Descripcion:</label>
                     <textarea id="descripcion" type="text" class="form-control" placeholder="Ingrese Descripcion"
@@ -35,51 +58,33 @@
                     </div>
                 </div>
 
-                <div class="mb-3">
-                    <label for="categoria" class="form-label" style="font-weight: bold;">Tipo de
-                        Categoria</label>
-                    <select v-model="selected" class="form-select" aria-label="Default select example" id="categoria"
-                        [(ngModel)]="items.categoria" name="categoria" required #categoria="ngModel">
+                <div class="row">
+                    <div class="col">
+                        <label for="proveedor" class="form-label" style="font-weight: bold;">Proveedor</label>
+                        <input type="text" class="form-control form-control-sm" placeholder="Ingrese proveedor"
+                            id="proveedor" [(ngModel)]="items.proveedor" name="proveedor" required #proveedor="ngModel">
 
-                        <option value="1" disabled selected>Seleccione que categoria requiere</option>
-                        <option value="Entrada">Entrada</option>
-                        <option value="Plato Principal">Plato Principal</option>
-                        <option value="Postre">Postre</option>
-                        <option value="Cubierto">Cubierto</option>
-                        <option value="Pan">Pan</option>
-                    </select>
+                        <div *ngIf="proveedor.invalid && (proveedor.dirty || proveedor.touched)"
+                            class="alert alert-danger">
+                            <div *ngIf="proveedor.errors?.['required']">
+                                Proveedor es requerido.
+                            </div>
+                        </div>
+                    </div>
 
-                    <div *ngIf="categoria.invalid && (categoria.dirty || categoria.touched)" class="alert alert-danger">
-                        <div *ngIf="categoria.errors?.['required']">
-                            Seleccione un categoria es requerido.
+                    <div class="col">
+                        <label for="stock" class="form-label" style="font-weight: bold;">Stock</label>
+                        <input type="number" class="form-control form-control-sm" placeholder="Ingrese stock" id="stock"
+                            [(ngModel)]="items.stock" name="stock" required #stock="ngModel">
+
+                        <div *ngIf="stock.invalid && (stock.dirty || stock.touched)" class="alert alert-danger">
+                            <div *ngIf="stock.errors?.['required']">
+                                Stock es requerido.
+                            </div>
                         </div>
                     </div>
                 </div>
-
-                <div class="mb-3">
-                    <label for="proveedor" class="form-label" style="font-weight: bold;">Proveedor</label>
-                    <input type="text" class="form-control form-control-sm" placeholder="Ingrese proveedor"
-                        id="proveedor" [(ngModel)]="items.proveedor" name="proveedor" required #proveedor="ngModel">
-
-                    <div *ngIf="proveedor.invalid && (proveedor.dirty || proveedor.touched)" class="alert alert-danger">
-                        <div *ngIf="proveedor.errors?.['required']">
-                            Proveedor es requerido.
-                        </div>
-                    </div>
-                </div>
-
-                <div class="mb-3">
-                    <label for="stock" class="form-label" style="font-weight: bold;">Stock</label>
-                    <input type="number" class="form-control form-control-sm" placeholder="Ingrese stock" id="stock"
-                        [(ngModel)]="items.stock" name="stock" required #stock="ngModel">
-
-                    <div *ngIf="stock.invalid && (stock.dirty || stock.touched)" class="alert alert-danger">
-                        <div *ngIf="stock.errors?.['required']">
-                            Stock es requerido.
-                        </div>
-                    </div>
-                </div>
-
+                <br>
                 <button *ngIf="accion=='new'" type="submit" (click)="registrar()" class="btn btn-dark"
                     [disabled]="itemsForm.invalid">Registrar Items</button>
                 <button *ngIf="accion=='update'" type="submit" (click)="actualizarItems()"

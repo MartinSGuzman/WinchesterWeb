@@ -13,6 +13,6 @@ const RecetaSchema = new Schema({
             cantidad: { type: Number, required: false }
         }
     ],
-    productos: { type: Schema.Types.ObjectId, ref: Producto, required: true },
+    //productos: { type: Schema.Types.ObjectId, ref: Producto, required: true },
 });
 module.exports = mongoose.models.Receta || mongoose.model('Receta', RecetaSchema);

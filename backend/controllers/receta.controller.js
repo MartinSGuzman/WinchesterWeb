@@ -5,7 +5,7 @@ const Producto = require ('../models/producto')
 const RecetaCtrl = {}
 
 RecetaCtrl.getRecetas = async (req, res) => {
-    var recetas = await Receta.find().populate("productos");
+    var recetas = await Receta.find();
     res.json(recetas);
 }
 
@@ -25,7 +25,7 @@ RecetaCtrl.createReceta = async (req, res) => {
     }
 };
 RecetaCtrl.getReceta = async (req, res) => {
-    const receta = await Receta.findById(req.params.id).populate("productos");
+    const receta = await Receta.findById(req.params.id);
     res.json(receta);
 }
 RecetaCtrl.editReceta = async (req, res) => {

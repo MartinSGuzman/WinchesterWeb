@@ -24,24 +24,25 @@ export class RecetaService {
   createReceta(receta: Receta): Observable<any> {
 
     let producs: { produ: string, cantidad: number }[] = [];
-
     for (let i = 0; i < receta.obProducto.length; i++) {
-      let nuevaProducto = {
+      let nuevoProducto = {
         produ: receta.obProducto[i]._id,
         cantidad: receta.obProducto[i].cantidad
       };
 
-      producs.push(nuevaProducto);
+      producs.push(nuevoProducto);
     }
-
-    console.log(producs);
-
     let nombre = receta.nombre;
     let precio = receta.precio;
-    let productos = receta.productos;
-    //let impuestos = receta.impuestos;
     let alergenos = receta.alergenos;
     let descripcion = receta.descripcion;
+
+    console.log(producs);
+    console.log(nombre);
+    console.log(precio);
+    console.log(alergenos);
+    console.log(descripcion);
+
     let httpOption = {
       headers: new HttpHeaders({
         "Content-type": "application/json"
@@ -49,9 +50,10 @@ export class RecetaService {
       //params: new HttpParams()
     }
     const body = {
+      producs,
       nombre,
       precio,
-      productos,
+      //productos,
       alergenos,
      // impuestos,
       descripcion
