@@ -2,13 +2,14 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Pago } from '../models/pago';
+import { Pedido } from '../models/pedido';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PagoService {
 
-  urlBase: string = "http://localhost:3000/api/pago/";
+  urlBase: string = "http://localhost:3000/api/pago";
 
   constructor( private http: HttpClient) { }
 
@@ -46,7 +47,32 @@ export class PagoService {
       ),
       params: new HttpParams()
     }
-    let body = JSON.stringify(pago);
+    let total = pago.total;
+    let metodo = pago.metodo;
+    let nota = pago.nota;
+    let horario = pago.horario;
+    let fecha = pago.fecha;
+    let pedido = pago.pedido;
+    let nombreCliente = pago.nombreCliente;
+    let mesa = pago.mesa;
+    console.log(total);
+    console.log(metodo);
+    console.log(nota); 
+    console.log(horario);
+    console.log(fecha);
+    console.log(pedido);
+
+    const body = {
+      
+      total,
+      metodo, 
+      nota ,
+      horario, 
+      fecha ,
+      pedido,
+      nombreCliente,
+      mesa,
+    };
     return this.http.post(this.urlBase +"/post" ,body, httpOption);
   }
 
@@ -60,13 +86,14 @@ export class PagoService {
     };
     const body = {
       _id: pago._id,
-      monto: pago.monto,
-      receta: pago.receta,
-      items: pago.items,
+      total: pago.total,
       metodo: pago.metodo,
       nota: pago.nota,
       horario:pago.horario,
       fecha:pago.fecha,
+      pedido:pago.pedido,
+      nombreCliente:pago.nombreCliente,
+      mesa:pago.mesa
     };
     return this.http.put(this.urlBase+ ""+ pago._id, body, httpOptions);
   }
@@ -78,7 +105,7 @@ export class PagoService {
       }),
       params: new HttpParams()
     }
-    return this.http.delete(this.urlBase + "" + id, httpOption);
+    return this.http.delete(this.urlBase + "/" + id, httpOption);
   }
 
   // eliminarPago(id:string):Observable<any>{

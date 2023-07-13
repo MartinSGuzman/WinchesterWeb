@@ -1,4 +1,6 @@
 
+  
+  
   <section class="imangen" style="background-image: url('https://png.pngtree.com/thumb_back/fh260/background/20230617/pngtree-rectangular-shelf-in-light-brown-tones-a-3d-rendered-background-perfect-image_3639918.png');">
     <div class="bg-primary border-5 text-center">
       <h2 class="text-white "> 💵💰 Formulario Pago 💵💰</h2>
@@ -11,18 +13,12 @@
         </div>
       </div>
 
-      <div class="col-md-4 position-relative">
-        <label for="validationTooltip01" class="form-label">Receta</label>
-        <input type="text" class="form-control" id="validationTooltip01" value="" required [(ngModel)]="pago.receta"
-          name="receta">
+      <div class="">
+        <select class="form-select" aria-label="Default select example" [(ngModel)]="pedidoSeleccionado" name="pedidoSeleccionado">
+          <option selected disabled value="">Elegir...</option>
+          <option *ngFor="let pedido of pedidos" [ngValue]="pedido">{{pedido.nombreCliente}} de la mesa {{pedido.mesa}}</option>
+        </select>
       </div>
-
-      <div class="col-md-4 position-relative">
-        <label for="validationTooltip01" class="form-label">Items</label>
-        <input type="text" class="form-control" id="validationTooltip01" value="" required [(ngModel)]="pago.items"
-          name="items">
-      </div>
-
 
       <div class="col-md-3 position-relative">
         <label for="validationTooltip04" class="form-label">Metodo de Pago</label>
@@ -49,9 +45,8 @@
 
 
       <div class="col-md-4 position-relative">
-        <label for="validationTooltip02" class="form-label">Monto</label>
-        <input type="number" class="form-control" id="validationTooltip02" value="Otto" required
-          [(ngModel)]="pago.monto" name="monto">
+        <label for="validationTooltip02" class="form-label">Monto: {{pago.pedido | json}}</label>
+        
       </div>
 
       <div class="col-12">

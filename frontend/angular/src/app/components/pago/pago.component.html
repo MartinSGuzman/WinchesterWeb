@@ -21,27 +21,42 @@
     <br><br>
     <button type="button" class="btn btn-primary mb-4" (click)="agregarPago()" style="margin-left: 50px;">AGREGAR NUEVO PAGO</button>
 
-    <div class="row row-cols-1 row-cols-md-3 g-4 text-center mb-3" style="padding: 3%;">
-      <div class="col col-md-6 col-xl-4" *ngFor="let pag of pagos">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">Monto: {{pag.monto}}</h5>
-            <p class="card-text">Metodo de Pago: {{pag.metodo}}</p>
-            <p class="card-text">Hora: {{pag.horario}}</p>
-            <p class="card-text">Fecha: {{pag.fecha}}</p>
-            <p class="card-text">Receta: {{pag.receta}}</p>
-            <p class="card-text">Items: {{pag.items}}</p>
-            <p class="card-text">Nota: {{pag.nota}}</p>
+    
+
+    <table class="table table-sm table-bordered table-striped">
+      <thead class="table-dark">
+        <tr class="text-center">
+          <th scope="col">monto</th>
+          <th scope="col">Metodo</th>
+          <th scope="col">fecha</th>
+          <th scope="col">hora</th>
+          <th scope="col">cliente</th>
+          <th scope="col">Mesa</th>
+          <th scope="col">nota</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let pag of pagos">
+          <td>{{pag.total}}</td>
+          <td>{{pag.metodo}}</td>
+          <td>{{pag.horario}}</td>
+          <td> {{pag.fecha}}</td>
+          <td>{{pag.nombreCliente}}</td>
+          <td> {{pag.mesa}}</td>
+          <td>
             <button type="button" class="btn btn-primary " (click)="modificarPago(pag)">Modificar</button>
             <button type="button" class="btn btn-primary offset-1" (click)="eliminarPago(pag)">Eliminar</button>
-          </div>
-        </div>
-      </div>
-
-    </div>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="7"></td>
+        </tr>
+      </tbody>
+    </table>
     <img style="padding: 3%;" src="https://chart.googleapis.com/chart?cht=bhg&chs=400x180&chd=t:{{cont}},{{cred}},{{deb}}&chxl=1:|Debito|Credito|Contado&chxt=x,y&chco=0072c6|ef3886|ff9900&chtt=Pagos:+Credito,+Contado+y+Debito
       " alt="">
 
     <br><br>
+    <app-data-table></app-data-table>
   </section>
-  <app-data-table></app-data-table>
+  

@@ -3,11 +3,12 @@ import { Receta } from "./receta";
 
 export class Pago {
     _id!:string;
-    monto!: number;
-    receta!:string;
-    items!:string;
+    total!: number;
     metodo!:string;
     nota!:string;
     horario!:string;
     fecha!:string;
+    pedido!:string;
+    nombreCliente!:string;
+    mesa!:string;
 }

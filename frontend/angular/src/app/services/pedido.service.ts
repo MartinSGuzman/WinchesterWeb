@@ -25,6 +25,19 @@ export class PedidoService {
     return this.http.get(this.urlBase + "pedido/" ,httpOption);
   }
 
+  getPedido(id:string): Observable<any> {
+    let httpOption = {
+      headers: new HttpHeaders(
+        {
+
+        }
+      ),
+      params: new HttpParams()
+    }
+    return this.http.get(this.urlBase + "pedido/"+id ,httpOption);
+  }
+  
+
   public getReceta(id: string): Observable<any> {
     let httpOption = {
       headers: new HttpHeaders({

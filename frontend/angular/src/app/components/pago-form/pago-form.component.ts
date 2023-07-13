@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Pago } from 'src/app/models/pago';
+import { Pedido } from 'src/app/models/pedido';
 import { Receta } from 'src/app/models/receta';
 import { PagoService } from 'src/app/services/pago.service';
+import { PedidoService } from 'src/app/services/pedido.service';
 import { RecetaService } from 'src/app/services/receta.service';
 
 @Component({
@@ -16,18 +18,17 @@ export class PagoFormComponent implements OnInit {
   accion:string="";
   recetas:Array<Receta>;
   band: boolean = false;
-
-  monto1!:number;
-  monto2!:number;
-  cant1!:number;
-  cant2!:number;
-  montoTotal!:number;
+  pedidos!:Array<Pedido>;
+  pedidoSeleccionado!:Pedido;
+  
 
   constructor(private activateRouted : ActivatedRoute,
               private pagoServicio: PagoService,
               private recetaService : RecetaService,
-              private router: Router) {
+              private router: Router,
+              private pedidoService: PedidoService) {
                 this.pago = new Pago();
+                this.pedidoSeleccionado = new Pedido();
                 this.recetas = new Array<Receta>();
                }
 
@@ -36,6 +37,7 @@ export class PagoFormComponent implements OnInit {
       if (params['id']== '0'){
         this.accion = "new";
         this.cargarReceta();
+        this.cargarPedido();
       }else{
         this.accion = "update";
         this.cargarPagos();
@@ -44,6 +46,14 @@ export class PagoFormComponent implements OnInit {
       }
     });
 
+  }
+
+  cargarPedido(){
+    this.pedidoService.getPedidos().subscribe(
+      result=>{
+        this.pedidos = Object.values(result);
+      }
+    )
   }
 
   cargarReceta(){
@@ -81,11 +91,19 @@ export class PagoFormComponent implements OnInit {
       }
     )
   }
+  total!:number;
 
   guardarPago(){
+    console.log(this.pedidoSeleccionado);
+    this.pago.pedido = this.pedidoSeleccionado._id;
+    this.pago.total = this.pedidoSeleccionado.total;
+    this.pago.nombreCliente = this.pedidoSeleccionado.nombreCliente;
+    this.pago.mesa = this.pedidoSeleccionado.mesa;
     if(confirm("DESEA AGREGAR EL PAGO?")){
+      console.log(this.pago)
       this.pagoServicio.crearPago(this.pago).subscribe(
         result=>{
+
           if(result.status == 1){
             alert(result.msg);
             this.router.navigate(["pago"])

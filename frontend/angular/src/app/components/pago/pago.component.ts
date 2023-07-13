@@ -31,6 +31,7 @@ export class PagoComponent implements OnInit {
     this.pagoService.getPagos().subscribe(
       result=>{
         this.pagos = Object.values(result);
+        console.log(this.pagos)
          this.pagos.forEach(pagos => {
            if (pagos.metodo == 'Contado'){
              this.cont = this.cont + 1;
@@ -60,8 +61,10 @@ export class PagoComponent implements OnInit {
     )
   }
 
+
   
    cargarPagos(){
+    
      this.pagoService.getPagos().subscribe(
       result=>{
         this.pagos = Object.values(result);
