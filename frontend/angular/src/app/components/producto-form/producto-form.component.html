@@ -3,19 +3,18 @@
   <div class="row justify-content-center">
     <div class="col-lg-6">
       <br>
-      <h3 style="background-color: black; color: aliceblue;" class="text-center">🥘🥣🧼Ingresar Producto 🥘🥣🧼
+      <h3 style="background-color: rgb(32, 32, 32); color: aliceblue;" class="text-center">🥘🥣🧼Ingresar Producto 🥘🥣🧼
       </h3>
-      <form class="container alert alert-info">
-        <div class="row">
+      <form class="container p-5" style="background-color:rgb(219, 184, 132);">
+        <div class="row mb-4">
           <div class="col">
             <label>Nombre</label>
-            <input type="text" class="form-control form-control-sm" name="nombre" placeholder="Ingrese Nombre"
-              id="nombre" [(ngModel)]="producto.nombre" name="nombre" required #nombre="ngModel">
+            <input type="text" class="form-control form-control-lg" name="nombre" placeholder="Ingrese Nombre" id="nombre" [(ngModel)]="producto.nombre" name="nombre" required #nombre="ngModel">
           </div>
-
+      
           <div class="col">
             <label for="categoria">Categoría</label>
-            <select name="categoria" [(ngModel)]="producto.categoria" class="form-control" id="categoria">
+            <select name="categoria" [(ngModel)]="producto.categoria" class="form-control form-control-lg" id="categoria">
               <option disabled>elija</option>
               <option value="limpieza">Limpieza</option>
               <option value="verduras">Verduras</option>
@@ -23,38 +22,39 @@
             </select>
           </div>
         </div>
-        <div class="row">
+        <div class="row mb-4">
           <div class="col">
             <label for="tipo">Tipo</label>
-            <input name="tipo" [(ngModel)]="producto.tipo" type="text" class="form-control" id="tipo"
-              placeholder="Ingrese el tipo">
+            <input name="tipo" [(ngModel)]="producto.tipo" type="text" class="form-control form-control-lg" id="tipo" placeholder="Ingrese el tipo">
           </div>
-
+      
           <div class="col">
             <label for="costo">Costo</label>
-            <input name="costo" [(ngModel)]="producto.costo" type="number" class="form-control" id="costo"
-              placeholder="Ingrese el costo">
+            <input name="costo" [(ngModel)]="producto.costo" type="number" class="form-control form-control-lg" id="costo" placeholder="Ingrese el costo">
+          </div>
+        </div>
+        <div class="row mb-4">
+          <div class="col">
+            <label for="proveedor">Proveedor</label>
+            <input name="proveedor" [(ngModel)]="producto.proveedor" type="text" class="form-control form-control-lg" id="proveedor" placeholder="Ingrese el proveedor">
+          </div>
+      
+          <div class="col">
+            <label for="stock">Stock</label>
+            <input name="stock" [(ngModel)]="producto.stock" type="number" class="form-control form-control-lg" id="stock" placeholder="Ingrese el stock">
           </div>
         </div>
         <div class="row">
-          <div class="col">
-            <label for="proveedor">Proveedor</label>
-            <input name="proveedor" [(ngModel)]="producto.proveedor" type="text" class="form-control" id="proveedor"
-              placeholder="Ingrese el proveedor">
-          </div>
-
-          <div class="col">
-            <label for="stock">Stock</label>
-            <input name="stock" [(ngModel)]="producto.stock" type="number" class="form-control" id="stock"
-              placeholder="Ingrese el stock">
+          <div class="col text-center">
+            <button (click)="registrar()" type="submit" class="btn btn-dark btn-lg">Registrar</button>
           </div>
         </div>
-        <br>
-        <div class="text-center">
-          <button (click)="registrar()" type="submit" class="btn btn-primary">registrar</button>
+        <div class="row  mt-5 ">
+          <div class="col text-center">
+            <button (click)="volverLista()" type="submit" class="btn btn-dark btn-lg">Volver a la lista</button>
+          </div>
         </div>
-        <button (click)="volverLista()" type="submit" class="btn btn-primary">Volver lista</button>
       </form>
-    </div>
+          </div>
   </div>
 </section>
