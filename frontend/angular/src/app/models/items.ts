@@ -6,4 +6,5 @@ export class Items {
     descripcion!: string;
     proveedor!: string;
     stock!: number;
+    cantidad!:number;
 }

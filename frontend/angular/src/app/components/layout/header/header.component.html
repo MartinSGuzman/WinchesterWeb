@@ -21,7 +21,7 @@
                 <li class="nav-item" *ngIf="esAdmin">
                   <a class="nav-link" [routerLink]="['pago']">Pago</a>
                 </li>
-                <li class="nav-item" *ngIf="esMozo || esAdmin">
+                <li class="nav-item" *ngIf="esMozo || esAdmin || esCocinero">
                   <a class="nav-link" [routerLink]="['pedidos']">Pedidos</a>
                 </li>
                 <li class="nav-item" *ngIf="esCocinero || esAdmin">

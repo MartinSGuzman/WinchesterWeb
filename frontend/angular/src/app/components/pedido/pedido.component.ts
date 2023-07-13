@@ -6,6 +6,7 @@ import { RecetaService } from 'src/app/services/receta.service';
 import { forkJoin, Observable } from 'rxjs';
 import { Receta } from 'src/app/models/receta';
 import { Router } from '@angular/router';
+import { ItemsService } from 'src/app/services/items.service';
 
 @Component({
   selector: 'app-pedido',
@@ -17,7 +18,8 @@ export class PedidoComponent implements OnInit {
     public router: Router,
     public pedidoService: PedidoService,
     public recetaService: RecetaService,
-    public productoService: ProductoService
+    public productoService: ProductoService,
+    public ItemsService: ItemsService
   ) {}
 
   ngOnInit(): void {
@@ -30,7 +32,7 @@ export class PedidoComponent implements OnInit {
     this.pedidoService.getPedidos().subscribe(
       (response: Pedido[]) => {
         this.arrayPedidos = response;
-        console.log(this.arrayPedidos);
+        console.log(response[0].total);
         this.agregarRecetasPedido();
       },
       error => {
@@ -92,8 +94,10 @@ export class PedidoComponent implements OnInit {
 
       if (pedido.items && pedido.items.length > 0) {
         pedido.items.forEach(item => {
-          const id = item.item; // Obtener el valor del id desde la propiedad item
-          const observable: Observable<any> = this.productoService.getProducto(id);
+          console.log('item:', item);
+          const id = item.item; 
+          console.log(id);// Obtener el valor del id desde la propiedad item
+          const observable: Observable<any> = this.ItemsService.getItem(id);
           observables.push(observable);
         });
       }

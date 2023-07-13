@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { totalmem } from 'os';
+import { Items } from 'src/app/models/items';
 import { Pedido } from 'src/app/models/pedido';
 import { Producto } from 'src/app/models/producto';
 import { Receta } from 'src/app/models/receta';
+import { ItemsService } from 'src/app/services/items.service';
 import { PedidoService } from 'src/app/services/pedido.service';
 import { ProductoService } from 'src/app/services/producto.service';
 import { RecetaService } from 'src/app/services/receta.service';
@@ -18,6 +21,7 @@ export class PedidoFormComponent implements OnInit {
     public recetasService: RecetaService,
     public productoService: ProductoService,
     public pedidoService: PedidoService,
+    public itemsExtraService: ItemsService,
     private router: Router,
   ) { }
 
@@ -27,13 +31,14 @@ export class PedidoFormComponent implements OnInit {
   }
 
   todasRecetas: Receta[] = [];
-  todosProductos: Producto[] = [];
+  todosItems: Items[] = [];
   recetaSeleccionada: Receta | null = null;
-  productoSeleccionado: Producto | null = null;
+  ItemSeleccionado: Items | null = null;
   pedidoNuevo: Pedido = new Pedido();
   cantidadReceta: number | null = null;
-  cantidadProducto: number | null = null;
+  cantidadItem: number | null = null;
   nota!:string;
+  totalCalculado!:number;
 
   public getRecetas() {
     this.recetasService.getRecetas().subscribe(
@@ -47,9 +52,9 @@ export class PedidoFormComponent implements OnInit {
   }
 
   public getProductos() {
-    this.productoService.getProductos().subscribe(
+    this.itemsExtraService.getItems().subscribe(
       resp => {
-        this.todosProductos = resp;
+        this.todosItems = resp;
       },
       error => {
         console.log('No hay productos');
@@ -70,19 +75,27 @@ export class PedidoFormComponent implements OnInit {
     }
   }
   
-  public agregarProductoAlPedido() {
-    if (this.productoSeleccionado && this.cantidadProducto) {
-      const productoConCantidad: Producto = { ...this.productoSeleccionado };
-      productoConCantidad.cantidad = this.cantidadProducto;
-      this.pedidoNuevo.obItemsExtra.push(productoConCantidad);
-      this.pedidoNuevo.items.push({ item: this.productoSeleccionado._id, cantidad: this.cantidadProducto });
+  public agregarItemsPedido() {
+    if (this.ItemSeleccionado && this.cantidadItem) {
+      const ItemConCantidad: Items = { ...this.ItemSeleccionado };
+      ItemConCantidad.cantidad = this.cantidadItem;
+      this.pedidoNuevo.obItemsExtra.push(ItemConCantidad);
+      this.pedidoNuevo.items.push({ item: this.ItemSeleccionado._id, cantidad: this.cantidadItem });
       // Restablecer los valores
-      this.productoSeleccionado = null;
-      this.cantidadProducto = null;
+      this.ItemSeleccionado = null;
+      this.cantidadItem = null;
     }
   }
 
+  public calcularTotal(): number {
+    const totalPedido = this.pedidoNuevo.obReceta.reduce((total, receta) => total + (receta.precio * receta.cantidad), 0);
+    const totalItemsExtra = this.pedidoNuevo.obItemsExtra.reduce((total, item) => total + (item.precio * item.cantidad), 0);
+    return totalPedido + totalItemsExtra;
+  }
+
   public setPedido() {
+    this.totalCalculado = this.calcularTotal();
+    console.log(this.totalCalculado);
     const nuevoPedido: Pedido = {
       _id: this.pedidoNuevo._id,
       recetas: this.pedidoNuevo.recetas,
@@ -92,7 +105,8 @@ export class PedidoFormComponent implements OnInit {
       nota: this.pedidoNuevo.nota,
       estado: "pendiente",
       horario: this.pedidoNuevo.horario,
-      fecha: this.pedidoNuevo.fecha
+      fecha: this.pedidoNuevo.fecha,
+      total: this.totalCalculado
     };
     
     // Enviar el nuevo pedido al backend

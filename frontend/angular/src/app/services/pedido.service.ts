@@ -51,7 +51,7 @@ export class PedidoService {
     }
 
     let nota: string = pedido.nota;
-
+    let total: number = pedido.total;
 
     let items: { item: string, cantidad: number }[] = [];
     for (let i = 0; i < pedido.obItemsExtra.length; i++) {
@@ -86,7 +86,8 @@ export class PedidoService {
       nota,
       estado,
       horario,
-      fecha
+      fecha,
+      total
     };
 
     return this.http.post(this.urlBase + 'pedido/post', body, httpOptions);
