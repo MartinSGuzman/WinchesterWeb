@@ -21,7 +21,9 @@ const PedidoSchema = new Schema({
     estado: { type: String, required: true },
     horario: { type: String, required: true },
     fecha: { type: Date, required: true },
-    total:{type: Number, required:true}
+    total:{type: Number, required:true},
+    nombreCliente: {type: String, required:true},
+    mesa: {type: String, required:true}
   });
 
 module.exports = mongoose.models.Pedido || mongoose.model('Pedido', PedidoSchema);

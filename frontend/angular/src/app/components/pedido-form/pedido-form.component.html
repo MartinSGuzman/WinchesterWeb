@@ -6,6 +6,14 @@
         <div class="col-6">
           <h4 class="mb-3">Receta</h4>
           <div class="form-group">
+            <div class="form-group">
+              <label for="nombreCliente">Pedido a nombre de: </label>
+              <input class="form-control" type="text" name="nombreCliente" [(ngModel)]="nombreCliente" />
+            </div>
+            <div class="form-group">
+              <label for="mesa">Mesa Numero: </label>
+              <input class="form-control" type="text" name="mesa" [(ngModel)]="mesa" />
+            </div>
             <label for="receta">Receta</label>
             <select class="form-control" name="receta" [(ngModel)]="recetaSeleccionada">
               <option *ngFor="let receta of todasRecetas" [ngValue]="receta">{{ receta.nombre }}</option>

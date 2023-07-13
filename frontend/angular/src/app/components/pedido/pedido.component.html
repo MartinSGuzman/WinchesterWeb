@@ -17,6 +17,8 @@
           <th scope="col">Estado</th>
           <th scope="col">Extras</th>
           <th scope="col">Precio Total</th>
+          <th scope="col">Mesa</th>
+          <th scope="col">Cliente</th>
           <th scope="col">Opciones</th>
         </tr>
       </thead>
@@ -29,13 +31,16 @@
             </ul>
           </td>
           <td>{{ pedido.nota }}</td>
+          
           <td [style.background-color]="getEstadoColor(pedido.estado)"><strong>{{ pedido.estado }}</strong></td>
           <td>
             <ul>
               <li *ngFor="let item of pedido.obItemsExtra">{{ item?.nombre }}</li>
             </ul>
           </td>
-          <td>$ {{ pedido.total}}</td>
+          <td>{{ pedido.total}}</td>
+          <td>{{ pedido.mesa}}</td>
+          <td>{{ pedido.nombreCliente}}</td>
           <td>
             <div class="btn-group" role="group">
               <button type="button" class="btn btn-success" (click)="cambiarEstado(pedido, 'Terminado')">

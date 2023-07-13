@@ -13,4 +13,6 @@ export class Pedido {
   nota!: string;
   horario!: string;
   total!:number;
+  nombreCliente !: string;
+  mesa!: string;
 }

@@ -65,6 +65,8 @@ export class PedidoService {
     let estado = "Pendiente";
     let fecha = fechaActual.toISOString();
     let horario = fechaActual.toLocaleString('es-ES', { hour: '2-digit', minute: '2-digit' });
+    let nombreCliente = pedido.nombreCliente;
+    let mesa = pedido.mesa;
 
     console.log(recetas);
     console.log(items);
@@ -87,7 +89,9 @@ export class PedidoService {
       estado,
       horario,
       fecha,
-      total
+      total,
+      nombreCliente,
+      mesa
     };
 
     return this.http.post(this.urlBase + 'pedido/post', body, httpOptions);

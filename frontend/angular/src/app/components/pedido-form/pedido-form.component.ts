@@ -39,6 +39,8 @@ export class PedidoFormComponent implements OnInit {
   cantidadItem: number | null = null;
   nota!:string;
   totalCalculado!:number;
+  nombreCliente!:string;
+  mesa!:string;
 
   public getRecetas() {
     this.recetasService.getRecetas().subscribe(
@@ -106,7 +108,9 @@ export class PedidoFormComponent implements OnInit {
       estado: "pendiente",
       horario: this.pedidoNuevo.horario,
       fecha: this.pedidoNuevo.fecha,
-      total: this.totalCalculado
+      total: this.totalCalculado,
+      nombreCliente: this.nombreCliente,
+      mesa: this.mesa
     };
     
     // Enviar el nuevo pedido al backend
