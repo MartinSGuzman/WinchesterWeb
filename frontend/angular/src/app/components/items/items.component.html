@@ -33,24 +33,9 @@
                         <td>{{item.proveedor | titlecase}}</td>
                         <td>{{item.precio | currency:'ARS':'symbol-narrow'}}</td>
                         <td>{{item.stock}} Unidad </td>
-                        <td>Precio: {{item.precio | currency:'ARS':'symbol-narrow'}} * Unidad/es: {{item.stock}} Unidad
-                            = {{item.costo | currency:'ARS':'symbol-narrow'}}</td>
                         <td>
                             <button class="btn btn-warning" (click)="modificarReceta(item)">Modificar</button>
                             <button class="btn btn-danger" (click)="eliminarReceta(item)">Eliminar</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row"></th>
-                        <td colspan="5"></td>
-                        <td>
-                            <h3>Costo Total:</h3>
-                        </td>
-                        <td>
-                            <h3>{{totalCosto() | currency }}</h3>
-                        </td>
-                        <td>
-
                         </td>
                     </tr>
                 </tbody>

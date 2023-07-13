@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable, forkJoin } from 'rxjs';
 import { Receta } from 'src/app/models/receta';
 import { RecetaService } from 'src/app/services/receta.service';
 
@@ -18,12 +19,12 @@ export class RecetaComponent implements OnInit {
     this.receta = new Receta();
     this.recetass = new Array<Receta>();
     this.cargarRecetas();
-
-    this.totalCostoReceta();
   } 
 
   ngOnInit(): void {
   }
+
+  arrayRecetas: Receta[] = [];
 
   cargarRecetas() {
     this.recetaService.getRecetas().subscribe(
@@ -33,6 +34,7 @@ export class RecetaComponent implements OnInit {
           Object.assign(unReceta, element)
           this.recetass.push(unReceta)
           unReceta = new Receta();
+          this.agregarProductoReceta();
         });
         console.log(result);
       },
@@ -65,15 +67,38 @@ export class RecetaComponent implements OnInit {
     )
   }
 
-  agregarReceta() {
-    this.router.navigate(['receta-form/', 0])
+  public agregarProductoReceta() {
+    const observables: Observable<any>[] = [];
+
+    this.arrayRecetas.forEach(receta => {
+      receta.obProducto = []; // Inicializar el arreglo de items extra para cada pedido
+
+      if (receta.producs && receta.producs.length > 0) {
+        receta.producs.forEach(pro => {
+          const id = pro.produ; // Obtener el valor del id desde la propiedad item
+          const observable: Observable<any> = this.recetaService.getReceta(id);
+          observables.push(observable);
+        });
+      }
+    });
+
+    forkJoin(observables).subscribe(
+      respuestas => {
+        let index = 0;
+        this.arrayRecetas.forEach(receta => {
+          receta.obProducto = respuestas.slice(index, index + receta.producs.length);
+          index += receta.producs.length;
+        });
+        console.log(respuestas);
+      },
+      error => {
+        console.log(error);
+        console.log('No hay items de pedido');
+      }
+    );
   }
 
-  totalCostoReceta(): number {
-    let total = 0;
-    for (const costoReceta of this.recetass) {
-      total += costoReceta.precio;
-    }
-    return total;
+  agregarReceta() {
+    this.router.navigate(['receta-form/', 0])
   }
 }

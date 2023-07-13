@@ -22,8 +22,21 @@ export class RecetaService {
   }
 
   createReceta(receta: Receta): Observable<any> {
+
+    let producs: { produ: string, cantidad: number }[] = [];
+
+    for (let i = 0; i < receta.obProducto.length; i++) {
+      let nuevaProducto = {
+        produ: receta.obProducto[i]._id,
+        cantidad: receta.obProducto[i].cantidad
+      };
+
+      producs.push(nuevaProducto);
+    }
+
+    console.log(producs);
+
     let nombre = receta.nombre;
-    let costoTotal = receta.costoTotal;
     let precio = receta.precio;
     let productos = receta.productos;
     //let impuestos = receta.impuestos;
@@ -37,7 +50,6 @@ export class RecetaService {
     }
     const body = {
       nombre,
-      costoTotal,
       precio,
       productos,
       alergenos,
@@ -68,7 +80,6 @@ export class RecetaService {
     const body = {
       _id: receta._id,
       nombre: receta.nombre,
-      costoTotal: receta.costoTotal,
       precio: receta.precio,
       alergenos: receta.alergenos,
       //impuestos: receta.impuestos,

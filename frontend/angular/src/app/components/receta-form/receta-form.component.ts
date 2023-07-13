@@ -22,7 +22,6 @@ export class RecetaFormComponent implements OnInit {
     private activatedRoute: ActivatedRoute) {
     this.receta = new Receta()
     this.productosss = new Array<Producto>();
-    this.calcular();
   }
 
   ngOnInit(): void {
@@ -37,6 +36,11 @@ export class RecetaFormComponent implements OnInit {
       }
     });
   }
+
+  productoSeleccionado: Producto | null = null;
+  recetaNuevo: Receta = new Receta();
+  cantidadProducto: number | null = null;
+
 
   cargarReceta(id: string) {
     this.recetaService.getReceta(id).subscribe(
@@ -69,6 +73,18 @@ export class RecetaFormComponent implements OnInit {
     )
   }
 
+  public agregarProductoAlPedido() {
+    if (this.productoSeleccionado && this.cantidadProducto) {
+      const productoConCantidad: Producto = { ...this.productoSeleccionado };
+      productoConCantidad.cantidad = this.cantidadProducto;
+      this.recetaNuevo.obProducto.push(productoConCantidad);
+      this.recetaNuevo.producs.push({ produ: this.productoSeleccionado._id, cantidad: this.cantidadProducto });
+      // Restablecer los valores
+      this.productoSeleccionado = null;
+      this.cantidadProducto = null;
+    }
+  }
+
   registrar() {
     this.recetaService.createReceta(this.receta).subscribe(
       (result: any) => {
@@ -99,9 +115,5 @@ export class RecetaFormComponent implements OnInit {
 
   volverLista() {
     this.router.navigate(['receta'])
-  }
-
-  calcular() {
-    this.receta.costoTotal = this.receta.precio
   }
 }
