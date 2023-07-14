@@ -9,29 +9,28 @@
             </div>
             <button type="submit" (click)="volverLista()" class="btn btn-dark">Volver Lista</button>
 
-            <form class="p-3 container alert alert-danger" style="background-color: bisque;" #recetaForm="ngForm">
+            <form class="p-3" style="background-color: bisque;" #recetaForm="ngForm">
                 <div class="row">
                     <div class="col">
                         <label for="nombre" class="form-label" style="font-weight: bold;">Nombre</label>
                         <input type="text" class="form-control form-control-sm" placeholder="Ingrese Nombre" id="nombre"
                             [(ngModel)]="nombre" name="nombre">
                     </div>
-
-                    
                 </div>
+<br>
+                <div class="row">
+                    <div class="col">
+                        <label for="descripcion" class="form-label" style="font-weight: bold;">Descripcion:</label>
+                        <textarea id="descripcion" type="text" class="form-control" placeholder="Ingrese Descripcion"
+                            [(ngModel)]="descripcion" name="descripcion"></textarea>
+                    </div>
 
-                <div class="form-group">
-                    <label for="descripcion" class="form-label" style="font-weight: bold;">Descripcion:</label>
-                    <textarea id="descripcion" type="text" class="form-control" placeholder="Ingrese Descripcion"
-                        [(ngModel)]="descripcion" name="descripcion"></textarea>
+                    <div class="col">
+                        <label for="precio" class="form-label" style="font-weight: bold;">Precio</label>
+                        <input type="number" class="form-control form-control-sm" placeholder="Ingrese precio"
+                            id="precio" [(ngModel)]="precio" name="precio">
+                    </div>
                 </div>
-
-                <div class="col">
-                    <label for="precio" class="form-label" style="font-weight: bold;">Precio</label>
-                    <input type="number" class="form-control form-control-sm" placeholder="Ingrese precio" id="precio"
-                        [(ngModel)]="precio" name="precio">
-                </div>
-
                 <br>
                 <div class="row">
                     <h3>Ingredientes para la Receta</h3>
@@ -46,18 +45,17 @@
                         </select>
                     </div>
                     <div class="col">
-                        <label for="cantidadProducto">Cantidad</label>
+                        <label for="cantidadProducto" style="font-weight: bold;">Cantidad</label>
                         <input class="form-control" type="number" name="cantidadProducto"
                             [(ngModel)]="cantidadProducto" />
                     </div>
                     <br><br>
-                    <button class="btn btn-dark  w-50" (click)="agregarProductoAlPedido()">Agregar Ingrediente</button>
+                    <button class="btn btn-dark w-50" (click)="agregarProductoAlPedido()">Agregar Ingrediente</button>
                 </div>
             </form>
-            <div class="row letra3">
-                <h3 class="text-center">Guardar producto/s a Recetas 🥂🥗</h3>
+            <div style="background-color: bisque;">
+                <h3 class="text-center" style="font-weight: bold;">Guardar producto/s a Recetas 🥂🥗</h3>
                 <div class="col-12">
-
                     <ul class="list-group">
                         <li class="list-group-item" *ngFor="let producto of recetaNuevo.obProducto">
                             {{ producto.nombre }} - Cantidad: <input class="form-control" type="number"

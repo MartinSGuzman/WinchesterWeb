@@ -21,7 +21,7 @@ export class RecetaComponent implements OnInit {
     this.receta = new Receta();
     this.recetass = new Array<Receta>();
     this.cargarRecetas();
-  } 
+  }
 
   ngOnInit(): void {
   }
@@ -51,9 +51,9 @@ export class RecetaComponent implements OnInit {
       result => {
         if (result.status == "1") {
           console.log(result.msg);
-          
+
           this.cargarRecetas();
-          
+
         }
       },
       error => {
@@ -70,17 +70,17 @@ export class RecetaComponent implements OnInit {
 
     this.arrayRecetas.forEach(rece => {
       console.log('Receta:', rece);
-    
+
       rece.obProducto = []; // Inicializar el arreglo de recetas para cada pedido
-    
+
       if (rece.producs && rece.producs.length > 0) {
         rece.producs.forEach(re => {
           console.log('Rec:', re);
-    
+
           if (re && re.produ) { // Verificar si el objeto y la propiedad existen
             const id = re.produ;
             console.log('ID:', id);
-    
+
             const observable: Observable<any> = this.productoService.getProducto(id);
             observables.push(observable);
           } else {

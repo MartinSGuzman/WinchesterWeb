@@ -19,7 +19,7 @@ export class ProductoComponent implements OnInit {
     this.Productos = new Array<Producto>();
     this.cargarProductos();
 
-  } 
+  }
 
   ngOnInit(): void {
   }
@@ -42,7 +42,7 @@ export class ProductoComponent implements OnInit {
   }
 
   modificarProducto(producto: Producto) {
-    this.router.navigate(['producto-form/', producto._id]);
+    this.router.navigate(['producto-form', producto._id]);
   }
 
   eliminarProducto(producto: Producto) {
@@ -50,9 +50,9 @@ export class ProductoComponent implements OnInit {
       result => {
         if (result.status == "1") {
           console.log(result.msg);
-          
+
           this.cargarProductos();
-          
+
         }
       },
       error => {
@@ -64,9 +64,9 @@ export class ProductoComponent implements OnInit {
     )
   }
 
-    agregarProducto() {
-      this.router.navigate(['producto-form/', 0])
-    }
+  agregarProducto() {
+    this.router.navigate(['producto-form/', 0])
+  }
 
-  
+
 }
