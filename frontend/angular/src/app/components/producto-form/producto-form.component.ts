@@ -6,7 +6,7 @@ import { ProductoService } from 'src/app/services/producto.service';
 @Component({
   selector: 'app-producto-form',
   templateUrl: './producto-form.component.html',
-  styleUrls: ['./producto-form.component.css'] 
+  styleUrls: ['./producto-form.component.css']
 })
 export class ProductoFormComponent implements OnInit {
 
@@ -15,21 +15,29 @@ export class ProductoFormComponent implements OnInit {
   productos!: Array<Producto>;
 
   constructor(private productoService: ProductoService,
-    private router: Router,) {
+    private router: Router,
+    private activatedRoute: ActivatedRoute) {
     this.producto = new Producto()
-   
+
   }
 
   ngOnInit(): void {
-    
+    this.activatedRoute.params.subscribe(params => {
+      if (params['id'] == "0") {
+        this.accion = "new";
+      } else {
+        this.accion = "update";
+        this.cargarProducto(params['id']);
+      }
+    });
   }
 
   cargarProducto(id: string) {
     this.productoService.getProducto(id).subscribe(
       result => {
         Object.assign(this.producto, result);
-        
-       
+
+
         console.log(result);
       },
       error => {
@@ -38,7 +46,7 @@ export class ProductoFormComponent implements OnInit {
     )
   }
 
- 
+
 
   registrar() {
     this.productoService.createReceta(this.producto).subscribe(

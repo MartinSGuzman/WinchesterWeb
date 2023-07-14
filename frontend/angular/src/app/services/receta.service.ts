@@ -35,13 +35,11 @@ export class RecetaService {
 
     let nombre: string = receta.nombre;
     let precio: number = receta.precio;
-    let alergenos: string = receta.alergenos;
     let descripcion: string = receta.descripcion;
 
     console.log(producs);
     console.log(nombre);
     console.log(precio);
-    console.log(alergenos);
     console.log(descripcion);
 
     let httpOption = {
@@ -55,7 +53,6 @@ export class RecetaService {
       nombre,
       precio,
       //productos,
-      alergenos,
       // impuestos,
       descripcion
     };
@@ -84,7 +81,6 @@ export class RecetaService {
       _id: receta._id,
       nombre: receta.nombre,
       precio: receta.precio,
-      alergenos: receta.alergenos,
       //impuestos: receta.impuestos,
       descripcion: receta.descripcion,
       //productos: receta.productos,

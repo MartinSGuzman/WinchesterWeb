@@ -11,6 +11,7 @@ export class Pedido {
   estado!: string;
   fecha!: Date;
   nota!: string;
+  alergenos!: string;
   horario!: string;
   total!:number;
   nombreCliente !: string;

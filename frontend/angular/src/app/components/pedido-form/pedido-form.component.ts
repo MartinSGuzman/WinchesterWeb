@@ -38,6 +38,7 @@ export class PedidoFormComponent implements OnInit {
   cantidadReceta: number | null = null;
   cantidadItem: number | null = null;
   nota!:string;
+  alergenos!:string;
   totalCalculado!:number;
   nombreCliente!:string;
   mesa!:string;
@@ -71,6 +72,7 @@ export class PedidoFormComponent implements OnInit {
       this.pedidoNuevo.obReceta.push(recetaConCantidad);
       this.pedidoNuevo.recetas.push({ receta: this.recetaSeleccionada._id, cantidad: this.cantidadReceta });
       this.pedidoNuevo.nota = this.nota;
+      this.pedidoNuevo.alergenos = this.alergenos;
       // Restablecer los valores
       this.recetaSeleccionada = null;
       this.cantidadReceta = null;
@@ -105,6 +107,7 @@ export class PedidoFormComponent implements OnInit {
       obItemsExtra: this.pedidoNuevo.obItemsExtra,
       obReceta: this.pedidoNuevo.obReceta,
       nota: this.pedidoNuevo.nota,
+      alergenos: this.pedidoNuevo.alergenos,
       estado: "pendiente",
       horario: this.pedidoNuevo.horario,
       fecha: this.pedidoNuevo.fecha,

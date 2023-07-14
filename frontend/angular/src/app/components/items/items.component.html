@@ -7,12 +7,14 @@
             </h3>
         </div>
         <br><br>
+        <div class="text-center">
+        <button type="button" (click)="agregarItems()" class="btn btn-dark">Agregar Items</button>
+        </div>
 
-        <button type="button" (click)="agregarItems()" class="btn btn-info">Agregar Items</button>
         <br><br>
         <div class="table-responsive">
-            <table class="table table table-bordered table-light table-striped">
-                <thead>
+            <table class="table-sm table table-bordered table table-striped">
+                <thead class="table-dark" >
                     <tr class="text-center">
                         <th scope="col">Nombre</th>
                         <th scope="col">Categoria</th>
@@ -40,7 +42,7 @@
             </table>
         </div>
 
-        <button type="button" (click)="agregarItems()" class="btn btn-info">Agregar Items</button>
+        
         <br><br>
     </div>
 </div>

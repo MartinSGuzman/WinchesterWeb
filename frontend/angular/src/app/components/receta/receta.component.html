@@ -7,14 +7,15 @@
             <h3 class="col-12 text-center text-decoration-underline" style="font-weight: bold;">Listado De Receta</h3>
         </div>
         <br><br>
-        <button type="button" (click)="agregarReceta()" class="btn btn-info">Agregar Receta</button>
+        <div class="text-center">
+            <button type="button" (click)="agregarReceta()" class="btn btn-dark">Agregar Receta</button>
+        </div>
         <br><br>
-        <div class="table-responsive" style="text-align:center;">
-            <table class="table table table-bordered table-light table-striped">
-                <thead>
+        <div class="table-responsive " style="text-align:center;">
+            <table class="   table-sm table table-bordered table-light table-striped">
+                <thead class="table-dark">
                     <tr class="text-center">
                         <th scope="col">Nombre</th>
-                        <th scope="col">Alergenos</th>
                         <th scope="col">Descripcion</th>
                         <th scope="col">Productos</th>
                         <th scope="col">Precio</th>
@@ -25,7 +26,6 @@
                     <tr *ngFor="let rece of arrayRecetas">
                         <!--<th scope="row">{{ rece._id }}</th>-->
                         <td>{{rece.nombre | titlecase}}</td>
-                        <td>{{rece.alergenos | titlecase}}</td>
                         <td>{{rece.descripcion | titlecase}}</td>
                         <td>
                             <ul>
@@ -42,7 +42,7 @@
             </table>
         </div>
 
-        <button type="button" (click)="agregarReceta()" class="btn btn-info">Agregar Receta</button>
+
         <br><br>
     </div>
 </section>

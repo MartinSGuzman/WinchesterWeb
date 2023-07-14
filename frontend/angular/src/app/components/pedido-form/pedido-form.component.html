@@ -39,6 +39,38 @@
           </div>
           <button class="btn btn-dark" (click)="agregarItemsPedido()">Agregar al pedido</button>
         </div>
+
+
+
+        <div class="col">
+          <!--<label><input type="checkbox" id="cbox1" value="first_checkbox"> Este es mi primer checkbox</label><br>-->
+          <label for="alergenos" class="form-label" style="font-weight: bold;">Tipo de
+              Alergenos</label>
+          <select v-model="selected" class="form-select" aria-label="Default select example"
+              id="alergenos" [(ngModel)]="alergenos" name="alergenos">
+
+              <option value="1" disabled selected>Seleccione que alergenos requiere</option>
+              <option value="Gluten">Gluten</option>
+              <option value="Crustáceos">Crustáceos</option>
+              <option value="Huevo">Huevo</option>
+              <option value="Pescado">Pescado</option>
+              <option value="Cacahuates">Cacahuates</option>
+              <option value="Lacteos">Lacteos</option>
+              <option value="Apio">Apio</option>
+              <option value="Mostaza">Mostaza</option>
+              <option value="Sulfitos">Sulfitos</option>
+              <option value="Sésamo">Sésamo</option>
+              <option value="Moluscos">Moluscos</option>
+              <option value="Soja">Soja</option>
+              <option value="Frutos Secos">Frutos Secos</option>
+              <option value="Altramuz">Altramuz</option>
+          </select>
+      </div>
+
+
+
+
+
         <div class="col-12 mt-4">
           <h4 class="mb-3">Nota</h4>
           <div class="form-group">

@@ -14,6 +14,7 @@
           <th scope="col">N° Pedido</th>
           <th scope="col">Platos</th>
           <th scope="col">Nota</th>
+          <th scope="col">Alergico a</th>
           <th scope="col">Estado</th>
           <th scope="col">Extras</th>
           <th scope="col">Precio Total</th>
@@ -31,6 +32,7 @@
             </ul>
           </td>
           <td>{{ pedido.nota }}</td>
+          <td>{{ pedido.alergenos }}</td>
           
           <td [style.background-color]="getEstadoColor(pedido.estado)"><strong>{{ pedido.estado }}</strong></td>
           <td>

@@ -18,14 +18,14 @@
                 <li class="nav-item" *ngIf="esCocinero || esAdmin">
                   <a class="nav-link" [routerLink]="['receta']">Receta</a>
                 </li>
-                <li class="nav-item" *ngIf="esAdmin">
-                  <a class="nav-link" [routerLink]="['pago']">Pago</a>
+                <li class="nav-item" *ngIf="esCocinero || esAdmin">
+                  <a class="nav-link" [routerLink]="['items']">Items extras</a>
                 </li>
                 <li class="nav-item" *ngIf="esMozo || esAdmin || esCocinero">
                   <a class="nav-link" [routerLink]="['pedidos']">Pedidos</a>
                 </li>
-                <li class="nav-item" *ngIf="esCocinero || esAdmin">
-                  <a class="nav-link" [routerLink]="['items']">Items extras</a>
+                <li class="nav-item" *ngIf="esAdmin">
+                  <a class="nav-link" [routerLink]="['pago']">Pago</a>
                 </li>
               </ul>
               <li class="nav-item">

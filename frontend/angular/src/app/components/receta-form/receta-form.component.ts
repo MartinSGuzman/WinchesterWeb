@@ -46,7 +46,6 @@ export class RecetaFormComponent implements OnInit {
   cantidadProducto: number | null = null;
   nombre!: string;
   precio!: number;
-  alergenos!: string;
   descripcion!: string;
 
   /*cargarReceta(id: string) {
@@ -82,7 +81,6 @@ export class RecetaFormComponent implements OnInit {
       this.recetaNuevo.obProducto.push(productoConCantidad);
       this.recetaNuevo.producs.push({ produ: this.productoSeleccionado._id, cantidad: this.cantidadProducto });
       this.recetaNuevo.nombre = this.nombre;
-      this.recetaNuevo.alergenos = this.alergenos;
       this.recetaNuevo.descripcion = this.descripcion;
       this.recetaNuevo.precio = this.precio;
       // Restablecer los valores
@@ -95,7 +93,6 @@ export class RecetaFormComponent implements OnInit {
     const nuevaReceta: Receta = {
       _id: this.recetaNuevo._id,
       nombre: this.recetaNuevo.nombre,
-      alergenos: this.recetaNuevo.alergenos,
       descripcion: this.recetaNuevo.descripcion,
       obProducto: this.recetaNuevo.obProducto,
       precio: this.recetaNuevo.precio,
