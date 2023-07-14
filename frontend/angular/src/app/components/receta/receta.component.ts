@@ -84,11 +84,11 @@ export class RecetaComponent implements OnInit {
             const observable: Observable<any> = this.productoService.getProducto(id);
             observables.push(observable);
           } else {
-            console.log('Propiedad "receta" faltante o incorrecta en el objeto pedido');
+            console.log('Propiedad "Producto" faltante o incorrecta en el objeto Receta');
           }
         });
       } else {
-        console.log('Arreglo "receta" faltante o vacío en el objeto pedido');
+        console.log('Arreglo "Producto" faltante o vacío en el objeto Reecta');
       }
     });
 
@@ -103,7 +103,7 @@ export class RecetaComponent implements OnInit {
       },
       error => {
         console.log(error);
-        console.log('No hay receta para el pedido');
+        console.log('No hay producto para Receta');
       }
     );
   }

@@ -14,6 +14,7 @@ import { RecetaService } from 'src/app/services/receta.service';
 })
 export class PagoComponent implements OnInit {
 
+
   pagos!:Array<Pago>;
   deb:number = 0;
   
@@ -37,26 +38,37 @@ export class PagoComponent implements OnInit {
    cont11:number = 0;
    cont12:number = 0;
 
-  constructor( private pagoService : PagoService,
-               private router:Router,
-               private pedidosService : PedidoService) { 
+  
+  constructor(private pagoService: PagoService,
+    private router: Router,
+    private recetaService: RecetaService) {
+
     //this.cargarPagos();
     this.pagos = new Array<Pago>();
-    
+
   }
 
-  
+
   ngOnInit(): void {
+
     this.getFecha();
     this.recorrerPago();
+
+
+
+
     this.pagoService.getPagos().subscribe(
-      result=>{
+      result => {
         this.pagos = Object.values(result);
         console.log(this.pagos)
+
         
         
+
+
+
       },
-      error=>{
+      error => {
 
       }
     )
@@ -163,30 +175,30 @@ return mes;
 
 
 
-  
-   cargarPagos(){
-     this.pagoService.getPagos().subscribe(
-      result=>{
+
+  cargarPagos() {
+    this.pagoService.getPagos().subscribe(
+      result => {
         this.pagos = Object.values(result);
-        
+
       },
-      error=>{
+      error => {
 
       }
-     )
-   }
-
-
-  agregarPago(){
-    this.router.navigate(["pago-form",0])
+    )
   }
 
-  modificarPago(pago:Pago){
-    this.router.navigate(["pago-form",pago._id])
+
+  agregarPago() {
+    this.router.navigate(["pago-form", 0])
   }
 
-  eliminarPago(pago:Pago){
-    if(confirm("SEGURO QUE DESEA ELIMINAR?")){
+  modificarPago(pago: Pago) {
+    this.router.navigate(["pago-form", pago._id])
+  }
+
+  eliminarPago(pago: Pago) {
+    if (confirm("SEGURO QUE DESEA ELIMINAR?")) {
       this.pagoService.deletePago(pago._id).subscribe(
         result => {
           if (result.status == "1") {
@@ -199,36 +211,36 @@ return mes;
             alert(error.msg);
           }
         }
-  
+
       )
     }
-    
+
   }
 
-//el filtro por metodo funciona perfecto 
-filtrarPorMetodo() {
-  this.pagoService.getPagoXmetodo(this.filtrarPago).subscribe(
-    result => {
-      this.pagos = [];
-      Object.assign(this.pagos, result);
-      console.log(result);
-    },
-    error => {
-      console.log(error);
-    }
-  )
-}
+  //el filtro por metodo funciona perfecto 
+  filtrarPorMetodo() {
+    this.pagoService.getPagoXmetodo(this.filtrarPago).subscribe(
+      result => {
+        this.pagos = [];
+        Object.assign(this.pagos, result);
+        console.log(result);
+      },
+      error => {
+        console.log(error);
+      }
+    )
+  }
 
-limpiar() {
-  this.filtrarPago = '';
-  //recarga la pagina asi se actualiza el table
-  this.cargarPagos();
+  limpiar() {
+    this.filtrarPago = '';
+    //recarga la pagina asi se actualiza el table
+    this.cargarPagos();
 
-  //recarga la pagina
-  
-}
+    //recarga la pagina
 
-  
+  }
+
+
 
 }
 

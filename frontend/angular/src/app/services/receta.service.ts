@@ -83,6 +83,7 @@ export class RecetaService {
       precio: receta.precio,
       //impuestos: receta.impuestos,
       descripcion: receta.descripcion,
+      producs: receta.producs,
       //productos: receta.productos,
     };
     return this._httpCliente.put(this.urlBase + "receta/" + receta._id, body, httpOptions);

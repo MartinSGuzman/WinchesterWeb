@@ -40,18 +40,18 @@ export class ItemsComponent implements OnInit {
     )
   }
 
-  modificarReceta(items: Items) {
+  modificarItem(items: Items) {
     this.router.navigate(['items-form', items._id]);
   }
 
-  eliminarReceta(items: Items) {
-    this.itemsService.deleteReceta(items._id).subscribe(
+  eliminarItem(items: Items) {
+    this.itemsService.deleteItems(items._id).subscribe(
       result => {
         if (result.status == "1") {
           console.log(result.msg);
-          
+
           this.cargarItems();
-          
+
         }
       },
       error => {

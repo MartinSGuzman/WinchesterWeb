@@ -67,16 +67,16 @@ export class ItemsService {
     const body = {
       _id: items._id,
       nombre: items.nombre,
-      precio: items.precio,
       categoria: items.categoria,
       descripcion: items.descripcion,
       proveedor: items.proveedor,
+      precio: items.precio,
       stock: items.stock,
     };
     return this._httpCliente.put(this.urlBase + "itemsExtra/" + items._id, body, httpOptions);
   }
 
-  deleteReceta(id: string): Observable<any> {
+  deleteItems(id: string): Observable<any> {
     let httpOption = {
       headers: new HttpHeaders({
 
