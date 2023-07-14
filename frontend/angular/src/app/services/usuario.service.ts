@@ -7,7 +7,7 @@ import { map, tap } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class UsuarioService {
-  urlBase: string = "http://localhost:3000/api/usuario/";
+  urlBase: string = "http://18.205.57.146:3000/api/usuario/";
   private userLoggedInSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   public userLoggedIn$: Observable<boolean> = this.userLoggedInSubject.asObservable();
   
