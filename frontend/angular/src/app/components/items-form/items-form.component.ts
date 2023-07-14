@@ -62,7 +62,7 @@ export class ItemsFormComponent implements OnInit {
       (result: any) => {
         if (result.status == 1) {
           console.log(result.msg);
-          this.router.navigate(["items"]);
+          this.router.navigate(['items']);
         }
       },
       error => {

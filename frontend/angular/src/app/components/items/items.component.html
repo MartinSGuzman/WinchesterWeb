@@ -7,11 +7,10 @@
             </h3>
         </div>
         <br><br>
-        <div class="text-center">
+        <div>
         <button type="button" (click)="agregarItems()" class="btn btn-dark">Agregar Items</button>
         </div>
-
-        <br><br>
+        <br>
         <div class="table-responsive">
             <table class="table-sm table table-bordered table table-striped">
                 <thead class="table-dark" >
@@ -34,8 +33,8 @@
                         <td>{{item.precio | currency:'ARS':'symbol-narrow'}}</td>
                         <td>{{item.stock}} Unidad </td>
                         <td>
-                            <button class="btn btn-warning" (click)="modificarReceta(item)">Modificar</button>
-                            <button class="btn btn-danger" (click)="eliminarReceta(item)">Eliminar</button>
+                            <button class="btn btn-warning" (click)="modificarItem(item)">Modificar</button>
+                            <button class="btn btn-danger" (click)="eliminarItem(item)">Eliminar</button>
                         </td>
                     </tr>
                 </tbody>

@@ -26,7 +26,7 @@
                     <div class="col">
                         <label for="categoria" class="form-label" style="font-weight: bold;">Tipo de
                             Categoria</label>
-                        <select v-model="selected" class="form-select" aria-label="Default select example"
+                        <select class="form-select" aria-label="Default select example"
                             id="categoria" [(ngModel)]="items.categoria" name="categoria" required #categoria="ngModel">
 
                             <option value="1" disabled selected>Seleccione que categoria requiere</option>
@@ -85,7 +85,7 @@
                         </div>
                     </div>
                     <div class="col">
-                        <label for="precio" class="form-label" style="font-weight: bold;">precio</label>
+                        <label for="precio" class="form-label" style="font-weight: bold;">Precio</label>
                         <input type="number" class="form-control form-control-sm" placeholder="Ingrese precio" id="stock"
                             [(ngModel)]="items.precio" name="precio" required #precio="ngModel">
 
