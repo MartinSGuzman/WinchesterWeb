@@ -9,7 +9,7 @@ import { Pedido } from '../models/pedido';
 })
 export class PagoService {
 
-  urlBase: string = "http://localhost:3000/api/pago";
+  urlBase: string = "http://localhost:3000/api/pago/";
 
   constructor( private http: HttpClient) { }
 

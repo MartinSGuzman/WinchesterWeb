@@ -33,6 +33,7 @@ export class PagoFormComponent implements OnInit {
                }
 
   ngOnInit(): void {
+    
     this.activateRouted.params.subscribe(params=>{
       if (params['id']== '0'){
         this.accion = "new";
@@ -84,6 +85,7 @@ export class PagoFormComponent implements OnInit {
       result=>{
         console.log(result);
         Object.assign(this.pago,result);
+        console.log('estoy en cargar Pago',this.pago)
         //this.pago.receta = this.recetas.find(item => (item._id == this.pago.receta._id))!;
       },
       error=>{

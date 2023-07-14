@@ -16,7 +16,8 @@
       <div class="">
         <select class="form-select" aria-label="Default select example" [(ngModel)]="pedidoSeleccionado" name="pedidoSeleccionado">
           <option selected disabled value="">Elegir...</option>
-          <option *ngFor="let pedido of pedidos" [ngValue]="pedido">{{pedido.nombreCliente}} de la mesa {{pedido.mesa}}</option>
+          <option  *ngFor="let pedido of pedidos" [ngValue]="pedido">{{pedido.nombreCliente}} de la mesa {{pedido.mesa}} </option>
+          
         </select>
       </div>
 
@@ -42,11 +43,15 @@
         <label for="validationTooltip05" class="form-label">Nota</label>
         <input type="text" class="form-control" id="validationTooltip05" required [(ngModel)]="pago.nota" name="nota">
       </div>
+      <div class="col-md-3 position-relative">
+        <label for="validationTooltip05" class="form-label">Mesa</label>
+        <input type="text" class="form-control" id="validationTooltip05" required [(ngModel)]="pago.mesa" name="mesa">
+      </div>
 
 
       <div class="col-md-4 position-relative">
-        <label for="validationTooltip02" class="form-label">Monto: {{pago.pedido | json}}</label>
-        
+        <label for="validationTooltip02" class="form-label">Total: </label>
+        <input type="text" class="form-control" id="validationTooltip05" required [(ngModel)]="pago.total" name="total">
       </div>
 
       <div class="col-12">
