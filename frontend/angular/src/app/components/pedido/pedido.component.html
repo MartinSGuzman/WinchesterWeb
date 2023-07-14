@@ -9,8 +9,9 @@
     <div>
       <a class="btn btn-dark" [routerLink]="['/pedidos-form']">Hacer Pedido</a>
     </div>
+    <br>
     <table class="table table-striped table-hover">
-      <thead>
+      <thead class="table-dark">
         <tr>
           <th scope="col">N° Pedido</th>
           <th scope="col">Platos</th>
@@ -42,7 +43,7 @@
               <li *ngFor="let item of pedido.obItemsExtra">{{ item?.nombre }}</li>
             </ul>
           </td>
-          <td>{{ pedido.total}}</td>
+          <td>{{ pedido.total | currency:'ARS':'symbol-narrow'}}</td>
           <td>{{ pedido.mesa}}</td>
           <td>{{ pedido.nombreCliente}}</td>
           <td>

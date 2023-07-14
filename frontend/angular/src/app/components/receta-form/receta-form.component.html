@@ -53,8 +53,10 @@
                     <button class="btn btn-dark w-50" (click)="agregarProductoAlPedido()">Agregar Ingrediente</button>
                 </div>
             </form>
+            <div class="letra3">
+            <h3 class="text-center" style="font-weight: bold;">Guardar producto/s a Recetas 🥂🥗</h3>
+        </div>
             <div style="background-color: bisque;">
-                <h3 class="text-center" style="font-weight: bold;">Guardar producto/s a Recetas 🥂🥗</h3>
                 <div class="col-12">
                     <ul class="list-group">
                         <li class="list-group-item" *ngFor="let producto of recetaNuevo.obProducto">
@@ -64,7 +66,7 @@
                     </ul>
                 </div>
             </div>
-            <button type="submit" (click)="registrar()" class="btn btn-primary">Registrar Receta</button>
+            <button type="submit" (click)="registrar()" class="btn btn-dark">Registrar Receta</button>
             <!--<button  type="submit" (click)="actualizarReceta()"
                 class="btn btn-warning">Actualizar</button>-->
             <button type="submit" (click)="volverLista()" class="btn btn-dark">Volver Lista</button>

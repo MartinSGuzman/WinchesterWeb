@@ -1,26 +1,25 @@
-<div class="container">
-    <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger"  class="table table-striped table-bordered hover row-border hover ">
-        <thead>
-            <tr class="text-center">
-                <th scope="col">Total</th>
-                <th scope="col">Metodo</th>
-                <th scope="col">fecha</th>
-                <th scope="col">hora</th>
-                <th scope="col">cliente</th>
-                <th scope="col">Mesa</th>
-                <th scope="col">nota</th>
-              </tr>
-        </thead>
-        <tbody class="table-group-divider">
-          <tr *ngFor="let pag of datos">
-            <td>{{pag.total}}</td>
-          <td>{{pag.metodo}}</td>
-          <td>{{pag.horario}}</td>
-          <td> {{pag.fecha}}</td>
-          <td>{{pag.nombreCliente}}</td>
-          <td> {{pag.mesa}}</td>
-          <td>
-          </tr>
-        </tbody>
-      </table>
+<div class="container " style="background-color: rgb(231, 199, 160);">
+  <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger"  class="table table-striped table-bordered hover row-border hover">
+    <thead class="text-center">
+      <tr class="table-dark">
+        <th scope="col">Total</th>
+        <th scope="col">Método</th>
+        <th scope="col">Hora</th>
+        <th scope="col">Fecha</th>
+        <th scope="col">Cliente</th>
+        <th scope="col">Mesa</th>
+      </tr>
+    </thead>
+    <tbody class="table-group-divider">
+      <tr *ngFor="let pag of datos">
+        <td>{{ pag.total | currency:'ARS':'symbol-narrow' }}</td>
+        <td>{{ pag.metodo }}</td>
+        <td>{{ pag.horario }}</td>
+        <td>{{ pag.fecha }}</td>
+        <td>{{ pag.nombreCliente }}</td>
+        <td>{{ pag.mesa }}</td>
+      </tr>
+    </tbody>
+  </table>
 </div>
+<br>

@@ -6,8 +6,8 @@ const express = require('express');
 const router = express.Router();
 //definimos las rutas para la gestion
 router.post('/login', UsuarioCtrl.loginUsuario);
-router.get('/', authCtrl.verifyToken, UsuarioCtrl.getUsuarios);
-router.post('/post', authCtrl.verifyToken, UsuarioCtrl.createUsuario);
+router.get('/', UsuarioCtrl.getUsuarios);
+router.post('/post', UsuarioCtrl.createUsuario);
 router.get('/:id', authCtrl.verifyToken, UsuarioCtrl.getUsuario);
 router.put('/:id', authCtrl.verifyToken, UsuarioCtrl.editUsuario);
 router.delete('/:id', authCtrl.verifyToken, UsuarioCtrl.deleteUsuario);

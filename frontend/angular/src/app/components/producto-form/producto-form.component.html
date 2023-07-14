@@ -19,9 +19,15 @@
             <select name="categoria" [(ngModel)]="producto.categoria" class="form-control form-control-lg"
               id="categoria">
               <option disabled>elija</option>
-              <option value="limpieza">Limpieza</option>
+              <option value="limpieza">Lacteos</option>
               <option value="verduras">Verduras</option>
               <option value="frutas">Frutas</option>
+              <option value="frutas">Cereales</option>
+              <option value="frutas">Harinas</option>
+              <option value="frutas">Especias</option>
+              <option value="frutas">Panificados</option>
+              <option value="frutas">Carnes</option>
+              <option value="frutas">Aceites</option>
             </select>
           </div>
         </div>
@@ -53,7 +59,7 @@
         </div>
         <div class="row">
           <div class="col text-center">
-            <button *ngIf="accion=='new'" type="submit" (click)="registrar()" class="btn btn-info">Registrar
+            <button *ngIf="accion=='new'" type="submit" (click)="registrar()" class="btn btn-dark">Registrar
               Producto</button>
             <button *ngIf="accion=='update'" type="submit" (click)="actualizarProducto()"
               class="btn btn-warning">Actualizar</button>

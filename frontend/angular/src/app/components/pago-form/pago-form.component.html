@@ -1,17 +1,18 @@
 <section class="imangen"
   style="background-image: url('https://png.pngtree.com/thumb_back/fh260/background/20230617/pngtree-rectangular-shelf-in-light-brown-tones-a-3d-rendered-background-perfect-image_3639918.png');">
-  <div class="bg-primary border-5 text-center">
+  <br>
+  <div class=" container bg-dark border-5 text-center">
     <h2 class="text-white "> 💵💰 Formulario Pago 💵💰</h2>
   </div>
   <br>
-  <div class="container alert alert-secondary">
-    <form class="row" style="padding: 3%;">
+  <div class="container alert alert-secondary" style="background-color: rgb(245, 194, 132);">
+    <form class="row" style="padding: 3%; ">
       <div *ngIf="band" class="alert alert-danger">
         <div>
           DEBE INGRESAR TODOS CAMPOS DEL FORMULARIO.
         </div>
       </div>
-
+      
       <div class="">
         <label class="form-label">Cliente y Mesa de Pedido</label>
         <select class="form-select" aria-label="Default select example" [(ngModel)]="pedidoSeleccionado"
@@ -58,11 +59,11 @@
 
       <div class="col-12">
         <br>
-        <button class="btn btn-primary" type="submit" (click)="guardarPago()">Agregar
+        <button class="btn btn-dark" type="submit" (click)="guardarPago()">Agregar
           Pago</button>
         <!--<button *ngIf="accion=='update'" class="btn btn-primary offset-1" type="submit"
           (click)="actualizarPago()">Actualizar Pago</button>-->
-        <button class="btn btn-primary offset-1" type="submit" (click)="listarPagos()">Listar Pagos</button>
+        <button class="btn btn-dark offset-1" type="submit" (click)="listarPagos()">Listar Pagos</button>
         
       </div>
     </form>
