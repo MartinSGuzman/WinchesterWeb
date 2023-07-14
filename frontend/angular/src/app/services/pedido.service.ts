@@ -64,6 +64,7 @@ export class PedidoService {
     }
 
     let nota: string = pedido.nota;
+    let alergenos: string = pedido.alergenos;
     let total: number = pedido.total;
 
     let items: { item: string, cantidad: number }[] = [];
@@ -84,6 +85,7 @@ export class PedidoService {
     console.log(recetas);
     console.log(items);
     console.log(nota);
+    console.log(alergenos);
     console.log(estado);
     console.log(horario);
     console.log(fecha);
@@ -99,6 +101,7 @@ export class PedidoService {
       recetas,
       items,
       nota,
+      alergenos,
       estado,
       horario,
       fecha,
@@ -119,7 +122,7 @@ export class PedidoService {
     return this.http.delete<any>(this.urlBase +"pedido/" +id, httpOptions);
   }
 
-  putPedido(id: string, idReceta: string, idItems: string, nota: string, estado: string, horario: string, fecha: string): Observable<any> {
+  putPedido(id: string, idReceta: string, idItems: string, nota: string,alergenos:string, estado: string, horario: string, fecha: string): Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
@@ -129,6 +132,7 @@ export class PedidoService {
       idReceta,
       idItems,
       nota,
+      alergenos,
       estado,
       horario,
       fecha

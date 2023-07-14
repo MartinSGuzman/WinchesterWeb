@@ -4,7 +4,6 @@ const { Schema } = mongoose;
 const RecetaSchema = new Schema({
     nombre: { type: String, required: true },
     precio: { type: Number, required: true },
-    alergenos: { type: String, required: true },
     //impuestos: { type: Number, required: true },
     descripcion: { type: String, required: true },
     producs: [

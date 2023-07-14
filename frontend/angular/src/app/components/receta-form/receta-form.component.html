@@ -7,9 +7,9 @@
                 <h3>🥘🍽️ Recetas 🥂🥗</h3>
                 <br>
             </div>
-            <button type="submit" (click)="volverLista()" class="btn btn-success">Volver Lista</button>
+            <button type="submit" (click)="volverLista()" class="btn btn-dark">Volver Lista</button>
 
-            <form class="p-3 container alert alert-danger" #recetaForm="ngForm">
+            <form class="p-3 container alert alert-danger" style="background-color: bisque;" #recetaForm="ngForm">
                 <div class="row">
                     <div class="col">
                         <label for="nombre" class="form-label" style="font-weight: bold;">Nombre</label>
@@ -17,30 +17,7 @@
                             [(ngModel)]="nombre" name="nombre">
                     </div>
 
-                    <div class="col">
-                        <!--<label><input type="checkbox" id="cbox1" value="first_checkbox"> Este es mi primer checkbox</label><br>-->
-                        <label for="alergenos" class="form-label" style="font-weight: bold;">Tipo de
-                            Alergenos</label>
-                        <select v-model="selected" class="form-select" aria-label="Default select example"
-                            id="alergenos" [(ngModel)]="alergenos" name="alergenos">
-
-                            <option value="1" disabled selected>Seleccione que alergenos requiere</option>
-                            <option value="Gluten">Gluten</option>
-                            <option value="Crustáceos">Crustáceos</option>
-                            <option value="Huevo">Huevo</option>
-                            <option value="Pescado">Pescado</option>
-                            <option value="Cacahuates">Cacahuates</option>
-                            <option value="Lacteos">Lacteos</option>
-                            <option value="Apio">Apio</option>
-                            <option value="Mostaza">Mostaza</option>
-                            <option value="Sulfitos">Sulfitos</option>
-                            <option value="Sésamo">Sésamo</option>
-                            <option value="Moluscos">Moluscos</option>
-                            <option value="Soja">Soja</option>
-                            <option value="Frutos Secos">Frutos Secos</option>
-                            <option value="Altramuz">Altramuz</option>
-                        </select>
-                    </div>
+                    
                 </div>
 
                 <div class="form-group">
@@ -77,7 +54,7 @@
                     <button class="btn btn-dark  w-50" (click)="agregarProductoAlPedido()">Agregar Ingrediente</button>
                 </div>
             </form>
-            <div class="row">
+            <div class="row letra3">
                 <h3 class="text-center">Guardar producto/s a Recetas 🥂🥗</h3>
                 <div class="col-12">
 
@@ -89,10 +66,10 @@
                     </ul>
                 </div>
             </div>
-            <button type="submit" (click)="registrar()" class="btn btn-info">Registrar Receta</button>
+            <button type="submit" (click)="registrar()" class="btn btn-primary">Registrar Receta</button>
             <!--<button  type="submit" (click)="actualizarReceta()"
                 class="btn btn-warning">Actualizar</button>-->
-            <button type="submit" (click)="volverLista()" class="btn btn-success">Volver Lista</button>
+            <button type="submit" (click)="volverLista()" class="btn btn-dark">Volver Lista</button>
             <br><br>
         </div>
     </div>

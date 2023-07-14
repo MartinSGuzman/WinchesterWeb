@@ -18,6 +18,7 @@ const PedidoSchema = new Schema({
       }
     ],
     nota: { type: String, required: true },
+    alergenos: { type: String, required: true },
     estado: { type: String, required: true },
     horario: { type: String, required: true },
     fecha: { type: Date, required: true },
