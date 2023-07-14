@@ -46,6 +46,8 @@ export class PagoComponent implements OnInit {
     //this.cargarPagos();
     this.pagos = new Array<Pago>();
 
+    this.totalPago();
+    this.eliminarTodasLasFilas();
   }
 
 
@@ -239,7 +241,18 @@ return mes;
     //recarga la pagina
 
   }
+  totalPago(): number {
+    let total = 0;
+    for (const costoPag of this.pagos) {
+      total += costoPag.total;
+    }
+    return total;
+  }
 
+  eliminarTodasLasFilas(){
+    // Eliminar todas las filas de la tabla
+    this.pagos = [];
+}
 
 
 }
