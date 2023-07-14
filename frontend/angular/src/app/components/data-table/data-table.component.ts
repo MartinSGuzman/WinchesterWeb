@@ -28,20 +28,6 @@ export class DataTableComponent implements OnInit {
       }
     )
   }
-
-    // this.getYoutube.getYoutube(this.in.buscar).subscribe(
-    //   result =>{
-    //     this.ar = result['results'];
-    //     //el objet.value sirve para pasarle un objeto y este nos devuelve un array
-    //     this.data = Object.values(this.ar);
-    //     console.log(this.data);
-    //     this.dtTrigger.next(this.data);
-    //     console.log('entro en consola')
-    //   },
-    //   error =>{
-    //     console.log('se acabaron los intentos de la API')
-    //   }
-    // )
   
 
   ngOnDestroy():void{
