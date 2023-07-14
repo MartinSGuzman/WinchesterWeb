@@ -5,28 +5,14 @@
       <h3 class="col-12 text-center text-decoration-underline" style="font-weight: bold;">Listado De Pagos</h3>
     </div>
     <br><br>
-    <div class="d-flex mb-3 justify-content-between-fill">
-      <form class="d-flex col-6">
-        <select class="form-select me-2" [(ngModel)]="filtrarPago" name="metodo" id="metodo"
-          placeholder="Ingrese un Metodo" style="margin-left: 50px;">
-          <option>Contado</option>
-          <option>Debito</option>
-          <option>Credito</option>
-        </select>
-        <button type="button" class="btn btn-primary  " [disabled]="!filtrarPago"
-          (click)="filtrarPorMetodo()" >Filtrar</button>
-      </form>
-      <button type="button" class="btn btn-primary ms-auto" style="margin-right: 40px;" [hidden]="filtrarPago==''" (click)="limpiar()">Limpiar</button>
-    </div>
+    
     <br><br>
     <button type="button" class="btn btn-primary mb-4" (click)="agregarPago()" style="margin-left: 50px;">AGREGAR NUEVO PAGO</button>
 
-    
-
-    <table class="table table-sm table-bordered table-striped">
+    <table  class="table table-sm table-bordered table-striped">
       <thead class="table-dark">
         <tr class="text-center">
-          <th scope="col">monto</th>
+          <th scope="col">Total</th>
           <th scope="col">Metodo</th>
           <th scope="col">fecha</th>
           <th scope="col">hora</th>
@@ -39,8 +25,8 @@
         <tr *ngFor="let pag of pagos">
           <td>{{pag.total}}</td>
           <td>{{pag.metodo}}</td>
-          <td>{{pag.horario}}</td>
-          <td> {{pag.fecha}}</td>
+          <td>{{pag.fecha}}</td>
+          <td> {{pag.horario}}</td>
           <td>{{pag.nombreCliente}}</td>
           <td> {{pag.mesa}}</td>
           <td>
@@ -53,12 +39,11 @@
         </tr>
       </tbody>
     </table>
-    <img style="width: 50%;" src="https://chart.googleapis.com/chart?cht=bhg&chs=400x180&chd=t:{{cont}},{{cred}},{{deb}}&chxl=1:|Debito|Credito|Contado&chxt=x,y&chco=0072c6|ef3886|ff9900&chtt=Pagos:+Credito,+Contado+y+Debito
-      " alt="">
 
     <br><br>
 
+    <app-data-pagos></app-data-pagos>
+    
 
-    <app-data-pedidos></app-data-pedidos>
   </section>
   

@@ -30,10 +30,7 @@ export class PagoComponent implements OnInit {
   }
 
   
-
   ngOnInit(): void {
-    this.recorrerPago();
-    
     
 
     this.pagoService.getPagos().subscribe(
@@ -51,7 +48,6 @@ export class PagoComponent implements OnInit {
 
   
    cargarPagos(){
-    
      this.pagoService.getPagos().subscribe(
       result=>{
         this.pagos = Object.values(result);
@@ -113,45 +109,6 @@ limpiar() {
 
   //recarga la pagina
   
-}
-
-
-
-public recorrerPago() {
-  this.pagoService.getPagos().subscribe(result => {
-    this.pag = result;
-
-    this.fechas = []; // Reiniciar el array de fechas
-
-    this.pag.forEach(pago => {
-      this.fechas.push(pago.fecha);
-    });
-
-    const contadorPorMes = this.contarFechasPorMes(this.fechas);
-
-    contadorPorMes.forEach((contador, mes) => {
-      console.log('${mes}: ${contador}');
-    });
-  });
-}
-
-
-
-public contarFechasPorMes(fechas: string[]): Map<string, number> {
-  const contadorPorMes: Map<string, number> = new Map();
-
-  for (const fechaStr of fechas) {
-    const fecha = new Date(fechaStr);
-    const mes = fecha.toLocaleString('default', { month: 'long' });
-
-    if (contadorPorMes.has(mes)) {
-      contadorPorMes.set(mes, contadorPorMes.get(mes)! + 1);
-    } else {
-      contadorPorMes.set(mes, 1);
-    }
-  }
-
-  return contadorPorMes;
 }
 
   
