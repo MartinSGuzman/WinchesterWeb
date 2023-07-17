@@ -4,7 +4,7 @@ const { mongoose } = require('./database');
 var app = express();
 //middlewares
 app.use(express.json());
-app.use(cors({ origin: 'http:18.205.57.146' }));
+app.use(cors({ origin: 'http://localhost:4200' }));
 
 //Cargamos el modulo de direccionami/ento de rutas
 
